@@ -30,6 +30,9 @@
  *= require clockpicker/clockpicker.css
  *= require awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css
  *= require select2/select2.min.css
+ *= require footable/footable.core.css
+ *= require slick/slick.css
+ *= require slick/slick-theme.css
  *= require style
  */
 
@@ -40,7 +43,7 @@
 }
 
 .login-box {
-  background-color:rgba(0,0,0,0.2); 
+  background-color:rgba(0,0,0,0.2);
   padding: 15px 20px 20px 20px;
 }
 
