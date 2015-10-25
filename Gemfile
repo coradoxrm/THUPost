@@ -44,3 +44,4 @@ gem 'bcrypt'
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'jquery-rails'
