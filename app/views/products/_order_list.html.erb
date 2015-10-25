@@ -1,0 +1,37 @@
+<div class="project-list">
+
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <td class="project-people">
+          <a href=""><img alt="image" class="img-circle" src="/images/a1.jpg"></a>
+        </td>
+
+        <td class="project-completion">
+          <span class="label label-warning">￥90</span>
+        </td>
+
+
+        <td class="project-title">
+          <a href="/appviews/project_detail">Contract with Zender Company</a>
+          <br>
+          <small>Created 14.08.2014</small>
+        </td>
+
+
+        <td class="project-status">
+          <% if action_name == 'show' %>
+          <span class="label label-primary">Active</span>
+          <% else %>
+          <button class="btn btn-success btn-circle btn-lg" type="button">
+                        <i class="fa fa-send"></i>
+                    </button>
+          <% end %>
+        </td>
+
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>

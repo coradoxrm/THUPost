@@ -1,0 +1,40 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="pull-right"><a type="button" class="btn btn-w-m btn-success" href="<%= products_new_path %>">Create new sale</a></div>
+  <h2>My Sales</h2>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="vote-item">
+    <div class="row">
+
+      <div class="col-md-3 ">
+          <a href=""><img alt="image" src="/images/a6.jpg"></a>
+      </div>
+
+        <div class="col-md-8">
+
+            <a href="#" class="vote-title">
+                It is a long established fact that a reader will be distracted
+            </a>
+            <div class="vote-info">
+                <i class="fa fa-comments-o"></i> <a href="#">Comments (32)</a>
+                <i class="fa fa-clock-o"></i> <a href="#">1 Hours ago</a>
+                <i class="fa fa-user"></i> <a href="#">Andrew Williams</a>
+            </div>
+        </div>
+        <div class="col-md-1 ">
+            <div class="vote-icon">
+                <a><i class="fa fa-sort-desc"> </i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="vote-item sub-order-list">
+    <div class="row">
+      <%= render "order_list" %>
+    </div>
+  </div>
+
+
+</div>

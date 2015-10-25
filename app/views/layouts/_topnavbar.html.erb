@@ -10,7 +10,7 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <%= link_to( destroy_user_session_path, method: :delete) do %>
+                <%= link_to  home_index_path  do %>
                     <i class="fa fa-home"></i> HOME
                 <% end %>
             </li>
@@ -20,8 +20,13 @@
                 <% end %>
             </li>
             <li>
-                <%= link_to( destroy_user_session_path, method: :delete) do %>
-                    <i class="fa fa-archive"></i> GALLERY
+                <%= link_to products_order_path do %>
+                    <i class="fa fa-archive"></i> 我买的
+                <% end %>
+            </li>
+            <li>
+                <%= link_to products_for_sale_path do %>
+                    <i class="fa fa-home"></i> 我卖的
                 <% end %>
             </li>
             <li>

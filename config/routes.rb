@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   get 'products/show'
+  get 'products/new'
+  get 'products/for_sale'
+  get 'products/order'
+  post 'products/create'
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
   get 'home/index'
