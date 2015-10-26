@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   def show
+    @order = Order.new
+    @product = Product.find params[:id]
   end
 
   def new
@@ -18,6 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def for_sale
+    @products = current_user.products
   end
 
   def order

@@ -5,6 +5,7 @@
 
 <div class="wrapper wrapper-content animated fadeInRight">
 
+<% @products.each do |e| %>
 <div class="vote-item">
     <div class="row">
 
@@ -15,10 +16,10 @@
         <div class="col-md-8">
 
             <a href="#" class="vote-title">
-                It is a long established fact that a reader will be distracted
+                <%= e.title %>
             </a>
             <div class="vote-info">
-                <i class="fa fa-comments-o"></i> <a href="#">Comments (32)</a>
+                <i class="fa fa-comments-o"></i> Orders (<%= e.orders.count %>)
                 <i class="fa fa-clock-o"></i> <a href="#">1 Hours ago</a>
                 <i class="fa fa-user"></i> <a href="#">Andrew Williams</a>
             </div>
@@ -35,6 +36,7 @@
       <%= render "order_list" %>
     </div>
   </div>
+<% end %>
 
 
 </div>

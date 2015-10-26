@@ -35,19 +35,18 @@
             <div class="col-md-7">
 
               <h2 class="font-bold m-b-xs">
-                Desktop publishing software
+                <%= @product.title %>
               </h2>
               <small>Many desktop publishing packages and web page editors now.</small>
               <div class="m-t-md">
-                <h2 class="product-main-price">$406,602 <small class="text-muted">Exclude Tax</small> </h2>
+                <h2 class="product-main-price">$<%= @product.price %></h2>
               </div>
               <hr>
 
               <h4>Product description</h4>
 
               <div class="small text-muted">
-                It is a long established fact that a reader will be distracted by the readable
-                content of a page when looking at its layout. The point of using Lorem Ipsum is
+                <%= @product.description %>
 
                 <br/>
                 <br/>
@@ -93,23 +92,26 @@
           <h5>出价表</h5>
         </div>
         <div class="ibox-content">
-            <form class="form-horizontal">
+
+            <%= form_for @order, html: {class: "form-horizontal"}, url: {action: "create", controller: 'orders'} do |f| %>
+
               <div class="form-group">
                 <label class="col-sm-2 control-label">Comment</label>
-                <div class="col-sm-10"><textarea rows="3" class="form-control"></textarea></div>
+                <div class="col-sm-10"><textarea rows="3" class="form-control" name="description"></textarea></div>
               </div>
               <div class="form-group">
                 <label class="col-sm-offset-6 col-sm-2 control-label">出价</label>
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="price">
                         <span class="input-group-btn">
-                          <button type="button" class="btn btn-primary">Go!</button>
+                          <button type="submit" class="btn btn-primary">Go!</button>
                         </span>
                     </div>
                   </div>
               </div>
-            </form>
+
+            <% end %>
             <div class="hr-line-dashed"></div>
 
             <%= render 'order_list' %>

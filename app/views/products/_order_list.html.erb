@@ -2,20 +2,22 @@
 
   <table class="table table-hover">
     <tbody>
+      <% @product.orders.each do |e| %>
       <tr>
         <td class="project-people">
           <a href=""><img alt="image" class="img-circle" src="/images/a1.jpg"></a>
+          <%= e.user.email %>
         </td>
 
         <td class="project-completion">
-          <span class="label label-warning">￥90</span>
+          <span class="label label-warning">￥<%= e.price %></span>
         </td>
 
 
         <td class="project-title">
-          <a href="/appviews/project_detail">Contract with Zender Company</a>
+          <a href="/appviews/project_detail"><%= e.description %></a>
           <br>
-          <small>Created 14.08.2014</small>
+          <small><%= e.created_at %></small>
         </td>
 
 
@@ -30,7 +32,7 @@
         </td>
 
       </tr>
-
+      <% end %>
 
     </tbody>
   </table>

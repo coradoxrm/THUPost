@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'products/show'
-  get 'products/new'
   get 'products/for_sale'
   get 'products/order'
-  post 'products/create'
+  post 'products/:id/orders', to: 'orders#create', as: 'new_order'
+
+  resources :products
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
