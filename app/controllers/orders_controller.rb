@@ -9,4 +9,9 @@ class OrdersController < ApplicationController
     @order.save
     redirect_to product_path(@product)
   end
+
+  def index
+    @orders = current_user.orders
+  end
+  
 end

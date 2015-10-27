@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'products/:id/orders', to: 'orders#create', as: 'new_order'
 
   resources :products
+  resources :orders
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 

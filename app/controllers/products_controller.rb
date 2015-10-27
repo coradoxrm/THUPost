@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
       description: params[:description]
     )
     @product.save
-    redirect_to products_show_path
+    redirect_to product_path(@product)
   end
 
   def for_sale

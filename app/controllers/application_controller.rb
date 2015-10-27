@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller?
-      'empty'
+      action_name == 'edit' ? 'application' : 'empty'
     else
       'application'
     end

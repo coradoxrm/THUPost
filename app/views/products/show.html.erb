@@ -114,7 +114,7 @@
             <% end %>
             <div class="hr-line-dashed"></div>
 
-            <%= render 'order_list' %>
+            <%= render partial: 'order_list', locals: {product: @product} %>
         </div>
       </div>
     </div>
