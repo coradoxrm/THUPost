@@ -1,4 +1,26 @@
 <div class="wrapper wrapper-content animated fadeInRight">
+
+  <div class="row">
+    <div class="col-lg-12">
+    <div class="slick_demo">
+
+                  <div>
+                      <div class="ibox-content">
+                          <h2>Slide 1</h2>
+                          <div class="image"><img src="/images/a1.jpg"/></div>
+                      </div>
+                  </div>
+                  <div>
+                      <div class="ibox-content">
+                          <h2>Slide 2</h2>
+                          <div class="image"><img src="/images/a6.jpg"/></div>
+                      </div>
+                  </div>
+
+              </div>
+            </div>
+</div>
+
     <h2>Recent Posts</h2>
     <div class="row">
         <div class="col-lg-12">
@@ -35,12 +57,19 @@
                       </div>
                     <% end %>
 
-
-
-
-
                   </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+$(function(){
+  $('.slick_demo').slick(
+    {
+      dots:true
+    }
+  );
+});
+</script>
