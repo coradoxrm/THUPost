@@ -9,8 +9,7 @@
           <div class="row">
             <div class="col-md-5">
 
-
-              <div class="product-images">
+              <div class="slick_demo">
 
                 <div>
                   <div class="image-imitation">
@@ -121,19 +120,13 @@
   </div>
 </div>
 
-<% content_for :javascript do %>
 
-<script type="text/javascript">
-
-
-$(window).load(function() {
-
-  $('.product-images').slick({
-    dots: true
-  });
-
+<script>
+$(function(){
+  $('.slick_demo').slick(
+    {
+      dots:true
+    }
+  );
 });
-
 </script>
-
-<% end %>
