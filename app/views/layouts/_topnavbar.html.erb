@@ -11,12 +11,12 @@
         <ul class="nav navbar-top-links navbar-right">
             <li>
                 <%= link_to  home_index_path  do %>
-                    <i class="fa fa-home"></i> HOME
+                    <i class="fa fa-home"></i> 首页
                 <% end %>
             </li>
             <li>
                 <%= link_to user_edit_show_path do %>
-                    <i class="fa fa-user"></i> ACCOUNT
+                    <i class="fa fa-user"></i> 个人资料
                 <% end %>
             </li>
             <li>
@@ -31,12 +31,12 @@
             </li>
             <li>
                 <%= link_to( destroy_user_session_path, method: :delete) do %>
-                    <i class="fa fa-star"></i> FAVOURITE
+                    <i class="fa fa-star"></i> 收藏
                 <% end %>
             </li>
             <li>
                 <%= link_to( destroy_user_session_path, method: :delete) do %>
-                    <i class="fa fa-sign-out"></i> Log out
+                    <i class="fa fa-sign-out"></i> 登出
                 <% end %>
             </li>
         </ul>
