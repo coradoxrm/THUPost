@@ -15,12 +15,12 @@
                               <input type="text" placeholder="30字以内" name="title" class="form-control"></div>
 
                             <div class="form-group"><label>标签</label>
-                                  <div class="input-group">
-                                      <select data-placeholder="Choose a tag..." class="chosen-select" multiple style="width:350px;" tabindex="4">
-                                          <option value="">电子产品</option>
-                                          <option value="United States">生活用品</option>
-                                          <option value="United Kingdom">书籍</option>
-                                          <option value="Afghanistan">门票</option>
+                                  <div class="input-group" name="tag">
+                                      <select data-placeholder="Choose a tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" name="tag">
+                                          <option value="电子产品">电子产品</option>
+                                          <option value="生活用品">生活用品</option>
+                                          <option value="书籍">书籍</option>
+                                          <option value="门票">门票</option>
                                       </select>
                                     </div>
                             </div>
@@ -32,6 +32,11 @@
                             </div>
                             <div>
                                 <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>提交</strong></button>
+                            </div>
+                            <div>
+                              <!-- for tag -->
+                              <input type="hidden" name = "tag" id = "form_tag"> </input>
+                            </div>
                             </div>
                         <% end %>
                     </div>
@@ -47,17 +52,26 @@
 
 </div>
 
-<% content_for :javascript do %>
-
 <script type="text/javascript">
+(function() {
+  $('.chosen-select').chosen({});
+  // alert(2);
+  $(".chosen-select").chosen().change(function(v) {
+    $("#form_tag").val($(this).val());
+  });
+})();
 
 
-$(window).load(function() {
+// $(window).load(function() {
 
-    $('.chosen-select').chosen({});
+    
 
-});
+// });
 
 </script>
+
+
+<% content_for :javascript do %>
+
 
 <% end %>
