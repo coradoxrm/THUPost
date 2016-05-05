@@ -18,3 +18,5 @@
 *.swp
 /vendor/bundle/
 .DS_Store
+
+app/controllers/text_app_config.rb
