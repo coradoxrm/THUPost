@@ -2,33 +2,45 @@
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
 
-          <li >
-              <h1>THUPost</h1>
+          <li class="nav-header">
+              <div class="dropdown profile-element">
+                  <span>
+                    <%= link_to user_edit_show_path do %>
+                      <img alt="image" class="img-circle" src="/images/a1.jpg" height="70" width="70" />
+                    <% end %>
+                  </span>
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      <span class="clear">
+                          <span class="block m-t-xs">
+                              <strong class="font-bold"><%= current_user.nickname %></strong>
+                          </span>
+                      </span>
+                  </a>
+              </div>
+              <div class="logo-element">
+                  THUPOST
+              </div>
           </li>
 
-            <li class="<%= 'active' if current_page?('/') %>">
-                <%= link_to "/" do %>
-                <i class="fa fa-laptop"></i> <span class="nav-label">生活用品</span>
+            <li class="<%= 'active' if current_page?('/products/tag?tag=电子产品') %>">
+                <%= link_to "/products/tag?tag=电子产品" do %>
+                <i class="fa fa-laptop"></i> <span class="nav-label">电子产品</span>
                 <% end %>
             </li>
-            <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/home/minor" do %>
-                <i class="fa fa-desktop"></i> <span class="nav-label">衣服</span>
+
+            <li class="<%= 'active' if current_page?('/products/tag?tag=衣服') %>">
+                <%= link_to "/products/tag?tag=衣服" do %>
+                <i class="fa fa-gift"></i> <span class="nav-label">衣服</span>
                 <% end %>
             </li>
-            <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/home/minor" do %>
-                <i class="fa fa-desktop"></i> <span class="nav-label">电子产品</span>
+            <li class="<%= 'active' if current_page?('/products/tag?tag=生活用品') %>">
+                <%= link_to "/products/tag?tag=生活用品" do %>
+                <i class="fa fa-suitcase"></i> <span class="nav-label">生活用品</span>
                 <% end %>
             </li>
-            <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/home/minor" do %>
-                <i class="fa fa-desktop"></i> <span class="nav-label">书籍</span>
-                <% end %>
-            </li>
-            <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/home/minor" do %>
-                <i class="fa fa-desktop"></i> <span class="nav-label">其他</span>
+            <li class="<%= 'active' if current_page?('/products/tag?tag=书籍') %>">
+                <%= link_to "/products/tag?tag=书籍" do %>
+                <i class="fa fa-book"></i> <span class="nav-label">书籍</span>
                 <% end %>
             </li>
         </ul>

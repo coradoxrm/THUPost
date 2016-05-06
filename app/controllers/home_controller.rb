@@ -6,10 +6,10 @@ class HomeController < ApplicationController
   end
 
   def index
-    @products = get_category("生活用品", 0, 40)
+    @products = get_category("电子产品", 0, 40)
   end
 
-  
+
 
   def minor
   end
