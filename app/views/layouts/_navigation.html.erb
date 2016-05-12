@@ -6,7 +6,8 @@
               <div class="dropdown profile-element">
                   <span>
                     <%= link_to user_edit_show_path do %>
-                      <img alt="image" class="img-circle" src="/images/a1.jpg" height="70" width="70" />
+
+                      <img alt="image" class="img-circle" src=<%= current_user.avatar.url %> height="70" width="70" />
                     <% end %>
                   </span>
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">
