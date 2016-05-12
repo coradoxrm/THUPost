@@ -20,3 +20,5 @@
 .DS_Store
 
 app/controllers/text_app_config.rb
+db/schema.rb
+Gemfile.lock
