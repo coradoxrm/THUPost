@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :orders
   
-  has_attached_file :avatar, styles: { small: "64x64", med: "100x100", large: "200x200" }
-  validates_attachment :avatar, presence: true,
-    content_type: { content_type: /\Aimage\/.*\Z/ },
-    size: { in: 0..100000.kilobytes }
+  has_attached_file :avatar, styles: { small: "64x64", med: "100x100", large: "200x200" }, default_url: "/images/empty.jpg"
+  # validates_attachment :avatar, presence: true,
+  validates_attachment_content_type :avatar, content_type: [/\Aimage\/.*\Z/, nil, ""] 
+  # validates_attachment_size :avatar, in: 0..100000.kilobytes
 end

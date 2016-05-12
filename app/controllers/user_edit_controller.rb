@@ -7,7 +7,15 @@ class UserEditController < ApplicationController
     @user.address = params[:address]
     # puts params
     # @user.update_attribute(@user.avatar, params[:user][:avatar])
-    @user.avatar = params[:user][:avatar]
+    if params[:user]
+      @user.avatar = params[:user][:avatar]
+    end
+    
+    # puts "fsdfds"
+    # puts @user.avatar
+    # @user.avatar = nil
+    # remove_avatar = 1
+
     @user.save
     # puts "nimas"
     # puts @user.avatar_file_name
