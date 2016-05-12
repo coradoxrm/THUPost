@@ -9,8 +9,6 @@ class HomeController < ApplicationController
     @products = get_category("电子产品", 0, 40)
   end
 
-
-
   def minor
   end
 end

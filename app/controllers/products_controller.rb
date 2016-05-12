@@ -69,9 +69,11 @@ class ProductsController < ApplicationController
   end
 
   def search
-    limitl = params["limitl"]
-    limitr = params["limitr"]
-    search_content = params["content"]
+    #limitl = params["limitl"]
+    #limitr = params["limitr"]
+    limitl = 0
+    limitr = 30
+    search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       tag like '%#{search_content}%' or
       title like '%#{search_content}%' or

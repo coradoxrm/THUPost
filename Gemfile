@@ -34,6 +34,8 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
+
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -47,4 +49,8 @@ gem 'devise'
 gem 'rails_admin'
 gem 'jquery-rails'
 gem 'simple_form'
+
+gem 'sweetalert-rails', '~> 0.5.0'
+gem 'sweet-alert-confirm'
+
 gem 'paperclip'

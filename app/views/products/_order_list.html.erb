@@ -4,9 +4,10 @@
     <tbody>
       <% product.orders.each do |e| %>
       <tr>
+
         <td class="project-people">
           <a href=""><img alt="image" class="img-circle" src="/images/a1.jpg"></a>
-          <%= e.user.email %>
+          <%= e.user.nickname %>
         </td>
 
         <td class="project-completion">
@@ -21,13 +22,18 @@
         </td>
 
 
+        <td class="project-contact">
+          <div class="col-lg-3 h-100 p-lg">
+              <button class="btn btn-success btn-sm demo4" name = <%= e.id %> >发送短信</button>
+          </div>
+          <div class="col-lg-3 h-100 p-lg">
+              <button class="btn btn-primary btn-sm demo3" name = <%= e.id %> >发送邮件</button>
+          </div>
+        </td>
+
         <td class="project-status">
-          <% if action_name == 'show' %>
-          <span class="label label-primary">Active</span>
-          <% else %>
-          <button class="btn btn-success btn-circle btn-lg" type="button">
-                        <i class="fa fa-send"></i>
-                    </button>
+          <% if e.status == 0%>
+          <p><span class="label label-info">waiting</span></p>
           <% end %>
         </td>
 
