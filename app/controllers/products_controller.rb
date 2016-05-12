@@ -27,17 +27,20 @@ class ProductsController < ApplicationController
     @products = current_user.products
   end
 
-  def order
-  end
-
   def search
-    @limitl = params["limitl"]
-    @limitr = params["limitr"]
-    @search_content = params["content"]
-    @products = Product.find_by_sql("select * from products where 
-      tag like '%#{search_content}%' or 
-      title like '%#{search_content}%' or 
+    limitl = params["limitl"]
+    limitr = params["limitr"]
+    search_content = params["content"]
+    @products = Product.find_by_sql("select * from products where
+      tag like '%#{search_content}%' or
+      title like '%#{search_content}%' or
       description like '%#{search_content}%'
       order by id limit #{limitl}, #{limitr}")
   end
+
+  def tag
+    @tag_name = params["tag"]
+    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' order by id limit #{0}, #{40}")
+  end
+
 end

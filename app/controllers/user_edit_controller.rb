@@ -22,4 +22,5 @@ class UserEditController < ApplicationController
     # puts "debug"
     @user = current_user
   end
+
 end
