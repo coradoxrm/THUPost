@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :products
   has_many :orders
+  
+  has_attached_file :avatar, styles: { small: "64x64", med: "100x100", large: "200x200" }
+  validates_attachment :avatar, presence: true,
+    content_type: { content_type: /\Aimage\/.*\Z/ },
+    size: { in: 0..100000.kilobytes }
 end
