@@ -11,14 +11,55 @@ class ProductsController < ApplicationController
   end
 
   def create
-    puts "debug"
     puts params
+    if params[:product][:photo0]
+      p0 = params[:product][:photo0]
+    else
+      p0 = nil
+    end
+
+    if params[:product][:photo1]
+      p1 = params[:product][:photo1]
+    else
+      p1 = nil
+    end
+
+    if params[:product][:photo2]
+      p2 = params[:product][:photo2]
+    else
+      p2 = nil
+    end
+
+    if params[:product][:photo3]
+      p3 = params[:product][:photo3]
+    else
+      p3 = nil
+    end
+
+    if params[:product][:photo4]
+      p4 = params[:product][:photo4]
+    else
+      p4 = nil
+    end
+    puts "productdebug"
+    puts p0
+    puts p1
+    puts p2
+    puts p3
+    puts p4
+    
     @product = current_user.products.build(
       title: params[:title],
       price: params[:price],
       description: params[:description],
-      tag: params[:tag]
+      tag: params[:tag],
+      photo0: p0,
+      photo1: p1,
+      photo2: p2,
+      photo3: p3,
+      photo4: p4
     )
+    puts @product
     @product.save
     redirect_to product_path(@product)
   end

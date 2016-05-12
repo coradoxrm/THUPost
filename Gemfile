@@ -52,3 +52,5 @@ gem 'simple_form'
 
 gem 'sweetalert-rails', '~> 0.5.0'
 gem 'sweet-alert-confirm'
+
+gem 'paperclip'

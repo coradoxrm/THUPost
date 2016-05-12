@@ -38,13 +38,23 @@
                               <input type="hidden" name = "tag" id = "form_tag"> </input>
                             </div>
                             </div>
+
+
+                          <div class="col-sm-5"><h4>上传图片</h4>
+                          <!-- <p class="text-center"> -->
+                              <!-- <a href=""><i class="fa fa-sign-in big-icon"></i></a> -->
+                          <!-- </p> -->
+                          <%= f.file_field :photo0 %>
+                          <%= f.file_field :photo1 %>
+                          <%= f.file_field :photo2 %>
+                          <%= f.file_field :photo3 %>
+                          <%= f.file_field :photo4 %>
+                          </div>
                         <% end %>
+
+
                     </div>
-                    <div class="col-sm-5"><h4>上传图片</h4>
-                        <p class="text-center">
-                            <a href=""><i class="fa fa-sign-in big-icon"></i></a>
-                        </p>
-                    </div>
+                    
                 </div>
             </div>
         </div>
