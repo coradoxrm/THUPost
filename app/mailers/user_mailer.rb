@@ -14,4 +14,9 @@ class UserMailer < ApplicationMailer
     print('test ok')
     print(@user)
   end
+
+  def notify_email(order)
+    @order = order
+    mail(to: @order.product.user.email, subject: '通知')
+  end
 end
