@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505040806) do
+ActiveRecord::Schema.define(version: 20160513115640) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160505040806) do
     t.boolean  "is_chosen",   default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "status",      default: 0
   end
 
   add_index "orders", ["product_id"], name: "index_orders_on_product_id"
@@ -31,10 +32,30 @@ ActiveRecord::Schema.define(version: 20160505040806) do
     t.text     "description"
     t.float    "price"
     t.integer  "user_id"
-    t.integer  "status",      default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "status",              default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "tag"
+    t.string   "photo0_file_name"
+    t.string   "photo0_content_type"
+    t.integer  "photo0_file_size"
+    t.datetime "photo0_updated_at"
+    t.string   "photo1_file_name"
+    t.string   "photo1_content_type"
+    t.integer  "photo1_file_size"
+    t.datetime "photo1_updated_at"
+    t.string   "photo2_file_name"
+    t.string   "photo2_content_type"
+    t.integer  "photo2_file_size"
+    t.datetime "photo2_updated_at"
+    t.string   "photo3_file_name"
+    t.string   "photo3_content_type"
+    t.integer  "photo3_file_size"
+    t.datetime "photo3_updated_at"
+    t.string   "photo4_file_name"
+    t.string   "photo4_content_type"
+    t.integer  "photo4_file_size"
+    t.datetime "photo4_updated_at"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id"
@@ -56,6 +77,10 @@ ActiveRecord::Schema.define(version: 20160505040806) do
     t.string   "phone"
     t.string   "wechat"
     t.text     "address"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

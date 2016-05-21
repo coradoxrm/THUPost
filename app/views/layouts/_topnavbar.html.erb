@@ -2,16 +2,9 @@
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <!--
-            <form role="search" class="navbar-form-custom" method="get" action="/">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search" />
-                </div>
-            </form>
-          -->
-          <%= form_tag({:controller => "products", :action => "search"}, method: "get",class: "navbar-form-custom") do %>
-            <%= text_field_tag :query, params[:query], :size => 30 , :class => "form-control"%>
-          <% end %>
+            <%= form_tag({:controller => "products", :action => "search"}, method: "get",class: "navbar-form-custom") do %>
+              <%= text_field_tag :query, params[:query], size: 30 , class: "form-control" , placeholder: "Search for something..."%>
+            <% end %>
 
         </div>
         <ul class="nav navbar-top-links navbar-right">

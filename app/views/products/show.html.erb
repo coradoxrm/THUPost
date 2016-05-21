@@ -9,25 +9,22 @@
           <div class="row">
             <div class="col-md-5">
 
-              <div class="slick_demo">
-
+              <div class="slick_demo" height="300">
                 <div>
                   <div class="image-imitation">
-                    [IMAGE 1]
+                      [image]
                   </div>
                 </div>
                 <div>
                   <div class="image-imitation">
-                    [IMAGE 2]
+                    <img alt="image" src=<%= @product.photo1.url %>  width="500" />
                   </div>
                 </div>
                 <div>
                   <div class="image-imitation">
-                    [IMAGE 3]
+                  [IMAGE]
                   </div>
                 </div>
-
-
               </div>
 
             </div>
@@ -117,9 +114,18 @@
 $(function(){
   $('.slick_demo').slick(
     {
-      dots:true
+      //centerMode: true,
+      dots: true,
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
+      //adaptiveHeight: true
     }
   );
+
+  $('.slick-demo').css('height','300 px' );
+
   $('.demo3').click(function () {
     swal({
       title: "确定发送邮件？",
