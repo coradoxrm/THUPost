@@ -1,10 +1,12 @@
-class THUPostRegistrationsController < Devise::RegistrationsController
-  def new
-    print("call new")
+class RegistrationsController < Devise::RegistrationsController
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:email,:password,:password_confirmation)
   end
 
-  def create
-    print("call create")
-    super
+  def account_update_params
+    params.require(:user).permit(:email,:password,:password_confirmation,:current_password)
   end
+
 end
