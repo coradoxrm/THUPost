@@ -78,10 +78,10 @@
         <div class="ibox-title">
           <h5>出价表</h5>
         </div>
+
         <div class="ibox-content">
-
+          <% if current_user != @product.user %>
           <%= form_for @order, html: {class: "form-horizontal"}, url: {action: "create", controller: 'orders'} do |f| %>
-
           <div class="form-group">
             <label class="col-sm-2 control-label">评论</label>
             <div class="col-sm-10"><textarea rows="3" class="form-control" name="description"></textarea></div>
@@ -97,9 +97,10 @@
               </div>
             </div>
           </div>
-
           <% end %>
+
           <div class="hr-line-dashed"></div>
+          <% end %>
 
           <%= render partial: 'order_list', locals: {product: @product} %>
 
