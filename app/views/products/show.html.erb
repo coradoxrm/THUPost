@@ -124,7 +124,7 @@ $(function(){
     }
   );
 
-  $('.demo3').click(function () {
+  $('.demo4').click(function () {
     swal({
       title: "确定发送邮件？",
       type: "warning",
@@ -140,7 +140,8 @@ $(function(){
         }
       });
     });
-    $('.demo4').click(function () {
+
+    $('.demo3').click(function () {
       var order = $(this).attr('name')
 
       swal({
@@ -157,7 +158,7 @@ $(function(){
             console.log(order)
             $.ajax({
               type: "POST",
-              url: "http://localhost:3000/",
+              url: "/orders/notify_email",
               data: {order_id : order},
               dataType: "json",
               success: function(data){

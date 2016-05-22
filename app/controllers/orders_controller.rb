@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def notify_email
-    @order = Product.find(params[:order_id])
+    @order = Order.find(params[:order_id])
     UserMailer.notify_email(@order).deliver_now
     @res = {:code => 0}
     render :json => @res
