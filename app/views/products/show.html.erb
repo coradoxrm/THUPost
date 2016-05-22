@@ -9,20 +9,20 @@
           <div class="row">
             <div class="col-md-5">
 
-              <div class="slick_demo" height="300">
+              <div class="slick_demo">
                 <div>
                   <div class="image-imitation">
-                      [image]
+                    <img style="width: 100%;" alt="image" src=<%= @product.photo0.url(:thumb) %> />
                   </div>
                 </div>
                 <div>
                   <div class="image-imitation">
-                    <img alt="image" src=<%= @product.photo1.url %>  width="500" />
+                    <img style="width: 100%;" alt="image" src=<%= @product.photo1.url(:thumb) %> />
                   </div>
                 </div>
                 <div>
                   <div class="image-imitation">
-                  [IMAGE]
+                    <img style="width: 100%;" alt="image" src=<%= @product.photo2.url(:thumb) %> />
                   </div>
                 </div>
               </div>
@@ -123,8 +123,6 @@ $(function(){
       //adaptiveHeight: true
     }
   );
-
-  $('.slick-demo').css('height','300 px' );
 
   $('.demo3').click(function () {
     swal({
