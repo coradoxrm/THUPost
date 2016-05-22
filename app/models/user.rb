@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   # validates_attachment :avatar, presence: true,
   validates_attachment_content_type :avatar, content_type: [/\Aimage\/.*\Z/, nil, ""] 
   # validates_attachment_size :avatar, in: 0..100000.kilobytes
+
+  has_many :collections
 end
