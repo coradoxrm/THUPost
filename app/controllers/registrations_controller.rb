@@ -1,6 +1,10 @@
-class RegistrationsController  < ApplicationController
+class THUPostRegistrationsController < Devise::RegistrationsController
   def new
-    @user = User.new
+    print("call new")
   end
 
+  def create
+    print("call create")
+    super
+  end
 end
