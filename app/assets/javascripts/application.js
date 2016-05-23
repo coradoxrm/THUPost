@@ -18,4 +18,5 @@
 //= require slimscroll/jquery.slimscroll.min.js
 //= require slick/slick.min.js
 //= require sweetalert/sweetalert.min.js
+//= require dropzone/dropzone.js
 //= require_tree .
