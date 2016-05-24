@@ -59,3 +59,18 @@
 .login-page h3 {
   color: white
 }
+
+.logo-change {
+  color: #e6e6e6;
+  font-size: 180px;
+  font-weight: 800;
+  letter-spacing: -10px;
+  margin-bottom: -25px;
+  text-align: center;
+}
+
+
+a:link {color:#E6E6FA;}
+a:visited {color:#E6E6FA;} /* visited link */
+a:hover {color:#E6E6FA;}   /* mouse over link */
+a:active {color:#E6E6FA;}  /* selected link */
