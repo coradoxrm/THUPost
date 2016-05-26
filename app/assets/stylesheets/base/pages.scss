@@ -1065,7 +1065,6 @@ del {
 
 .product-imitation {
   text-align: center;
-  padding: 90px 0;
   background-color: lighten($gray, 2%);
   color: darken($gray, 20%);
   font-weight: 600;
@@ -1128,7 +1127,7 @@ del {
 .image-imitation {
   background-color: lighten($gray, 2%);
   text-align: center;
-  padding: 200px 0;
+  padding: 0px 0;
 
 }
 
@@ -1315,4 +1314,3 @@ del {
 body.body-small .vote-icon {
   display: none;
 }
-
