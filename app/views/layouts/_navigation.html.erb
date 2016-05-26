@@ -6,14 +6,17 @@
               <div class="dropdown profile-element">
                   <span>
                     <%= link_to user_edit_show_path do %>
-
+                    <% if current_user != nil %>
                       <img alt="image" class="img-circle" src=<%= current_user.avatar.url %> height="70" width="70" />
+                    <% end %>
                     <% end %>
                   </span>
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                       <span class="clear">
                           <span class="block m-t-xs">
+                            <% if current_user != nil %>
                               <strong class="font-bold"><%= current_user.nickname %></strong>
+                            <% end %>
                           </span>
                       </span>
                   </a>

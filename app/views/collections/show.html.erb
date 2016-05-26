@@ -1,0 +1,50 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+
+  <h2>Search Result</h2>
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+          <% @products.each do |e|%>
+          <div class="col-md-3">
+            <div class="ibox">
+              <div class="ibox-content product-box">
+                <div class="product-imitation">
+                  <a href=""><img alt="image" src="<%= e.photo0.url(:large) %>"></a>
+                </div>
+                <div class="product-desc">
+                  <span class="product-price">
+                    $<%= e.price %>
+                  </span>
+                  <a href="<%= product_path(e) %>" class="product-name"> <%= e.title %></a>
+
+                  <div class="small m-t-xs">
+                    <%= e.description %>
+                  </div>
+                  <div class="m-t text-righ">
+                    <a href="<%= product_path(e) %>" class="btn btn-xs btn-outline btn-primary"> Info <i class="fa fa-long-arrow-right"></i> </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(function(){
+  $('.slick_demo').slick(
+    {
+      dots:true
+    }
+  );
+});
+</script>

@@ -4,20 +4,44 @@ class CollectionsController < ApplicationController
     collections = current_user.collections
     @products = []
     for i in collections
-      @products.push(Product.where(:product => i.product))
+      # puts "debugs"
+      # puts i.product_id
+      # puts i.user_id
+      product = Product.where(:id => i.product_id).first()
+      @products.push(product)
     end
   end
 
   def new
-    @product = Product.find(params[:id])
-    @order = current_user.collections.build()
-    @order.save
+    # puts "start new"
+    product = Product.find(params[:id])
+    # puts current_user.id
+    # puts product.id
+    if (Collection.where(:user_id => current_user.id, :product_id => product.id).all == [])
+      order = Collection.create(:user_id => current_user.id, :product_id => product.id)
+      order.save
+      @object = {"status":"success"}
+      render :json => @object 
+      return
+    end
+    @object = {"status":"error", "desc":"repeat object"}
+    render :json => @object 
+    # puts Collection.where(:user_id => current_user.id, :product_id => product.id).all
+
+    
   end
 
   def remove
     product = Product.find(params[:id])
-    order = Collections.where(:user => current_user, :product => product)
-    order.destroy
+    if (Collection.where(:user_id => current_user.id, :product_id => product.id).all != []) 
+      order = Collection.where(:user_id => current_user.id, :product_id => product.id).first()
+      order.destroy
+      @object = {"status":"success"}
+      render :json => @object 
+      return;
+    end
+    @object = {"status":"error", "desc":"no such object"}
+    render :json => @object 
   end
   
 end

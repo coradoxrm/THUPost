@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'products/order'
   get 'products/search'
   get 'products/tag'
+  get 'collections/show'
+  post 'collections/new'
+  post 'collections/remove'
   post 'products/:id/orders', to: 'orders#create', as: 'new_order'
 
   resources :products
