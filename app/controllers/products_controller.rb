@@ -81,7 +81,8 @@ class ProductsController < ApplicationController
   end
 
   def for_sale
-    @products = current_user.products
+    puts current_user.id
+    @products = Product.where(:user_id => current_user.id).order("updated_at DESC").all;
   end
 
   def default_value(l, d)
