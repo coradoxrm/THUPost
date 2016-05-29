@@ -3,6 +3,15 @@ class ProductsController < ApplicationController
   def show
     @order = Order.new
     @product = Product.find params[:id]
+    @iscollection = 0
+    for i in current_user.collections
+      # puts "nimas"
+      # puts i.product_id
+      # puts params[:id] 
+      if i.product_id == params[:id].to_i
+        @iscollection = 1
+      end
+    end
   end
 
   def new

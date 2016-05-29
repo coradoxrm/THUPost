@@ -55,7 +55,11 @@
 
               <div>
                 <div class="btn-group">
-                  <button class="btn btn-white btn-sm" id = "coll_btn"><i class="fa fa-star"></i> 加入收藏 </button>
+                  <% if @iscollection == 0 %>
+                    <button class="btn btn-white btn-sm coll_btn coll_new_btn" ><i class="fa fa-star"></i> 加入收藏 </button>
+                  <% else %>
+                    <button class="btn btn-white btn-sm coll_btn coll_remove_btn"><i class="fa fa-star"></i> 取消收藏 </button>
+                  <% end %>
                 </div>
               </div>
 
@@ -172,16 +176,28 @@ $(function(){
         });
       });
     });
-    $("#coll_btn").click(function() {
-      alert($("#pid").html());
+    $(".coll_btn").click(function() {
+      // alert($("#pid").html());
+      var obj = $(this);
+      var url = "/collections/new";
+      if (obj.hasClass('coll_remove_btn'))
+        url = "/collections/remove";
       $.ajax({
               type: "POST",
-              url: "/collections/remove",
+              url: url,
               data: {id : $("#pid").html()},
               dataType: "json",
               success: function(data){
-                alert(1);
+                if (obj.hasClass('coll_remove_btn')) {
+                  obj.removeClass('coll_remove_btn');
+                  obj.addClass('coll_new_btn');
+                  obj.html('<i class="fa fa-star"></i>加入收藏');
+                } else {
+                  obj.removeClass('coll_new_btn');
+                  obj.addClass('coll_remove_btn');
+                  obj.html('<i class="fa fa-star"></i>取消收藏');
+                }
               }
             });
     });
-    </script>
+        </script>
