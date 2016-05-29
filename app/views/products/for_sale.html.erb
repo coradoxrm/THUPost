@@ -1,5 +1,5 @@
 <div class="wrapper wrapper-content animated fadeInRight">
-  <div class="pull-right"><a type="button" class="btn btn-w-m btn-success" href="<%= new_product_path %>">Create new sale</a></div>
+  <div class="pull-right"><a type="button" class="btn btn-w-m btn-success btn-lg" href="<%= new_product_path %>">Create new sale</a></div>
   <h2>我卖的</h2>
 </div>
 
@@ -9,8 +9,8 @@
 <div class="vote-item">
     <div class="row">
 
-      <div class="col-md-3 ">
-          <a href=""><img alt="image" src= <%= e.user.avatar.url %> height="70" width="70"></a>
+      <div class="col-md-1">
+          <a href=""><img alt="image" src= <%= e.photo0.url(:thumb) %> height="70" width="70"></a>
       </div>
 
         <div class="col-md-8">
@@ -19,24 +19,34 @@
                 <%= e.title %>
             </a>
             <div class="vote-info">
-                <i class="fa fa-comments-o"></i> Orders (<%= e.orders.count %>)
-                <i class="fa fa-clock-o"></i> <a href="#">1 Hours ago</a>
-                <i class="fa fa-user"></i> <a href="#">Andrew Williams</a>
+                <i class="fa fa-comments-o"></i> Orders (<%= e.orders.count %>)&nbsp
+                <i class="fa fa-clock-o"></i>Update at (<%= e.updated_at %>)&nbsp
+                <!-- <i class="fa fa-user"></i> <a href="#"></a> -->
             </div>
         </div>
-        <div class="col-md-1 ">
+
+        <div class="col-md-3 button-f">
+          <div class="button-c">
+            <button class="btn btn-success btn-lg" name = <%= e.id %> >取&nbsp &nbsp消</button>&nbsp
+            <button class="btn btn-success btn-lg" name = <%= e.id %> >已卖出</button>
+          </div>
+        </div>
+
+
+
+        <!-- <div class="col-md-1 ">
             <div class="vote-icon">
                 <a class="expand-btn" data-target-id="<%= e.id %>"><i class="fa fa-sort-desc"> </i></a>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
-<div class="vote-item sub-order-list" id="sub-<%= e.id %>">
+<!-- <div class="vote-item sub-order-list" id="sub-<%= e.id %>">
     <div class="row">
       <%= render partial: "order_list", locals: {product: e} %>
     </div>
-</div>
+</div> -->
 <% end %>
 
 

@@ -5,7 +5,7 @@
       <% product.orders.each do |e| %>
       <tr>
 
-        <td class="project-people">
+        <td class="project-people col-lg-2">
           <a href=""><img alt="image" class="img-circle" src="<%= e.user.avatar.url %>"></a>
           <%= e.user.nickname %>
         </td>
@@ -15,23 +15,22 @@
         </td>
 
 
-        <td class="project-title">
+        <td class="project-title col-lg-4">
           <a href="/appviews/project_detail"><%= e.description %></a>
           <br>
-          <small><%= e.created_at %></small>
+          <small><%= e.created_at.strftime("%Y-%m-%d")%></small>
         </td>
 
 
-        <td class="project-contact">
-          <div class="col-lg-3 h-100 p-lg">
+
+        <td class="project-contact col-lg-4">
+            <% if current_user == product.user %>
               <button class="btn btn-success btn-sm demo4" name = <%= e.id %> >发送短信</button>
-          </div>
-          <div class="col-lg-3 h-100 p-lg">
               <button class="btn btn-primary btn-sm demo3" name = <%= e.id %> >发送邮件</button>
-          </div>
+            <% end %>
         </td>
 
-        <td class="project-status">
+        <td class="project-status col-lg-2">
           <% if e.is_chosen == false %>
           <p><span class="label label-info">waiting</span></p>
           <% end %>

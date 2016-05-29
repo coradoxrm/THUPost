@@ -1,92 +1,107 @@
+
+<%= csrf_meta_tag %>
+
 <div class="wrapper wrapper-content animated fadeInRight">
 
-<div >
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h3>添加商品</h3>
-            </div>
-            <div class="ibox-content">
-                <div class="row">
-                    <div class="col-sm-7 b-r">
+  <div>
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h3>添加商品</h3>
+      </div>
+      <div class="ibox-content">
+        <div class="row">
+          <%= form_for @product, url: {action: "create"} ,:html => {:id => 'mydropzone', :enctype => 'multipart/form-data'} do |f| %>
 
-                        <%= form_for @product, url: {action: "create"} do |f| %>
+          <!-- <form id="my-awesome-dropzone" enctype='multipart/form-data' multipart=true method="post" class="dropzone" action="create"> -->
+          <div class="col-sm-6 b-r">
+            <div class="form-group"><label>商品名称</label>
+              <input type="text" placeholder="30字以内" name="title" class="form-control" id="title"></div>
 
-                            <div class="form-group"><label>商品名称</label>
-                              <input type="text" placeholder="30字以内" name="title" class="form-control"></div>
-
-                            <div class="form-group"><label>标签</label>
-                                  <div class="input-group" name="tag">
-                                      <select data-placeholder="Choose a tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" name="tag">
-                                          <option value="电子产品">电子产品</option>
-                                          <option value="生活用品">生活用品</option>
-                                          <option value="书籍">书籍</option>
-                                          <option value="门票">门票</option>
-                                      </select>
-                                    </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label>最低价格</label>
-                              <input type="text" name="price" class="form-control"></div>
-                            <div class="form-group">
-                              <label >描述</label>
-                              <textarea type="text" rows="3" name="description" class="form-control"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>提交</strong></button>
-                            </div>
-                            <div>
-                              <!-- for tag -->
-                              <input type="hidden" name = "tag" id = "form_tag"> </input>
-                            </div>
-                            </div>
-
-
-                          <div class="col-sm-5">
-                            <h4>上传图片</h4>
-                            <div class="dropzone-previews">
-                              <div class="fallback">
-                              <%= f.file_field :photo0 %>
-                              <%= f.file_field :photo1 %>
-                              <%= f.file_field :photo2 %>
-                              <%= f.file_field :photo3 %>
-                              <%= f.file_field :photo4 %>
-                              </div>
-                            </div>
-
-                          </div>
-                        <% end %>
-
-
-                    </div>
-
+              <div class="form-group"><label>标签</label>
+                <div class="input-group" name="tag">
+                  <select data-placeholder="Choose a tag..." class="chosen-select" multiple style="width:350px;" tabindex="4" name="tag">
+                    <option value="电子产品">电子产品</option>
+                    <option value="生活用品">生活用品</option>
+                    <option value="书籍">书籍</option>
+                    <option value="门票">门票</option>
+                  </select>
                 </div>
+              </div>
+
+              <div class="form-group">
+                <label>最低价格</label>
+                <input type="text" name="price" class="form-control"></div>
+                <div class="form-group">
+                  <label >描述</label>
+                  <textarea type="text" rows="3" name="description" class="form-control"></textarea>
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" id="sbmtbtn"><strong>提交</strong></button>
+                </div>
+                <div>
+                  <input type="hidden" name="tag" id="form_tag"> </input>
+                </div>
+
+              </div>
+
+              <div class="col-sm-6">
+                <!-- <div id = "dropzonePreview" class="dropzone-previews dz-default">
+                  <div class="dz-message" data-dz-message><span>Your Custom Message</span></div>
+                </div> -->
+
+                <%= f.file_field :photo0 %>
+                <%= f.file_field :photo1 %>
+                <%= f.file_field :photo2 %>
+                <%= f.file_field :photo3 %>
+                <%= f.file_field :photo4 %>
+
+              </div>
+            </form>
+
+            <% end %>
+
             </div>
+
+          </div>
+
         </div>
+      </div>
     </div>
+  </div>
 
 </div>
 
+
 <script type="text/javascript">
-(function() {
-  $('.chosen-select').chosen({});
-  // alert(2);
-  $(".chosen-select").chosen().change(function(v) {
-    $("#form_tag").val($(this).val());
+
+$(function() {
+  Dropzone.autoDiscover = false;
+  $("div#myDropZone").dropzone({
+    url: "create",
+    autoProcessQueue: false,
+    uploadMultiple: true,
+    parallelUploads: 5,
+    maxFiles: 5,
+    addRemoveLinks: true,
+    paramName: 'pic',
+    headers: {"X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')},
+    init: function() {
+      var myDropzone = this;
+      $("#sbmtbtn").on('click',function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        myDropzone.processQueue();
+      });
+      myDropzone.on("sending", function(file, xhr, formData) {
+        var title = $("#title").value
+        formData.append("title", title);
+      });
+    }
   });
-})();
+    $('.chosen-select').chosen({});
+    $(".chosen-select").chosen().change(function(v) {
+      $("#form_tag").val($(this).val());
+    });
+  });
 
-
-// $(window).load(function() {
-
-
-
-// });
-
-</script>
-
-
-<% content_for :javascript do %>
-
-
-<% end %>
+  </script>
