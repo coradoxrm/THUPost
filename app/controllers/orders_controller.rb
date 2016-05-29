@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  # NOTE: fix CSRF in future
-  skip_before_filter :verify_authenticity_token
+  before_action :authenticate_user!
 
   def create
     @product = Product.find(params[:id])
@@ -38,7 +37,7 @@ class OrdersController < ApplicationController
   def remove
     order = Order.find(params[:id])
     order.destroy
-    @object = {"status":"success"}
-    render :json => @object 
+    @object = {"status": "success"}
+    render :json => @object
   end
 end
