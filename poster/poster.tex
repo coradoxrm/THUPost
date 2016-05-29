@@ -176,16 +176,33 @@
         \end{figure}
 
 
+        \begin{block}{Notification}
+            Once the user create an order, he/she can notify the seller at once, either sending an email
+            or a text message, by simply clicking the button.
+
+        \end{block}
+
+
+
+%----------------------------------------------------------------------------------------
+
+    \end{column} % End of column 2.1
+    \begin{column}{\sepwid}\end{column} % Empty spacer column
+    \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
+    
+
         \begin{block}{Backend \& Frontend}
         THUPost select several develop kit.
         \begin{enumerate}
         \item Ruby on Rails 2.3.1.
-        \item Bootstrp Version ???
+        \item Bootstrp
         \item MySQL
         \item jQuery
         \end{enumerate}
 
-        Most html will produced by ROR erb file, in addition backend provide several API for frontend to use. This will drastically increase the interaction for user.
+        Most html will produced by ROR erb file, in addition backend provide several API for frontend to use. This will drastically increase the interaction for user like.
+
+        We select ActiveModel as the ROM class connecting with the database, it's really wonderful for this ROM skill interacting with database, convinient and efficient.
 
         We have four main models in database.
         \begin{enumerate}
@@ -194,20 +211,16 @@
         \item Order, represents one order between seller and buyer.
         \item Collection, represents the goods that one specific user collect.
         \end{enumerate}
+        Based on these models, it's easy to manage our data in database.
         \end{block}
 
-
-
-%----------------------------------------------------------------------------------------
-
-    \end{column} % End of column 2.1
-
-    \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
-    
-        \begin{block}{Notification}
-
-        Once the user create an order, he/she can notify the seller at once, either sending an email
-        or a text message, by simply clicking the button.
+        \begin{block}{plugin}
+            In order to achieve our goal providing good interaction for users, we use several fantastic plugin.
+            \begin{enumerate}
+            \item Devise, fantastic plugin managing login logout.
+            \item Paperclip, providing useful image managing and resize function. It can also change the pixis of image into suitable size.
+            \item Sweetalert, a useful function to draw the alert window.
+            \end{enumerate}
         \end{block}
 %----------------------------------------------------------------------------------------
 %   P
@@ -217,10 +230,10 @@
 %----------------------------------------------------------------------------------------
 
     \end{column} % End of column 2.2
-    \begin{column}{\sepwid}\end{column} % Empty spacer column
+    % \begin{column}{\sepwid}\end{column} % Empty spacer column
         
     \begin{column}{\onecolwid}
-    第四列
+        Fourth column.
     \end{column}
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
 
