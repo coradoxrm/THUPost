@@ -81,6 +81,17 @@
     word-wrap: break-word;
 }
 
+.button-f {
+  position:relative;
+}
+
+.button-c {
+  height:20px;
+  position:absolute;
+  top:50%;
+  margin-top:10px;
+}
+
 
 /*a:link {color:#E6E6FA;}
 a:visited {color:#E6E6FA;}
