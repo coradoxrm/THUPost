@@ -102,7 +102,7 @@ class ProductsController < ApplicationController
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{search_content}%' or
       title like '%#{search_content}%' or
-      description like '%#{search_content}%) and status = 0'
+      description like '%#{search_content}%') and status = 0
       order by id limit #{limitl}, #{limitr}")
   end
 
