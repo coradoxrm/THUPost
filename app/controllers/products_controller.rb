@@ -128,6 +128,7 @@ class ProductsController < ApplicationController
     # end
     # product.destroy
     product.status = 2
+    product.save
     @object = {"status":"success"}
     render :json => @object 
   end

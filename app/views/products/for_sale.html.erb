@@ -27,7 +27,7 @@
 
         <div class="col-md-3 button-f">
           <div class="button-c">
-            <button class="btn btn-success btn-lg" name = <%= e.id %> >取&nbsp &nbsp消</button>&nbsp
+            <button class="btn btn-success btn-lg cancel_btn" name = <%= e.id %> >取&nbsp &nbsp消</button>&nbsp
             <button class="btn btn-success btn-lg" name = <%= e.id %> >已卖出</button>
           </div>
         </div>
@@ -62,4 +62,21 @@ $(function(){
     $('#sub-' + target_id).toggle('fast');
   });
 });
+
+
+$(function(){
+  $('.cancel_btn').click(function() {
+    $.ajax({
+              type: "POST",
+              url: "/products/remove",
+              data: {id : $(this).attr("name")},
+              dataType: "json",
+              success: function(data){
+                location=location;
+              }
+            });
+  }
+  );
+});
+
 </script>
