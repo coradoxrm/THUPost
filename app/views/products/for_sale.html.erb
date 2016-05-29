@@ -10,12 +10,12 @@
     <div class="row">
 
       <div class="col-md-1">
-          <a href=""><img alt="image" src= <%= e.photo0.url(:thumb) %> height="70" width="70"></a>
+          <a href="<%= product_path(e)%>"><img alt="image" src= <%= e.photo0.url(:thumb) %> height="70" width="70"></a>
       </div>
 
         <div class="col-md-8">
 
-            <a href="#" class="vote-title">
+            <a href="<%= product_path(e)%>" class="vote-title">
                 <%= e.title %>
             </a>
             <div class="vote-info">

@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     for i in current_user.collections
       # puts "nimas"
       # puts i.product_id
-      # puts params[:id] 
+      # puts params[:id]
       if i.product_id == params[:id].to_i
         @iscollection = 1
       end
@@ -98,6 +98,7 @@ class ProductsController < ApplicationController
     #limitr = params["limitr"]
     limitl = default_value("l", 0)
     limitr = default_value("r", 30)
+    @page = default_value("page", 0)
     search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{search_content}%' or
@@ -106,7 +107,7 @@ class ProductsController < ApplicationController
       order by id limit #{limitl}, #{limitr}")
   end
 
-  
+
 
   def tag
     @tag_name = params["tag"]
