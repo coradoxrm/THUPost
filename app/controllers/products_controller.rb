@@ -77,11 +77,19 @@ class ProductsController < ApplicationController
     @products = current_user.products
   end
 
+  def default_value(l, d)
+    if params.has_key? :l
+      return params[l]
+    else
+      return d
+    end
+  end
+
   def search
     #limitl = params["limitl"]
     #limitr = params["limitr"]
-    limitl = 0
-    limitr = 30
+    limitl = default_value("l", 0)
+    limitr = default_value("r", 30)
     search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       tag like '%#{search_content}%' or
@@ -90,9 +98,13 @@ class ProductsController < ApplicationController
       order by id limit #{limitl}, #{limitr}")
   end
 
+  
+
   def tag
     @tag_name = params["tag"]
-    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' order by id limit #{0}, #{40}")
+    l = default_value("l", 0);
+    r = default_value("r", 20);
+    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' order by id limit #{l}, #{r}")
   end
 
 end
