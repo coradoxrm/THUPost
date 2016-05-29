@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def create
     @product = Product.find(params[:id])
+    @product
     @order = current_user.orders.build(
         product: @product,
         price: params[:price],
@@ -34,4 +35,10 @@ class OrdersController < ApplicationController
     order.save
   end
 
+  def remove
+    order = Order.find(params[:id])
+    order.destroy
+    @object = {"status":"success"}
+    render :json => @object 
+  end
 end

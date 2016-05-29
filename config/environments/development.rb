@@ -55,4 +55,5 @@ Rails.application.configure do
       enable_starttls_auto: false
   }
 
+  config.time_zone = 'Beijing'
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'collections/show'
   post 'collections/new'
   post 'collections/remove'
+  post 'orders/remove'
   post 'products/:id/orders', to: 'orders#create', as: 'new_order'
   post 'products/create'
 
