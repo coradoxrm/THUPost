@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  # status 0 open 1 close 2 dicussion 3 selled
+  # status 0 dicussion 1 close 2 selled 3
   before_action :authenticate_user!
   def show
     @order = Order.new
@@ -115,4 +115,14 @@ class ProductsController < ApplicationController
     product.save
   end
 
+  def remove
+    product = Product.find(params[:id])
+    # for i in product.orders
+      # i.destroy
+    # end
+    # product.destroy
+    product.status = 2
+    @object = {"status":"success"}
+    render :json => @object 
+  end
 end
