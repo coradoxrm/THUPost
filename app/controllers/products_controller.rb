@@ -85,10 +85,12 @@ class ProductsController < ApplicationController
     @products = Product.where(:user_id => current_user.id).order("updated_at DESC").all;
   end
 
-  def default_value(l, d)
-    if params.has_key? :l
+  def default_value(l, d) #not work
+    if params.has_key?(:l)
+      puts "has key +++++++++++++++++++++"
       return params[l]
     else
+      puts "no key +++++++++++++++++++++"
       return d
     end
   end
@@ -96,14 +98,15 @@ class ProductsController < ApplicationController
   def search
     #limitl = params["limitl"]
     #limitr = params["limitr"]
-    limitl = default_value("l", 0)
-    limitr = default_value("r", 30)
-    @page = default_value("page", 0)
-    search_content = params["query"]
+    puts params
+    @page = Integer(params.has_key?("page") ? params["page"] : 1)
+    limitl = (@page-1)*20
+    limitr = @page*20-1
+    @search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
-      (tag like '%#{search_content}%' or
-      title like '%#{search_content}%' or
-      description like '%#{search_content}%) and status = 0'
+      (tag like '%#{@search_content}%' or
+      title like '%#{@search_content}%' or
+      description like '%#{@search_content}%')
       order by id limit #{limitl}, #{limitr}")
   end
 
@@ -131,6 +134,6 @@ class ProductsController < ApplicationController
     product.status = 2
     product.save
     @object = {"status":"success"}
-    render :json => @object 
+    render :json => @object
   end
 end
