@@ -49,7 +49,7 @@ Rails.application.configure do
       port: '465',
       domain: '163.com',
       user_name: 'thupost@163.com',
-      password: ENV['MAIL_PASSWORD'],
+      password: 'thupostAUTH1234',
       authentication: :login,
       ssl: true,
       enable_starttls_auto: false

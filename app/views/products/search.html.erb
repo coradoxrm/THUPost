@@ -12,20 +12,18 @@
             <div class="ibox">
               <div class="ibox-content product-box">
                 <div class="product-imitation">
-                  <a href=""><img alt="image" src="<%= e.photo0.url(:large) %>"></a>
+                  <a href=""><img alt="image" src="<%= e.photo0.url(:thumb) %>" style = "width:100%"></a>
                 </div>
                 <div class="product-desc">
                   <span class="product-price">
                     $<%= e.price %>
                   </span>
-                  <a href="<%= product_path(e) %>" class="product-name"> <%= e.title %></a>
+                  <a href="<%= product_path(e) %>" class="product-name pname"> <%= e.title %></a>
 
-                  <div class="small m-t-xs">
-                    <%= e.description %>
+                  <div class="small m-t-xs ptext">
+                    <%= e.description.length > 20 ? e.description[0,20]+"..." : e.description %>
                   </div>
-                  <div class="m-t text-righ">
-                    <a href="<%= product_path(e) %>" class="btn btn-xs btn-outline btn-primary"> Info <i class="fa fa-long-arrow-right"></i> </a>
-                  </div>
+
                 </div>
               </div>
             </div>

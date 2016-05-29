@@ -69,8 +69,20 @@
   text-align: center;
 }
 
+.ptext {
+    height: 40px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
 
-a:link {color:#E6E6FA;}
-a:visited {color:#E6E6FA;} /* visited link */
-a:hover {color:#E6E6FA;}   /* mouse over link */
-a:active {color:#E6E6FA;}  /* selected link */
+.pname {
+    height: 27px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+
+/*a:link {color:#E6E6FA;}
+a:visited {color:#E6E6FA;}
+a:hover {color:#E6E6FA;}
+a:active {color:#E6E6FA;}  */

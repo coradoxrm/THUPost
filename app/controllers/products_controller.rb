@@ -11,7 +11,13 @@ class ProductsController < ApplicationController
   end
 
   def create
+    #skip_before_action :verify_authenticity_token
+    puts "debug ++++++++++++++++++++++++++ \n"
     puts params
+    #print(params[:pic])
+
+    #print(params[:title])
+
     if params[:product][:photo0]
       p0 = params[:product][:photo0]
     else
@@ -47,7 +53,7 @@ class ProductsController < ApplicationController
     puts p2
     puts p3
     puts p4
-    
+
     @product = current_user.products.build(
       title: params[:title],
       price: params[:price],

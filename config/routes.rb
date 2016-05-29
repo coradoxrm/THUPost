@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'products/search'
   get 'products/tag'
   post 'products/:id/orders', to: 'orders#create', as: 'new_order'
+  post 'products/create'
 
   resources :products
   resources :orders
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
 
   post 'orders/notify_email', to: 'orders#notify_email'
   post 'orders/notify_text', to: 'orders#notify_text'
+
+
 
   # You can have the root of your site routed with "root"
 
