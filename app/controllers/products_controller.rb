@@ -1,13 +1,23 @@
 class ProductsController < ApplicationController
+  # status 0 open 1 close 2 dicussion 3 selled
   before_action :authenticate_user!
   def show
     @order = Order.new
     @product = Product.find params[:id]
+    @iscollection = 0
+    for i in current_user.collections
+      # puts "nimas"
+      # puts i.product_id
+      # puts params[:id] 
+      if i.product_id == params[:id].to_i
+        @iscollection = 1
+      end
+    end
   end
 
   def new
     @product = Product.new
-    # puts "`2312312"
+    #puts "2312312"
   end
 
   def create
@@ -74,22 +84,40 @@ class ProductsController < ApplicationController
     @products = current_user.products
   end
 
+  def default_value(l, d)
+    if params.has_key? :l
+      return params[l]
+    else
+      return d
+    end
+  end
+
   def search
     #limitl = params["limitl"]
     #limitr = params["limitr"]
-    limitl = 0
-    limitr = 30
+    limitl = default_value("l", 0)
+    limitr = default_value("r", 30)
     search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
-      tag like '%#{search_content}%' or
+      (tag like '%#{search_content}%' or
       title like '%#{search_content}%' or
-      description like '%#{search_content}%'
+      description like '%#{search_content}%) and status = 0'
       order by id limit #{limitl}, #{limitr}")
   end
 
+  
+
   def tag
     @tag_name = params["tag"]
-    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' order by id limit #{0}, #{40}")
+    l = default_value("l", 0);
+    r = default_value("r", 20);
+    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' and status = 0 order by id limit #{l}, #{r}")
+  end
+
+  def change_status_byorder(order, new_status)
+    product = order.product
+    product.status = new_status
+    product.save
   end
 
 end

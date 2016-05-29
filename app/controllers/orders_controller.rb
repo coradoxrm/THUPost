@@ -28,4 +28,10 @@ class OrdersController < ApplicationController
     @res = {:code => 0}
     render :json => @res
   end
+
+  def change_status(order, new_status)
+    order.status = new_status
+    order.save
+  end
+
 end
