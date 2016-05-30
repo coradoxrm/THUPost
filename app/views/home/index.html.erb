@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-xs-8 text-right">
                     <span> Your orders </span>
-                    <h2 class="font-bold">10</h2>
+                    <h2 class="font-bold"><%= @order_count%></h2>
                 </div>
             </div>
         </div>
@@ -100,8 +100,6 @@
 
 <script>
 $(function(){
-
-
   $('.slick_demo').slick(
     {
       dots:true
