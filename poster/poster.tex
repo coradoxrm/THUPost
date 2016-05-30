@@ -161,11 +161,11 @@
         \begin{block}{Information exchange}
         THUPost don't supply mail function for two purpose. 
         \begin{enumerate}
-        \item Users don't spend too much time on THUPost, so they might forget to check out whether goods have been selled.
+        \item Users don't spend too much time on THUPost, so they might forget to check out whether goods have been sold.
         \item Wechat and mail have better interaction than station letter.
         \end{enumerate}
 
-        Instead THUPost need user to submit its Wechat ID or mobile phone so that sellers and buyers can exchange their ideas.
+        Instead THUPost need user to submit its wechat ID or mobile phone so that sellers and buyers can exchange their ideas.
 
 
         \end{block}
@@ -177,11 +177,18 @@
 
 
         \begin{block}{Notification}
-            Once the user create an order, he/she can notify the seller at once, either sending an email
-            or a text message, by simply clicking the button.
+            Once the seller determines which order to accept, he/she can notify the customer at once, either by
+            \begin{itemize}
+                \item sending an email, or
+                \item sending a text message.
+            \end{itemize}
+            Simply click a button like the following:
+            % TODO: add a figure
 
+            Our text sending service is powered by alidayu (\url{http://www.alidayu.com}), and our notification
+            emails are delivered by netease (our public email is \texttt{thupost@163.com}). Further communications and
+            transactions continue offline.
         \end{block}
-
 
 
 %----------------------------------------------------------------------------------------
@@ -195,31 +202,31 @@
         THUPost select several develop kit.
         \begin{enumerate}
         \item Ruby on Rails 2.3.1.
-        \item Bootstrp
+        \item Bootstrap
         \item MySQL
         \item jQuery
         \end{enumerate}
 
         Most html will produced by ROR erb file, in addition backend provide several API for frontend to use. This will drastically increase the interaction for user like.
 
-        We select ActiveModel as the ROM class connecting with the database, it's really wonderful for this ROM skill interacting with database, convinient and efficient.
+        We select ActiveModel as the ROM class connecting with the database, it's really wonderful for this ROM skill interacting with database, convenient and efficient.
 
         We have four main models in database.
         \begin{enumerate}
         \item User, represents a user.
-        \item Product, represents a goods to be selled.
+        \item Product, represents a goods to be sold.
         \item Order, represents one order between seller and buyer.
         \item Collection, represents the goods that one specific user collect.
         \end{enumerate}
         Based on these models, it's easy to manage our data in database.
         \end{block}
 
-        \begin{block}{plugin}
+        \begin{block}{Plugin}
             In order to achieve our goal providing good interaction for users, we use several fantastic plugin.
             \begin{enumerate}
             \item Devise, fantastic plugin managing login logout.
-            \item Paperclip, providing useful image managing and resize function. It can also change the pixis of image into suitable size.
-            \item Sweetalert, a useful function to draw the alert window.
+            \item Paperclip, providing useful image managing and resize function. It can also change the pixes of image into suitable size.
+            \item Sweet alert, a useful function to draw the alert window.
             \end{enumerate}
         \end{block}
 %----------------------------------------------------------------------------------------
