@@ -1,5 +1,5 @@
 <div class="wrapper wrapper-content animated fadeInRight">
-  <div class="pull-right"><a type="button" class="btn btn-w-m btn-success btn-lg" href="<%= new_product_path %>">Create new sale</a></div>
+  <div class="pull-right"><a type="button" class="btn btn-w-m btn-primary btn-lg" href="<%= new_product_path %>">Create new sale</a></div>
   <h2>我卖的</h2>
 </div>
 
@@ -27,8 +27,9 @@
 
         <div class="col-md-3 button-f">
           <div class="button-c">
-            <button class="btn btn-success btn-lg cancel_btn" name = <%= e.id %> >取&nbsp &nbsp消</button>&nbsp
             <button class="btn btn-success btn-lg" name = <%= e.id %> >已卖出</button>
+            <button class="btn btn-danger btn-lg cancel_btn" name = <%= e.id %> >取&nbsp &nbsp消</button>&nbsp
+
           </div>
         </div>
 

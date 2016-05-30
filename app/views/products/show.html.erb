@@ -37,7 +37,7 @@
               <div hidden="hidden" id = "pid"><%= @product.id %></div>
 
               <div class="m-t-md">
-                <h2 class="product-main-price">$<%= @product.price %></h2>
+                <h2 class="product-main-price">￥<%= @product.price %></h2>
               </div>
               <hr>
 
@@ -70,9 +70,9 @@
         </div>
         <div class="ibox-footer">
           <span class="pull-right">
-            Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+            Created at - <i class="fa fa-clock-o"></i> <%= @product.created_at %>
           </span>
-          The generated Lorem Ipsum is therefore always free
+        </br>
         </div>
       </div>
 
