@@ -15,9 +15,7 @@ class HomeController < ApplicationController
       if (p.status != 2)
         @order_count += p.orders.length
       end
-
-      
-
+      @likes_count += p.collections.length
     end
 
     my_orders = current_user.orders
