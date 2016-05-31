@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  include SendText
   before_action :authenticate_user!
 
   def create
@@ -29,6 +30,12 @@ class OrdersController < ApplicationController
   end
 
   def notify_text
+    @order = Order.find(params[:order_id])
+    @order.status = 1
+    @order.product.status = 1
+    @order.product.save
+    @order.save
+    send_notify_text @order
     @res = {:code => 0}
     render :json => @res
   end
