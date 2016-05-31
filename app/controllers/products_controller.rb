@@ -37,25 +37,25 @@ class ProductsController < ApplicationController
     if params[:product][:photo1]
       p1 = params[:product][:photo1]
     else
-      p1 = nil
+      p1 = p0
     end
 
     if params[:product][:photo2]
       p2 = params[:product][:photo2]
     else
-      p2 = nil
+      p2 = p0
     end
 
     if params[:product][:photo3]
       p3 = params[:product][:photo3]
     else
-      p3 = nil
+      p3 = p0
     end
 
     if params[:product][:photo4]
       p4 = params[:product][:photo4]
     else
-      p4 = nil
+      p4 = p0
     end
     puts "productdebug"
     puts p0
