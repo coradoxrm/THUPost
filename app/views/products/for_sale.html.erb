@@ -27,7 +27,7 @@
 
         <div class="col-md-3 button-f">
           <div class="button-c">
-            <button class="btn btn-success btn-lg" name = <%= e.id %> >已卖出</button>
+            <button class="btn btn-success btn-lg selled_btn" name = <%= e.id %> >已卖出</button>
             <button class="btn btn-danger btn-lg cancel_btn" name = <%= e.id %> >取&nbsp &nbsp消</button>&nbsp
 
           </div>
@@ -78,6 +78,19 @@ $(function(){
             });
   }
   );
+
+  $('.selled_btn').click(function() {
+    $.ajax({
+              type: "POST",
+              url: "/products/selled",
+              data: {id : $(this).attr("name")},
+              dataType: "json",
+              success: function(data){
+                location=location;
+              }
+            });
+  }
+  );  
 });
 
 </script>

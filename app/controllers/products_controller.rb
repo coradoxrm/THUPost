@@ -131,7 +131,25 @@ class ProductsController < ApplicationController
       # i.destroy
     # end
     # product.destroy
+    product.status = 3
+    product.save
+    @object = {"status":"success"}
+    render :json => @object
+  end
+
+  def selled
+    product = Product.find(params[:id])
+    # for i in product.orders
+      # i.destroy
+    # end
+    # product.destroy
     product.status = 2
+    for i in product.orders
+      if i.status == 1
+        i.status = 2
+        i.save
+      end
+    end
     product.save
     @object = {"status":"success"}
     render :json => @object
