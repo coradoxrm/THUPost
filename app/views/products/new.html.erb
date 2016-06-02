@@ -48,15 +48,66 @@
                 <!-- <div id = "dropzonePreview" class="dropzone-previews dz-default">
                 <div class="dz-message" data-dz-message><span>Your Custom Message</span></div>
               </div> -->
-              <%= f.file_field :avatar ,id: 'pictureInput'%>
+              <!-- <%= f.file_field :avatar ,id: 'pictureInput'%> -->
+              <div class="row">
 
-              <div id="target"></div>
+                <div class="col-xs-3">
+                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
+                  <div class="fileUpload btn btn-primary" id="g0">
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_0" style="display:none" type="button">取消</button>
+                </div>
+                <div class="col-xs-3">
+                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
+                  <div class="fileUpload btn btn-primary" id="g1">
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                </div>
+                <div class="col-xs-3">
+                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
+                  <div class="fileUpload btn btn-primary" id="g1">
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                </div>
+              </div>
+            </br>
+
+              <div class="row">
+
+                <div class="col-xs-3">
+                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
+                  <div class="fileUpload btn btn-primary" id="g1">
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                </div>
+                <div class="col-xs-3">
+                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
+                  <div class="fileUpload btn btn-primary" id="g1">
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                </div>
+
+              </div>
+
+
+
+              <!--
 
               <%= f.file_field :photo0 %>
               <%= f.file_field :photo1 %>
               <%= f.file_field :photo2 %>
               <%= f.file_field :photo3 %>
-              <%= f.file_field :photo4 %>
+              <%= f.file_field :photo4 %> -->
 
             </div>
           </form>
@@ -87,15 +138,27 @@ $(function() {
       var img = new Image();
       console.log(file);
       img.src = file.target.result;
-      img.height="100"
-      img.width="100"
-      $('#target').html(img);
+      img.height="98"
+      img.width="98"
+      $('#target_0').html(img);
+      document.getElementById('cancel_0').style.display = 'inline'
+      document.getElementById('g0').style.display = 'none'
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
+
+  $("#cancel_1").click(function(){
+    document.getElementById("pictureInput").value = "";
+    document.getElementById('cancel_1').style.display = 'none'
+    document.getElementById('target_0').style.display = 'none';
+    document.getElementById('g1').style.display = 'inline'
+
+  })
+
   $('.chosen-select').chosen({});
   $(".chosen-select").chosen().change(function(v) {
+    document.getElementById('cancel_1').style.display = 'none'
     $("#form_tag").val($(this).val());
   });
 });
