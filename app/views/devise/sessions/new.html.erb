@@ -12,10 +12,9 @@
 
     <div class="col-md-5">
       <div class="login-box">
-        <% if flash[:alert] %>
-            <p class="alert"><%= flash[:alert] %></p>
-        <% end %>
-        <%= form_tag(user_session_path, method: 'post', class: 'm-t') do %>
+
+        <%= form_for(:user, :url => session_path(:user),html: {class: 'm-t' }) do |f| %>
+        <%= devise_error_messages! %>
             <input id="email" name="user[email]" style="display: none;">
             <div class="form-group" style="height: 34px; margin-bottom: 20px;">
               <input id="email-input" class="form-control" placeholder="邮箱" required="required" style="width:110px;float: left;"

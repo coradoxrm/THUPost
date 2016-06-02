@@ -82,6 +82,14 @@
                   <div class="small m-t-xs ptext">
                     <%= e.description.length > 20 ? e.description[0,20]+"..." : e.description %>
                   </div>
+                  <%if e.status == 0%>
+                    <span class="label label-primary">正在出售</span>
+                  <%elsif e.status == 1%>
+                    <span class="label label-warning">正在联系</span>
+                  <%elsif e.status == 2%>
+                    <span class="label label-danger">已卖出</span>
+                  <%end%>
+
 
                 </div>
               </div>

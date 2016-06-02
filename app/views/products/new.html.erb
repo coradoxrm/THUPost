@@ -131,25 +131,36 @@
 
 
 $(function() {
+
+  function cancel(picinput,cancel,taget,g)
+  {
+    document.getElementById(picinput).value = "";
+    document.getElementById(cancel).style.display = 'none'
+    document.getElementById(taget).src="/images/e2.jpeg";
+    document.getElementById(g).style.display = 'block'
+  }
+
+  function show(cancel,taget,g,file)
+  {
+    document.getElementById(taget).src=file;
+    document.getElementById(cancel).style.display = 'inline'
+    document.getElementById(g).style.display = 'none'
+  }
+
+
+
   $('#pictureInput0').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      document.getElementById('target_0').src=file.target.result;
-      document.getElementById('cancel_0').style.display = 'inline'
-      document.getElementById('g0').style.display = 'none'
+      show('cancel_0','target_0','g0',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
   $("#cancel_0").click(function(){
-    document.getElementById("pictureInput0").value = "";
-    document.getElementById('cancel_0').style.display = 'none'
-    document.getElementById('target_0').src="/images/e2.jpeg";
-    document.getElementById('g0').style.display = 'block'
+    cancel("pictureInput0","cancel_0","target_0","g0")
   })
 
   $('#pictureInput1').on('change', function(event) {
@@ -157,20 +168,13 @@ $(function() {
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      document.getElementById('target_1').src=file.target.result;
-      document.getElementById('cancel_1').style.display = 'inline'
-      document.getElementById('g1').style.display = 'none'
+      show('cancel_1','target_1','g1',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
   $("#cancel_1").click(function(){
-    document.getElementById("pictureInput1").value = "";
-    document.getElementById('cancel_1').style.display = 'none'
-    document.getElementById('target_1').src="/images/e2.jpeg";
-    document.getElementById('g1').style.display = 'block'
+    cancel("pictureInput1","cancel_1","target_1","g1")
   })
 
   $('#pictureInput2').on('change', function(event) {
@@ -178,20 +182,13 @@ $(function() {
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      document.getElementById('target_2').src=file.target.result;
-      document.getElementById('cancel_2').style.display = 'inline'
-      document.getElementById('g2').style.display = 'none'
+      show('cancel_2','target_2','g2',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
   $("#cancel_2").click(function(){
-    document.getElementById("pictureInput2").value = "";
-    document.getElementById('cancel_2').style.display = 'none'
-    document.getElementById('target_2').src="/images/e2.jpeg";
-    document.getElementById('g2').style.display = 'block'
+    cancel("pictureInput2","cancel_2","target_2","g2")
   })
 
   $('#pictureInput3').on('change', function(event) {
@@ -199,20 +196,13 @@ $(function() {
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      document.getElementById('target_3').src=file.target.result;
-      document.getElementById('cancel_3').style.display = 'inline'
-      document.getElementById('g3').style.display = 'none'
+      show('cancel_3','target_3','g3',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
   $("#cancel_3").click(function(){
-    document.getElementById("pictureInput4").value = "";
-    document.getElementById('cancel_3').style.display = 'none'
-    document.getElementById('target_3').src="/images/e2.jpeg";
-    document.getElementById('g3').style.display = 'block'
+    cancel("pictureInput3","cancel_3","target_3","g3")
   })
 
   $('#pictureInput4').on('change', function(event) {
@@ -220,20 +210,13 @@ $(function() {
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      document.getElementById('target_4').src=file.target.result;
-      document.getElementById('cancel_4').style.display = 'inline'
-      document.getElementById('g4').style.display = 'none'
+      show('cancel_4','target_4','g4',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
   $("#cancel_4").click(function(){
-    document.getElementById("pictureInput4").value = "";
-    document.getElementById('cancel_4').style.display = 'none'
-    document.getElementById('target_4').src="/images/e2.jpeg";
-    document.getElementById('g4').style.display = 'block'
+    cancel("pictureInput4","cancel_4","target_4","g4")
   })
 
 
