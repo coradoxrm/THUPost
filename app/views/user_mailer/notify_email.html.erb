@@ -1,7 +1,7 @@
-尊敬的 <%= @order.user.name %>：
-
+尊敬的 <%= @order.user.nickname %>：
+<br>
 您购买的商品<%= @order.product.title %>，卖家已经成功确认。
-
-请和卖家"<%= @order.product.user.name %>"进行邮件联系。卖家的邮件是<a href="Mailto:<%= @order.product.user.email %>"></a> 。
-
+<br>
+请和卖家"<%= @order.product.user.nickname %>"进行邮件联系。卖家的邮件是<a href="Mailto:<%= @order.product.user.email %>"><%= @order.product.user.email %></a> 。
+<br>
 THUPOST小组
