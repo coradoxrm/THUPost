@@ -53,3 +53,5 @@ gem 'simple_form'
 gem 'sweetalert-rails', '~> 0.5.0'
 
 gem 'paperclip'
+
+gem 'rails-i18n'
