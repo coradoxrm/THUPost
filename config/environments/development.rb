@@ -53,7 +53,7 @@ Rails.application.configure do
       # user_name: 'thupost@163.com',
       user_name: 'zczyqdc@126.com',
       # password: 'thupostAUTH1234',
-      password: 'nathenqian',
+      password: 'dfjklasjfskl',
       authentication: :login,
       ssl: true,
       enable_starttls_auto: false
