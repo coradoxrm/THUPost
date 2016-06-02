@@ -35,11 +35,16 @@
     </div>
   </div>
 
+  <div class="pull-right">
+
   <% if(@page > 1) %>
     <%= link_to "上一页", search_product_path(:query => @search_content, :page => @page-1), class: "btn btn-success btn-lg" %>
   <%end%>
-  <%= link_to "下一页", search_product_path(:query => @search_content, :page => @page+1), class: "btn btn-success btn-lg" %>
-
+  <% if(@page != @lastpage) %>
+    <%= link_to "下一页", search_product_path(:query => @search_content, :page => @page+1), class: "btn btn-success btn-lg" %>
+  <%end%>
+  <span> <%= @page %> / <%= @lastpage %> </span>
+</div>
 </div>
 
 
