@@ -40,20 +40,10 @@
   <% if(@page > 1) %>
     <%= link_to "上一页", search_product_path(:query => @search_content, :page => @page-1), class: "btn btn-success btn-lg" %>
   <%end%>
+  &nbsp; <span> <strong> <%= @page %> / <%= @lastpage %> </strong></span> &nbsp;
   <% if(@page != @lastpage) %>
     <%= link_to "下一页", search_product_path(:query => @search_content, :page => @page+1), class: "btn btn-success btn-lg" %>
   <%end%>
-  <span> <%= @page %> / <%= @lastpage %> </span>
+
 </div>
 </div>
-
-
-<script>
-$(function(){
-  $('.slick_demo').slick(
-    {
-      dots:true
-    }
-  );
-});
-</script>

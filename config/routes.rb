@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'products/for_sale'
   get 'products/order'
   get 'products/search',to: 'products#search', as: 'search_product'
-  get 'products/tag'
+  get 'products/tag',to: 'products#tag', as: 'tag_product'
   get 'collections/show'
   post 'collections/new'
   post 'collections/remove'

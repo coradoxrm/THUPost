@@ -26,24 +26,24 @@
               </div>
           </li>
 
-            <li class="<%= 'active' if current_page?('/products/tag?tag=电子产品') %>">
-                <%= link_to "/products/tag?tag=电子产品" do %>
+            <li class="<%= 'active' if current_page?('/products/tag?query=电子产品') %>">
+                <%= link_to "/products/tag?query=电子产品" do %>
                 <i class="fa fa-laptop"></i> <span class="nav-label">电子产品</span>
                 <% end %>
             </li>
 
-            <li class="<%= 'active' if current_page?('/products/tag?tag=衣服') %>">
-                <%= link_to "/products/tag?tag=衣服" do %>
+            <li class="<%= 'active' if current_page?('/products/tag?query=衣服') %>">
+                <%= link_to "/products/tag?query=衣服" do %>
                 <i class="fa fa-gift"></i> <span class="nav-label">衣服</span>
                 <% end %>
             </li>
-            <li class="<%= 'active' if current_page?('/products/tag?tag=生活用品') %>">
-                <%= link_to "/products/tag?tag=生活用品" do %>
+            <li class="<%= 'active' if current_page?('/products/tag?query=生活用品') %>">
+                <%= link_to "/products/tag?query=生活用品" do %>
                 <i class="fa fa-suitcase"></i> <span class="nav-label">生活用品</span>
                 <% end %>
             </li>
-            <li class="<%= 'active' if current_page?('/products/tag?tag=书籍') %>">
-                <%= link_to "/products/tag?tag=书籍" do %>
+            <li class="<%= 'active' if current_page?('/products/tag?query=书籍') %>">
+                <%= link_to "/products/tag?query=书籍" do %>
                 <i class="fa fa-book"></i> <span class="nav-label">书籍</span>
                 <% end %>
             </li>
