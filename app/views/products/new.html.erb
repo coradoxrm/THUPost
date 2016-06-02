@@ -45,35 +45,39 @@
               </div>
 
               <div class="col-sm-6">
-                <!-- <div id = "dropzonePreview" class="dropzone-previews dz-default">
-                <div class="dz-message" data-dz-message><span>Your Custom Message</span></div>
-              </div> -->
-              <!-- <%= f.file_field :avatar ,id: 'pictureInput'%> -->
               <div class="row">
 
                 <div class="col-xs-3">
-                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
-                  <div class="fileUpload btn btn-primary" id="g0">
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  <div style="height:100px;width:100px;">
+                    <img id="target_0" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_0" style="display:none" type="button">取消</button>
+                  <div class="fileUpload btn btn-primary" id="g0" style ="display:block;" >
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo0]" id="pictureInput0"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_0" style="display:none;margin-left: 22px;" type="button">取消</button>
                 </div>
+
                 <div class="col-xs-3">
-                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
-                  <div class="fileUpload btn btn-primary" id="g1">
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  <div style="height:100px;width:100px;">
+                    <img id="target_1" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                  <div class="fileUpload btn btn-primary" id="g1" style ="display:block;" >
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo1]" id="pictureInput1"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none;margin-left: 22px;" type="button">取消</button>
                 </div>
+
                 <div class="col-xs-3">
-                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
-                  <div class="fileUpload btn btn-primary" id="g1">
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  <div style="height:100px;width:100px;">
+                    <img id="target_2" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                  <div class="fileUpload btn btn-primary" id="g2" style ="display:block;" >
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo2]" id="pictureInput2"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_2" style="display:none;margin-left: 22px;" type="button">取消</button>
                 </div>
               </div>
             </br>
@@ -81,33 +85,27 @@
               <div class="row">
 
                 <div class="col-xs-3">
-                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
-                  <div class="fileUpload btn btn-primary" id="g1">
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  <div style="height:100px;width:100px;">
+                    <img id="target_3" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                  <div class="fileUpload btn btn-primary" id="g3" style ="display:block;" >
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo3]" id="pictureInput3"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_3" style="display:none;margin-left: 22px;" type="button">取消</button>
                 </div>
                 <div class="col-xs-3">
-                  <div id="target_0" style="height:100px;width:100px;border:solid;"></div>
-                  <div class="fileUpload btn btn-primary" id="g1">
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo0]" id="pictureInput"/>
+                  <div style="height:100px;width:100px;">
+                    <img id="target_4" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none" type="button">取消</button>
+                  <div class="fileUpload btn btn-primary" id="g4" style ="display:block;" >
+                    <span>上传图片</span>
+                    <input type="file" class="upload" name="product[photo4]" id="pictureInput4"/>
+                  </div>
+                  <button class="fileUpload btn btn-danger" id="cancel_4" style="display:none;margin-left: 22px;" type="button">取消</button>
                 </div>
 
               </div>
-
-
-
-              <!--
-
-              <%= f.file_field :photo0 %>
-              <%= f.file_field :photo1 %>
-              <%= f.file_field :photo2 %>
-              <%= f.file_field :photo3 %>
-              <%= f.file_field :photo4 %> -->
 
             </div>
           </form>
@@ -130,35 +128,114 @@
 
 
 $(function() {
-  $('#pictureInput').on('change', function(event) {
+  $('#pictureInput0').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
     var reader = new FileReader();
     reader.onload = function(file) {
       var img = new Image();
       console.log(file);
-      img.src = file.target.result;
-      img.height="98"
-      img.width="98"
-      $('#target_0').html(img);
+      document.getElementById('target_0').src=file.target.result;
       document.getElementById('cancel_0').style.display = 'inline'
       document.getElementById('g0').style.display = 'none'
     }
     reader.readAsDataURL(image);
     console.log(files);
   });
-
-  $("#cancel_1").click(function(){
-    document.getElementById("pictureInput").value = "";
-    document.getElementById('cancel_1').style.display = 'none'
-    document.getElementById('target_0').style.display = 'none';
-    document.getElementById('g1').style.display = 'inline'
-
+  $("#cancel_0").click(function(){
+    document.getElementById("pictureInput0").value = "";
+    document.getElementById('cancel_0').style.display = 'none'
+    document.getElementById('target_0').src="/images/e2.jpeg";
+    document.getElementById('g0').style.display = 'block'
   })
+
+  $('#pictureInput1').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      document.getElementById('target_1').src=file.target.result;
+      document.getElementById('cancel_1').style.display = 'inline'
+      document.getElementById('g1').style.display = 'none'
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+  $("#cancel_1").click(function(){
+    document.getElementById("pictureInput1").value = "";
+    document.getElementById('cancel_1').style.display = 'none'
+    document.getElementById('target_1').src="/images/e2.jpeg";
+    document.getElementById('g1').style.display = 'block'
+  })
+
+  $('#pictureInput2').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      document.getElementById('target_2').src=file.target.result;
+      document.getElementById('cancel_2').style.display = 'inline'
+      document.getElementById('g2').style.display = 'none'
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+  $("#cancel_2").click(function(){
+    document.getElementById("pictureInput2").value = "";
+    document.getElementById('cancel_2').style.display = 'none'
+    document.getElementById('target_2').src="/images/e2.jpeg";
+    document.getElementById('g2').style.display = 'block'
+  })
+
+  $('#pictureInput3').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      document.getElementById('target_3').src=file.target.result;
+      document.getElementById('cancel_3').style.display = 'inline'
+      document.getElementById('g3').style.display = 'none'
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+  $("#cancel_3").click(function(){
+    document.getElementById("pictureInput4").value = "";
+    document.getElementById('cancel_3').style.display = 'none'
+    document.getElementById('target_3').src="/images/e2.jpeg";
+    document.getElementById('g3').style.display = 'block'
+  })
+
+  $('#pictureInput4').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      document.getElementById('target_4').src=file.target.result;
+      document.getElementById('cancel_4').style.display = 'inline'
+      document.getElementById('g4').style.display = 'none'
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+  $("#cancel_4").click(function(){
+    document.getElementById("pictureInput4").value = "";
+    document.getElementById('cancel_4').style.display = 'none'
+    document.getElementById('target_4').src="/images/e2.jpeg";
+    document.getElementById('g4').style.display = 'block'
+  })
+
 
   $('.chosen-select').chosen({});
   $(".chosen-select").chosen().change(function(v) {
-    document.getElementById('cancel_1').style.display = 'none'
     $("#form_tag").val($(this).val());
   });
 });
