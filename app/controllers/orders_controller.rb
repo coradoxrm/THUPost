@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  include SendText
   before_action :authenticate_user!
 
   def create
@@ -19,12 +20,22 @@ class OrdersController < ApplicationController
 
   def notify_email
     @order = Order.find(params[:order_id])
+    @order.status = 1
+    @order.product.status = 1
+    @order.product.save
+    @order.save
     UserMailer.notify_email(@order).deliver_now
     @res = {:code => 0}
     render :json => @res
   end
 
   def notify_text
+    @order = Order.find(params[:order_id])
+    @order.status = 1
+    @order.product.status = 1
+    @order.product.save
+    @order.save
+    send_notify_text @order
     @res = {:code => 0}
     render :json => @res
   end
@@ -36,6 +47,10 @@ class OrdersController < ApplicationController
 
   def remove
     order = Order.find(params[:id])
+    if order.status == 1
+      order.product.status = 0
+      order.product.save
+    end
     order.destroy
     @object = {"status": "success"}
     render :json => @object

@@ -37,25 +37,25 @@ class ProductsController < ApplicationController
     if params[:product][:photo1]
       p1 = params[:product][:photo1]
     else
-      p1 = nil
+      p1 = p0
     end
 
     if params[:product][:photo2]
       p2 = params[:product][:photo2]
     else
-      p2 = nil
+      p2 = p0
     end
 
     if params[:product][:photo3]
       p3 = params[:product][:photo3]
     else
-      p3 = nil
+      p3 = p0
     end
 
     if params[:product][:photo4]
       p4 = params[:product][:photo4]
     else
-      p4 = nil
+      p4 = p0
     end
     puts "productdebug"
     puts p0
@@ -108,6 +108,10 @@ class ProductsController < ApplicationController
       title like '%#{@search_content}%' or
       description like '%#{@search_content}%' and status = 0) 
       order by id limit #{limitl}, #{limitr}")
+    @product_number = Product.find_by_sql("select id from products where
+      (tag like '%#{@search_content}%' or
+      title like '%#{@search_content}%' or
+      description like '%#{@search_content}%' and status = 0)").count
   end
 
 
@@ -116,7 +120,7 @@ class ProductsController < ApplicationController
     @tag_name = params["tag"]
     l = default_value("l", 0);
     r = default_value("r", 20);
-    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' and status = 0 order by id limit #{l}, #{r}")
+    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' and status = 0 order by id desc limit #{l}, #{r}")
   end
 
   def change_status_byorder(order, new_status)
@@ -130,8 +134,26 @@ class ProductsController < ApplicationController
     # for i in product.orders
       # i.destroy
     # end
+    product.destroy
+    # product.status = 3
+    # product.save
+    @object = {"status":"success"}
+    render :json => @object
+  end
+
+  def selled
+    product = Product.find(params[:id])
+    # for i in product.orders
+      # i.destroy
+    # end
     # product.destroy
     product.status = 2
+    for i in product.orders
+      if i.status == 1
+        i.status = 2
+        i.save
+      end
+    end
     product.save
     @object = {"status":"success"}
     render :json => @object

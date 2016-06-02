@@ -8,18 +8,18 @@
         <div class="ibox-content">
 
           <%if(@product.status == 0)%>
-            <span class="open">
-              正在出售
-            </span>
-            <%elsif(@product.status == 1) %>
-            <span class="contacting">
-              正在联系
-            </span>
-            <%elsif(@product.status == 2) %>
-            <span class="sold">
-              已卖出
-            </span>
-            <%end%>
+          <span class="open">
+            正在出售
+          </span>
+          <%elsif(@product.status == 1) %>
+          <span class="contacting">
+            正在联系
+          </span>
+          <%elsif(@product.status == 2) %>
+          <span class="sold">
+            已卖出
+          </span>
+          <%end%>
 
 
 
@@ -29,17 +29,17 @@
               <div class="slick_demo">
                 <div>
                   <div class="image-imitation">
-                    <img style="width: 100%;" alt="image" src=<%= @product.photo0.url(:thumb) %> />
+                    <img style="width: 100%;" alt="image" src=<%= @product.photo0.url(:thumb) %>/>
                   </div>
                 </div>
                 <div>
                   <div class="image-imitation">
-                    <img style="width: 100%;" alt="image" src=<%= @product.photo1.url(:thumb) %> />
+                    <img style="width: 100%;" alt="image" src=<%= @product.photo1.url(:thumb) %>/>
                   </div>
                 </div>
                 <div>
                   <div class="image-imitation">
-                    <img style="width: 100%;" alt="image" src=<%= @product.photo2.url(:thumb) %> />
+                    <img style="width: 100%;" alt="image" src=<%= @product.photo2.url(:thumb) %>/>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
                 <%= @product.title %>
               </h2>
 
-              <div hidden="hidden" id = "pid"><%= @product.id %></div>
+              <div hidden="hidden" id="pid"><%= @product.id %></div>
 
               <div class="m-t-md">
                 <h2 class="product-main-price">￥<%= @product.price %></h2>
@@ -67,21 +67,19 @@
               <hr>
 
 
-
-
             </div>
           </div>
 
         </div>
         <div style="height:55px;background: #fff;">
 
-            <% if @iscollection == 0 %>
-              <button class="btn btn-white btn-lg coll_btn coll_new_btn" style="margin-right:10px;float:right;"><i class="fa fa-star"></i> 加入收藏 </button>
-            <% else %>
-              <button class="btn btn-white btn-lg coll_btn coll_remove_btn" style="margin-right:10px;float:right;"><i class="fa fa-star"></i> 取消收藏 </button>
-            <% end %>
+          <% if @iscollection == 0 %>
+          <button class="btn btn-white btn-lg coll_btn coll_new_btn" style="margin-right:10px;float:right;"><i class="fa fa-star"></i> 加入收藏 </button>
+          <% else %>
+          <button class="btn btn-white btn-lg coll_btn coll_remove_btn" style="margin-right:10px;float:right;"><i class="fa fa-star"></i> 取消收藏 </button>
+          <% end %>
 
-      </div>
+        </div>
 
 
         <div class="ibox-footer">
@@ -92,6 +90,7 @@
           <span class="pull-right">
             Created at - <i class="fa fa-clock-o"></i> <%= @product.created_at %>
           </span>
+
         </div>
       </div>
 
@@ -137,6 +136,7 @@
 
 
 <script>
+
 $(function(){
   $('.slick_demo').slick(
     {
@@ -151,8 +151,37 @@ $(function(){
   );
 
   $('.demo4').click(function () {
+    var order = $(this).attr('name');
     swal({
       title: "确定发送短信？",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#40f258",
+      confirmButtonText: "发送",
+      cancelButtonText: "取消",
+      closeOnConfirm: false,
+      closeOnCancel: true
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        console.log(order);
+        $.ajax({
+          type: "POST",
+          url: "/orders/notify_text",
+          data: {order_id: order},
+          dataType: "json",
+          success: function (data) {
+            swal("成功", "发送短信短信", "success");
+          }
+        });
+      }
+    });
+  });
+
+  $('.demo3').click(function () {
+    var order = $(this).attr('name');
+    swal({
+      title: "确定发送邮件？",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#40f258",
@@ -162,61 +191,46 @@ $(function(){
       closeOnCancel: true },
       function (isConfirm) {
         if (isConfirm) {
-          swal("成功", "发送邮件通知", "success");
+          console.log(order)
+          $.ajax({
+            type: "POST",
+            url: "/orders/notify_email",
+            data: {order_id : order},
+            dataType: "json",
+            success: function(data){
+              swal("成功", "发送邮件通知", "success");
+            }
+          });
         }
       });
     });
 
-    $('.demo3').click(function () {
-      var order = $(this).attr('name')
 
-      swal({
-        title: "确定发送邮件？",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#40f258",
-        confirmButtonText: "发送",
-        cancelButtonText: "取消",
-        closeOnConfirm: false,
-        closeOnCancel: true },
-        function (isConfirm) {
-          if (isConfirm) {
-            console.log(order)
-            $.ajax({
-              type: "POST",
-              url: "/orders/notify_email",
-              data: {order_id : order},
-              dataType: "json",
-              success: function(data){
-                swal("成功", "发送短信通知", "success");
-              }
-            });
-           }
-        });
-      });
-    });
     $(".coll_btn").click(function() {
       // alert($("#pid").html());
       var obj = $(this);
       var url = "/collections/new";
       if (obj.hasClass('coll_remove_btn'))
-        url = "/collections/remove";
+      url = "/collections/remove";
       $.ajax({
-              type: "POST",
-              url: url,
-              data: {id : $("#pid").html()},
-              dataType: "json",
-              success: function(data){
-                if (obj.hasClass('coll_remove_btn')) {
-                  obj.removeClass('coll_remove_btn');
-                  obj.addClass('coll_new_btn');
-                  obj.html('<i class="fa fa-star"></i>加入收藏');
-                } else {
-                  obj.removeClass('coll_new_btn');
-                  obj.addClass('coll_remove_btn');
-                  obj.html('<i class="fa fa-star"></i>取消收藏');
-                }
-              }
-            });
-    });
-</script>
+        type: "POST",
+        url: url,
+        data: {id : $("#pid").html()},
+        dataType: "json",
+        success: function(data){
+          if (obj.hasClass('coll_remove_btn')) {
+            obj.removeClass('coll_remove_btn');
+            obj.addClass('coll_new_btn');
+            obj.html('<i class="fa fa-star"></i>加入收藏');
+          } else {
+            obj.removeClass('coll_new_btn');
+            obj.addClass('coll_remove_btn');
+            obj.html('<i class="fa fa-star"></i>取消收藏');
+          }
+        }
+      });
+    });  
+
+  });
+
+  </script>
