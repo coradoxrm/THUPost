@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   include SendText
+  include UserMailer
   before_action :authenticate_user!
 
   def create
@@ -20,11 +21,11 @@ class OrdersController < ApplicationController
 
   def notify_email
     @order = Order.find(params[:order_id])
+    UserMailer.notify_email(@order)
     @order.status = 1
     @order.product.status = 1
     @order.product.save
     @order.save
-    UserMailer.notify_email(@order).deliver_now
     @res = {:code => 0}
     render :json => @res
   end
