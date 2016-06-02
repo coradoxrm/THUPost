@@ -96,31 +96,52 @@ class ProductsController < ApplicationController
   end
 
   def search
-    #limitl = params["limitl"]
-    #limitr = params["limitr"]
+    page_limit = 4
     puts params
     @page = Integer(params.has_key?("page") ? params["page"] : 1)
-    limitl = (@page-1)*20
-    limitr = @page*20-1
+    limitl = (@page-1)*page_limit
+    limitr = page_limit
+    puts limitl
+    puts limitr
     @search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{@search_content}%' or
       title like '%#{@search_content}%' or
-      description like '%#{@search_content}%' and status = 0) 
+      description like '%#{@search_content}%' and status = 0)
       order by id limit #{limitl}, #{limitr}")
-    @product_number = Product.find_by_sql("select id from products where
+    product_number = Product.find_by_sql("select id from products where
       (tag like '%#{@search_content}%' or
       title like '%#{@search_content}%' or
       description like '%#{@search_content}%' and status = 0)").count
+    puts "product number:" +  String(product_number)
+    puts "product number:" +  String(product_number / page_limit)
+    @lastpage = (Float(product_number) / page_limit).ceil
   end
 
 
 
   def tag
-    @tag_name = params["tag"]
-    l = default_value("l", 0);
-    r = default_value("r", 20);
-    @products = Product.find_by_sql("select * from products where tag like '%#{@tag_name}%' and status = 0 order by id desc limit #{l}, #{r}")
+
+    page_limit = 4
+    puts params
+    @page = Integer(params.has_key?("page") ? params["page"] : 1)
+    limitl = (@page-1)*page_limit
+    limitr = page_limit
+    puts limitl
+    puts limitr
+    @search_content = params["query"]
+    @products = Product.find_by_sql("select * from products where
+      (tag like '%#{@search_content}%' and status = 0)
+      order by id limit #{limitl}, #{limitr}")
+    product_number = Product.find_by_sql("select id from products where
+      (tag like '%#{@search_content}%' and status = 0)").count
+    puts "product number:" +  String(product_number)
+    puts "product number:" +  String(product_number / page_limit)
+    @lastpage = (Float(product_number) / page_limit).ceil
+
+    # @tag_name = params["tag"]
+    # l = default_value("l", 0);
+    # r = default_value("r", 20);
   end
 
   def change_status_byorder(order, new_status)
