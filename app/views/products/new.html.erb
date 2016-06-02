@@ -34,53 +34,50 @@
                 <div class="form-group">
                   <label >描述</label>
                   <textarea type="text" rows="3" name="description" class="form-control"></textarea>
-                </div>
-                <div>
-                  <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" id="sbmtbtn"><strong>提交</strong></button>
-                </div>
-                <div>
                   <input type="hidden" name="tag" id="form_tag"> </input>
                 </div>
+
+                <button class="btn btn-lg btn-primary" type="submit"><strong>提交</strong></button>
 
               </div>
 
               <div class="col-sm-6">
-              <div class="row">
+                <div class="row">
 
-                <div class="col-xs-3">
-                  <div style="height:100px;width:100px;">
-                    <img id="target_0" alt="image" src="/images/e2.jpeg" height="99" width="99" />
+                  <div class="col-xs-3">
+                    <div style="height:100px;width:100px;">
+                      <img id="target_0" alt="image" src="/images/e2.jpeg" height="99" width="99" />
+                    </div>
+                    <div class="fileUpload btn btn-white" id="g0" style ="display:block;" >
+                      <span>上传图片</span>
+                      <input type="file" class="upload" name="product[photo0]" id="pictureInput0" accept="image/png, image/jpeg"/>
+                    </div>
+                    <button class="fileUpload btn btn-danger" id="cancel_0" style="display:none;margin-left: 22px;" type="button">取消</button>
                   </div>
-                  <div class="fileUpload btn btn-primary" id="g0" style ="display:block;" >
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo0]" id="pictureInput0"/>
-                  </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_0" style="display:none;margin-left: 22px;" type="button">取消</button>
-                </div>
 
-                <div class="col-xs-3">
-                  <div style="height:100px;width:100px;">
-                    <img id="target_1" alt="image" src="/images/e2.jpeg" height="99" width="99" />
+                  <div class="col-xs-3">
+                    <div style="height:100px;width:100px;">
+                      <img id="target_1" alt="image" src="/images/e2.jpeg" height="99" width="99" />
+                    </div>
+                    <div class="fileUpload btn btn-white" id="g1" style ="display:block;" >
+                      <span>上传图片</span>
+                      <input type="file" class="upload" name="product[photo1]" id="pictureInput1"/>
+                    </div>
+                    <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none;margin-left: 22px;" type="button">取消</button>
                   </div>
-                  <div class="fileUpload btn btn-primary" id="g1" style ="display:block;" >
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo1]" id="pictureInput1"/>
-                  </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_1" style="display:none;margin-left: 22px;" type="button">取消</button>
-                </div>
 
-                <div class="col-xs-3">
-                  <div style="height:100px;width:100px;">
-                    <img id="target_2" alt="image" src="/images/e2.jpeg" height="99" width="99" />
+                  <div class="col-xs-3">
+                    <div style="height:100px;width:100px;">
+                      <img id="target_2" alt="image" src="/images/e2.jpeg" height="99" width="99" />
+                    </div>
+                    <div class="fileUpload btn btn-white" id="g2" style ="display:block;" >
+                      <span>上传图片</span>
+                      <input type="file" class="upload" name="product[photo2]" id="pictureInput2"/>
+                    </div>
+                    <button class="fileUpload btn btn-danger" id="cancel_2" style="display:none;margin-left: 22px;" type="button">取消</button>
                   </div>
-                  <div class="fileUpload btn btn-primary" id="g2" style ="display:block;" >
-                    <span>上传图片</span>
-                    <input type="file" class="upload" name="product[photo2]" id="pictureInput2"/>
-                  </div>
-                  <button class="fileUpload btn btn-danger" id="cancel_2" style="display:none;margin-left: 22px;" type="button">取消</button>
                 </div>
-              </div>
-            </br>
+              </br>
 
               <div class="row">
 
@@ -88,7 +85,7 @@
                   <div style="height:100px;width:100px;">
                     <img id="target_3" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <div class="fileUpload btn btn-primary" id="g3" style ="display:block;" >
+                  <div class="fileUpload btn btn-white" id="g3" style ="display:block;" >
                     <span>上传图片</span>
                     <input type="file" class="upload" name="product[photo3]" id="pictureInput3"/>
                   </div>
@@ -98,7 +95,7 @@
                   <div style="height:100px;width:100px;">
                     <img id="target_4" alt="image" src="/images/e2.jpeg" height="99" width="99" />
                   </div>
-                  <div class="fileUpload btn btn-primary" id="g4" style ="display:block;" >
+                  <div class="fileUpload btn btn-white" id="g4" style ="display:block;" >
                     <span>上传图片</span>
                     <input type="file" class="upload" name="product[photo4]" id="pictureInput4"/>
                   </div>
@@ -108,6 +105,12 @@
               </div>
 
             </div>
+
+            <hr>
+
+
+
+
           </form>
 
           <% end %>
