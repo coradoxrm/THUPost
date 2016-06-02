@@ -1,53 +1,64 @@
 
 <div class="loginColumns animated fadeInDown loginColumns-long">
-<br/>
-<br/>
-<br/>
-<br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 
-    <div class="row">
-        <div class="col-md-7">
-    <h1 class="logo-name">THUPost</h1>
-           <h3 class="login-text">Hope you enjoy every deal here</h3>
-        </div>
-
-        <div class="col-md-5">
-            <div class="login-box">
-                <%= form_tag(user_session_path, method: 'post', class: 'm-t') do %>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Tsinghua Email" name="user[email]" required=""/>
-                        <!-- <span style="float:left;">@mails.tsinghua.edu.cn</span> -->
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" name="user[password]" required="" />
-                    </div>
-                    <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-
-                    <a href="<%=new_user_password_path%>">
-                        <small>Forgot password?</small>
-                    </a>
-
-                    <p class="text-muted text-center">
-                        <small>Do not have an account?</small>
-                    </p>
-                    <a class="btn btn-sm btn-white btn-block" href="<%= new_user_registration_path %>">Create an account</a>
-                <% end %>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-7">
+      <h1 class="logo-name">THUPost</h1>
+      <h3 class="login-text">Hope you enjoy every deal here</h3>
     </div>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
-    <hr/>
-    <div class="row">
-        <p class="col-md-6">
-            Copyright CST35
+    <div class="col-md-5">
+      <div class="login-box">
+        <%= form_tag(user_session_path, method: 'post', class: 'm-t') do %>
+        <div class="form-group" style="height: 34px; margin-bottom: 20px;">
+          <input id="email" class="form-control" placeholder="Email" name="user[email]" required="" style="width:110px;float: left;"/>
+          <span style="float: right;height: 34px;line-height: 34px;color: #fff;">@mails.tsinghua.edu.cn</span>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" name="user[password]" required="" />
+        </div>
+        <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+        <a href="<%=new_user_password_path%>">
+          <small>Forgot password?</small>
+        </a>
+
+        <p class="text-muted text-center">
+          <small>Do not have an account?</small>
         </p>
-        <p class="col-md-6 text-right">
-           <small>© 2015-2016</small>
-        </p>
+        <a class="btn btn-sm btn-white btn-block" href="<%= new_user_registration_path %>">Create an account</a>
+        <% end %>
+      </div>
     </div>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <hr/>
+  <div class="row">
+    <p class="col-md-6">
+      Copyright CST35
+    </p>
+    <p class="col-md-6 text-right">
+      <small>© 2015-2016</small>
+    </p>
+  </div>
 </div>
+
+<script>
+$(function(){
+  $("form").submit(function(){
+    var s = document.getElementById("email")
+    s.value = s.value+"@163.com"
+  });
+
+});
+
+</script>

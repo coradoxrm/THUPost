@@ -10,7 +10,7 @@
           <%= e.user.nickname %>
         </td>
 
-        <td class="project-completion">
+        <td class="project-completion col-lg-1">
           <span class="label label-warning">￥<%= e.price %></span>
         </td>
 
@@ -23,16 +23,20 @@
 
 
 
-        <td class="project-contact col-lg-4">
+        <td class="project-contact col-lg-3">
             <% if current_user == product.user %>
               <button class="btn btn-success btn-sm demo4" name = <%= e.id %> >发送短信</button>
               <button class="btn btn-primary btn-sm demo3" name = <%= e.id %> >发送邮件</button>
             <% end %>
         </td>
 
-        <td class="project-status col-lg-2">
-          <% if e.is_chosen == false %>
-          <p><span class="label label-info">waiting</span></p>
+        <td class="project-completion col-lg-2">
+          <% if (e.status == 0) %>
+          <span class="label label-info">等待中</span>
+          <% elsif (e.status == 1) %>
+          <span class="label label-warning">联系中</span>
+          <% elsif (e.status == 2) %>
+          <span class="label label-success">已收货</span>
           <% end %>
         </td>
 

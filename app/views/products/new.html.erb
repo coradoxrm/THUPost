@@ -46,62 +46,58 @@
 
               <div class="col-sm-6">
                 <!-- <div id = "dropzonePreview" class="dropzone-previews dz-default">
-                  <div class="dz-message" data-dz-message><span>Your Custom Message</span></div>
-                </div> -->
+                <div class="dz-message" data-dz-message><span>Your Custom Message</span></div>
+              </div> -->
+              <%= f.file_field :avatar ,id: 'pictureInput'%>
 
-                <%= f.file_field :photo0 %>
-                <%= f.file_field :photo1 %>
-                <%= f.file_field :photo2 %>
-                <%= f.file_field :photo3 %>
-                <%= f.file_field :photo4 %>
+              <div id="target"></div>
 
-              </div>
-            </form>
-
-            <% end %>
+              <%= f.file_field :photo0 %>
+              <%= f.file_field :photo1 %>
+              <%= f.file_field :photo2 %>
+              <%= f.file_field :photo3 %>
+              <%= f.file_field :photo4 %>
 
             </div>
+          </form>
 
-          </div>
+          <% end %>
 
         </div>
+
       </div>
+
     </div>
   </div>
+</div>
+</div>
 
 </div>
 
 
 <script type="text/javascript">
 
-$(function() {
-  Dropzone.autoDiscover = false;
-  $("div#myDropZone").dropzone({
-    url: "create",
-    autoProcessQueue: false,
-    uploadMultiple: true,
-    parallelUploads: 5,
-    maxFiles: 5,
-    addRemoveLinks: true,
-    paramName: 'pic',
-    headers: {"X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')},
-    init: function() {
-      var myDropzone = this;
-      $("#sbmtbtn").on('click',function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        myDropzone.processQueue();
-      });
-      myDropzone.on("sending", function(file, xhr, formData) {
-        var title = $("#title").value
-        formData.append("title", title);
-      });
-    }
-  });
-    $('.chosen-select').chosen({});
-    $(".chosen-select").chosen().change(function(v) {
-      $("#form_tag").val($(this).val());
-    });
-  });
 
-  </script>
+$(function() {
+  $('#pictureInput').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.src = file.target.result;
+      img.height="100"
+      img.width="100"
+      $('#target').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+  $('.chosen-select').chosen({});
+  $(".chosen-select").chosen().change(function(v) {
+    $("#form_tag").val($(this).val());
+  });
+});
+
+</script>

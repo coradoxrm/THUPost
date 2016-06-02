@@ -96,6 +96,54 @@
   width: 60%;
 }
 
+.open {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1ab394;
+    padding: 6px 12px;
+    position: absolute;
+    top: -16px;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.contacting {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #FDD200;
+    padding: 6px 12px;
+    position: absolute;
+    top: -16px;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.sold {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #ed5565;
+    padding: 6px 12px;
+    position: absolute;
+    top: -16px;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.collect-btn {
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  z-index: 10;
+}
+
+
+
 
 /*a:link {color:#E6E6FA;}
 a:visited {color:#E6E6FA;}
