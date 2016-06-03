@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  default :from => 'thupost@azure.paulz.site'
+
   def notify_email(order)
     @order = order
     @user = @order.user
