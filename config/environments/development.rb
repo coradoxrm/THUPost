@@ -45,18 +45,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-      address: 'smtp.126.com',
-      # port: '465',
-      port: '25',
-      # domain: '163.com',
-      domain: '126.com',
-      # user_name: 'thupost@163.com',
-      user_name: 'zczyqdc@126.com',
-      # password: 'thupostAUTH1234',
-      password: 'dfjklasjfskl',
-      authentication: :login,
-      ssl: true,
-      enable_starttls_auto: false
+      address: 'localhost',
+      port: 25,
+      domain: 'soavm.soavm.a3.internal.chinacloudapp.cn',
+      user_name: nil,
+      password: nil,
+      authentication: 'plain'
   }
 
   config.time_zone = 'Beijing'
