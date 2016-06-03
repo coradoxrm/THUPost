@@ -47,7 +47,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address: 'localhost',
       port: 25,
-      domain: 'soavm.soavm.a3.internal.chinacloudapp.cn',
+      domain: 'azure.paulz.site',
       user_name: nil,
       password: nil,
       authentication: 'plain',

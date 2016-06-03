@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   def notify_email
     @order = Order.find(params[:order_id])
-    UserMailer.notify_email(@order)
+    UserMailer.notify_email(@order).deliver_later
     @order.status = 1
     @order.product.status = 1
     @order.product.save
