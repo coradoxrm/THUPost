@@ -30,8 +30,6 @@ Rails.application.routes.draw do
 
   post 'orders/notify_email', to: 'orders#notify_email'
   post 'orders/notify_text', to: 'orders#notify_text'
-  post 'orders/notify_test', to: 'orders#notify_test'
-
 
   # You can have the root of your site routed with "root"
 

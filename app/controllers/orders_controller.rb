@@ -31,17 +31,11 @@ class OrdersController < ApplicationController
 
   def notify_text
     @order = Order.find(params[:order_id])
+    send_notify_text @order
     @order.status = 1
     @order.product.status = 1
     @order.product.save
     @order.save
-    send_notify_text @order
-    @res = {:code => 0}
-    render :json => @res
-  end
-
-  def notify_test
-    UserMailer.welcome_email(current_user)
     @res = {:code => 0}
     render :json => @res
   end
