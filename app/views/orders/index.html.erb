@@ -44,17 +44,31 @@
 <script>
 $(function(){
   $('.cancel_btn').click(function() {
-    $.ajax({
-              type: "POST",
-              url: "/orders/remove",
-              data: {id : $(this).attr("oid")},
-              dataType: "json",
-              success: function(data){
-                location=location;
-              }
-            });
-  }
-  );
+    var oid = $(this).attr("oid");
+
+    swal({
+      title: "确定删除订单",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "确定",
+      closeOnConfirm: false,
+      cancelButtonText: "取消"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+                  type: "POST",
+                  url: "/orders/remove",
+                  data: {id : oid},
+                  dataType: "json",
+                  success: function(data){
+                    location=location;
+                    swal("成功", "已删除订单", "success");
+                  }
+                });
+      }
+    });
+  });
 });
 </script>
-

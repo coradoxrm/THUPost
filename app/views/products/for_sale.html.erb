@@ -19,8 +19,8 @@
                 <%= e.title %>
             </a>
             <div class="vote-info">
-                <i class="fa fa-comments-o"></i> Orders (<%= e.orders.count %>)&nbsp
-                <i class="fa fa-clock-o"></i>Update at (<%= e.updated_at %>)&nbsp
+                <i class="fa fa-comments-o"></i> 订单 (<%= e.orders.count %>)&nbsp
+                <i class="fa fa-clock-o"></i>更新于 (<%= e.updated_at %>)&nbsp
                 <!-- <i class="fa fa-user"></i> <a href="#"></a> -->
             </div>
         </div>
@@ -78,18 +78,33 @@ $(function(){
 
 
 $(function(){
+
   $('.delete_btn').click(function() {
-    $.ajax({
-              type: "POST",
-              url: "/products/remove",
-              data: {id : $(this).attr("name")},
-              dataType: "json",
-              success: function(data){
-                location=location;
-              }
-            });
-  }
-  );
+    var pid = $(this).attr("name");
+    swal({
+      title: "确定删除商品",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "确定",
+      closeOnConfirm: false,
+      cancelButtonText: "取消"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+                  type: "POST",
+                  url: "/products/remove",
+                  data: {id : pid},
+                  dataType: "json",
+                  success: function(data){
+                    location=location;
+                    swal("成功", "已删除商品", "success");
+                  }
+                });
+      }
+    });
+  });
 
   $('.selled_btn').click(function() {
     $.ajax({
