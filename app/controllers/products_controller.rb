@@ -179,4 +179,18 @@ class ProductsController < ApplicationController
     @object = {"status":"success"}
     render :json => @object
   end
+
+  def cancel
+    product = Product.find(params[:id])
+    product.status = 0
+    for i in product.orders
+      if i.status == 1
+        i.status = 0
+        i.save
+      end
+    end
+    product.save
+    @object = {"status":"success"}
+    render :json => @object
+  end
 end
