@@ -37,7 +37,7 @@
 
         <div class="col-md-3 button-f">
           <div class="button-c" style="right:20px">
-            <%if e.status == 0%>
+            <%if e.status == 1%>
               <button class="btn btn-success btn-md selled_btn" name = <%= e.id %> >已卖出</button>
               <button class="btn btn-warning btn-md return_btn" name = <%= e.id %> >重新开启</button>
               <%end%>
@@ -47,36 +47,16 @@
 
 
 
-        <!-- <div class="col-md-1 ">
-            <div class="vote-icon">
-                <a class="expand-btn" data-target-id="<%= e.id %>"><i class="fa fa-sort-desc"> </i></a>
-            </div>
-        </div> -->
     </div>
 </div>
 
-<!-- <div class="vote-item sub-order-list" id="sub-<%= e.id %>">
-    <div class="row">
-      <%= render partial: "order_list", locals: {product: e} %>
-    </div>
-</div> -->
+
 <% end %>
 
 
 </div>
 
 <script>
-$(function(){
-  $(".sub-order-list").hide();
-  $(".expand-btn").click(function() {
-    var btn = $(this);
-    $(".sub-order-list").hide('fast');
-    var target_id = btn.data('target-id');
-    $('#sub-' + target_id).toggle('fast');
-  });
-});
-
-
 $(function(){
 
   $('.delete_btn').click(function() {
