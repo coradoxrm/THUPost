@@ -13,7 +13,7 @@
           <a href="<%= product_path(e)%>"><img alt="image" src= <%= e.photo0.url(:thumb) %> height="70" width="70"></a>
       </div>
 
-        <div class="col-md-8">
+        <div class="col-md-4">
 
             <a href="<%= product_path(e)%>" class="vote-title">
                 <%= e.title %>
@@ -25,15 +25,23 @@
             </div>
         </div>
 
-        <div class="col-md-3 button-f ">
-          <div class="button-c">
-            <%if e.status!=2%>
-              <button class="btn btn-success btn-md selled_btn" name = <%= e.id %> >已卖出</button>
-            <%else%>
-              <button class="btn btn-primary btn-md selled_btn" disabled="disabled" >成功出售</button>
-            <%end%>
-            <button class="btn btn-danger btn-md cancel_btn" name = <%= e.id %> >删&nbsp &nbsp除</button>&nbsp
+        <div class="col-md-4" style="line-height:70px;">
+          <%if e.status == 0%>
+            <span class="label label-primary">正在出售</span>
+          <%elsif e.status == 1%>
+            <span class="label label-warning">正在联系</span>
+          <%elsif e.status == 2%>
+            <span class="label label-danger">已卖出</span>
+          <%end%>
+        </div>
 
+        <div class="col-md-3 button-f">
+          <div class="button-c" style="right:20px">
+            <%if e.status == 0%>
+              <button class="btn btn-success btn-md selled_btn" name = <%= e.id %> >已卖出</button>
+              <button class="btn btn-warning btn-md return_btn" name = <%= e.id %> >重新开启</button>
+              <%end%>
+            <button class="btn btn-danger btn-md delete_btn" name = <%= e.id %> >删&nbsp &nbsp除</button>&nbsp
           </div>
         </div>
 
@@ -70,7 +78,7 @@ $(function(){
 
 
 $(function(){
-  $('.cancel_btn').click(function() {
+  $('.delete_btn').click(function() {
     $.ajax({
               type: "POST",
               url: "/products/remove",
@@ -95,6 +103,20 @@ $(function(){
             });
   }
   );
+
+  $('.return_btn').click(function() {
+    $.ajax({
+              type: "POST",
+              url: "/products/cancel",
+              data: {id : $(this).attr("name")},
+              dataType: "json",
+              success: function(data){
+                location=location;
+              }
+            });
+  }
+  );
+
 });
 
 </script>
