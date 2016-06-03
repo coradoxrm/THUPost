@@ -5,22 +5,22 @@
 <div class="middle-box text-center loginscreen animated fadeInDown">
   <div>
 
-    <h3>Change your password</h3>
+    <h3>重置密码</h3>
     <div class="login-box">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put, class: 'm-t', :role => 'form'}) do |f| %>
           <%= devise_error_messages! %>
           <%= f.hidden_field :reset_password_token %>
 
           <div class="form-group">
-            <%= f.password_field :password, autofocus: true, class: "form-control", autocomplete: "off", placeholder: 'new password', required: true %>
+            <%= f.password_field :password, autofocus: true, class: "form-control", autocomplete: "off", placeholder: '新密码', required: true %>
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder: 'confirm password', required: true %>
+            <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder: '确认密码', required: true %>
           </div>
 
           <div class="form-group">
-            <%= f.submit "Change my password", class: "btn btn-sm btn-primary btn-block" %>
+            <%= f.submit "确认修改", class: "btn btn-sm btn-primary btn-block" %>
           </div>
       <% end %>
     </div>
