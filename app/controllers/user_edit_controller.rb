@@ -1,4 +1,5 @@
 class UserEditController < ApplicationController
+  before_action :authenticate_user!
   def edit
     @user = current_user
     @user.nickname = params[:nickname]
@@ -10,7 +11,7 @@ class UserEditController < ApplicationController
     if params[:user]
       @user.avatar = params[:user][:avatar]
     end
-    
+
     # puts "fsdfds"
     # puts @user.avatar
     # @user.avatar = nil

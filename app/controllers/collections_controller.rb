@@ -21,27 +21,27 @@ class CollectionsController < ApplicationController
       order = Collection.create(:user_id => current_user.id, :product_id => product.id)
       order.save
       @object = {"status":"success"}
-      render :json => @object 
+      render :json => @object
       return
     end
     @object = {"status":"error", "desc":"repeat object"}
-    render :json => @object 
+    render :json => @object
     # puts Collection.where(:user_id => current_user.id, :product_id => product.id).all
 
-    
+
   end
 
   def remove
     product = Product.find(params[:id])
-    if (Collection.where(:user_id => current_user.id, :product_id => product.id).all != []) 
+    if (Collection.where(:user_id => current_user.id, :product_id => product.id).all != [])
       order = Collection.where(:user_id => current_user.id, :product_id => product.id).first()
       order.destroy
       @object = {"status":"success"}
-      render :json => @object 
+      render :json => @object
       return;
     end
     @object = {"status":"error", "desc":"no such object"}
-    render :json => @object 
+    render :json => @object
   end
-  
+
 end
