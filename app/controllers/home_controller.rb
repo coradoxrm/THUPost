@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def index
-    @products = Product.find_by_sql("select * from products order by id limit #{0}, #{20}")
+    @products = Product.find_by_sql("select * from products order by id desc limit #{0}, #{20}")
 
     my_products = current_user.products
     @order_count = 0
