@@ -18,10 +18,10 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  devise_for :users , controllers: {registrations: "registrations",confirmations: 'confirmations'}
+  devise_for :users #, controllers: {registrations: "registrations",confirmations: 'confirmations'}
   resources :users
 
-  get 'home/index',to: 'home#index',as: 'home'
+  get 'home/index'
   get 'home/minor'
 
   get 'user_edit/show'
