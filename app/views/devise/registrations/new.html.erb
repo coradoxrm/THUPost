@@ -1,4 +1,3 @@
-
 </br>
 </br>
 </br>
@@ -20,11 +19,16 @@
                            style: 'width:110px;float: left;', oninvalid: "this.setCustomValidity('请填写邮箱')", oninput: "setCustomValidity('')" %>
           <span style="float: right;height: 34px;line-height: 34px;color: #fff;">@mails.tsinghua.edu.cn</span>
         </div>
-
-        
-
         <div class="form-group" style="display: none;">
           <%= f.text_field :email, id: 'email' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :phone, class: 'form-control', placeholder: '手机号', required: 'required',
+                           pattern: '\d{11}', oninvalid: "this.setCustomValidity('请填写手机号(11位)')", oninput: "setCustomValidity('')" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :nickname, class: 'form-control', placeholder: '昵称', required: 'required',
+                           oninvalid: "this.setCustomValidity('请填写昵称')", oninput: "setCustomValidity('')" %>
         </div>
         <div class="form-group">
           <%= f.password_field :password, class: 'form-control', placeholder: '密码', required: 'required',
@@ -34,6 +38,7 @@
           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: '确认密码', required: 'required',
                                pattern: '.{8,}', oninvalid: "this.setCustomValidity('请再次输入密码(至少8位)')", oninput: "setCustomValidity('')" %>
         </div>
+
         <%= f.submit '注册', :class => 'btn btn-sm btn-primary btn-block' %>
         </br>
         <p class="text-muted text-center">
@@ -54,6 +59,7 @@
     }
 
     $('form').submit(function () {
+      $('#email').val();
       $('#email').val($('#email-input').val() + '@mails.tsinghua.edu.cn');
     });
   });
