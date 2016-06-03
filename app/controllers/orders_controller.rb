@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   include SendText
-  include UserMailer
   before_action :authenticate_user!
 
   def create
