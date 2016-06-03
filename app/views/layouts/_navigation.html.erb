@@ -3,11 +3,11 @@
         <ul class="nav metismenu" id="side-menu">
 
           <li class="nav-header">
-              <div class="dropdown profile-element">
+              <div class="dropdown profile-element" style="height: 100px;">
                   <span>
                     <%= link_to user_edit_show_path do %>
                     <% if current_user != nil %>
-                      <img alt="image" class="img-circle" src=<%= current_user.avatar.url %> height="70" width="70" />
+                      <img alt="image" class="img-circle" src=<%= current_user.avatar.url(:small) %> height="70" width="70" />
                     <% end %>
                     <% end %>
                   </span>
@@ -18,12 +18,15 @@
                               <strong class="font-bold"><%= current_user.nickname %></strong>
                             <% end %>
                           </span>
+                          <span class="block m-t-xs">
+                            <% if current_user != nil %>
+                              <%= current_user.email %>
+                            <% end %>
+                          </span>
                       </span>
                   </a>
               </div>
-              <div class="logo-element">
-                  THUPOST
-              </div>
+
           </li>
 
             <li class="<%= 'active' if current_page?('/products/tag?query=电子产品') %>">

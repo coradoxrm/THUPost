@@ -97,7 +97,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    page_limit = 4
+    page_limit = 30
     puts params
     @page = Integer(params.has_key?("page") ? params["page"] : 1)
     limitl = (@page-1)*page_limit
@@ -123,7 +123,7 @@ class ProductsController < ApplicationController
 
   def tag
 
-    page_limit = 4
+    page_limit = 30
     puts params
     @page = Integer(params.has_key?("page") ? params["page"] : 1)
     limitl = (@page-1)*page_limit
