@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   def show
     @order = Order.new
     @product = Product.find params[:id]
+    @orders = @product.orders.order(price: :desc)
     @iscollection = 0
     for i in current_user.collections
       # puts "nimas"
@@ -172,6 +173,20 @@ class ProductsController < ApplicationController
     for i in product.orders
       if i.status == 1
         i.status = 2
+        i.save
+      end
+    end
+    product.save
+    @object = {"status":"success"}
+    render :json => @object
+  end
+
+  def cancel
+    product = Product.find(params[:id])
+    product.status = 0
+    for i in product.orders
+      if i.status == 1
+        i.status = 0
         i.save
       end
     end
