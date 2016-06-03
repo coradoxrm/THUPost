@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'orders/remove'
   post 'products/remove'
   post 'products/selled'
+  post 'products/cancel'
   post 'products/:id/orders', to: 'orders#create', as: 'new_order'
   post 'products/create'
 

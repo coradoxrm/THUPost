@@ -13,27 +13,35 @@
           <a href="<%= product_path(e)%>"><img alt="image" src= <%= e.photo0.url(:thumb) %> height="70" width="70"></a>
       </div>
 
-        <div class="col-md-8">
+        <div class="col-md-4">
 
             <a href="<%= product_path(e)%>" class="vote-title">
                 <%= e.title %>
             </a>
             <div class="vote-info">
-                <i class="fa fa-comments-o"></i> Orders (<%= e.orders.count %>)&nbsp
-                <i class="fa fa-clock-o"></i>Update at (<%= e.updated_at %>)&nbsp
+                <i class="fa fa-comments-o"></i> 订单 (<%= e.orders.count %>)&nbsp
+                <i class="fa fa-clock-o"></i>更新于 (<%= e.updated_at %>)&nbsp
                 <!-- <i class="fa fa-user"></i> <a href="#"></a> -->
             </div>
         </div>
 
-        <div class="col-md-3 button-f ">
-          <div class="button-c">
-            <%if e.status!=2%>
-              <button class="btn btn-success btn-md selled_btn" name = <%= e.id %> >已卖出</button>
-            <%else%>
-              <button class="btn btn-primary btn-md selled_btn" disabled="disabled" >成功出售</button>
-            <%end%>
-            <button class="btn btn-danger btn-md cancel_btn" name = <%= e.id %> >删&nbsp &nbsp除</button>&nbsp
+        <div class="col-md-4" style="line-height:70px;">
+          <%if e.status == 0%>
+            <span class="label label-primary">正在出售</span>
+          <%elsif e.status == 1%>
+            <span class="label label-warning">正在联系</span>
+          <%elsif e.status == 2%>
+            <span class="label label-danger">已卖出</span>
+          <%end%>
+        </div>
 
+        <div class="col-md-3 button-f">
+          <div class="button-c" style="right:20px">
+            <%if e.status == 0%>
+              <button class="btn btn-success btn-md selled_btn" name = <%= e.id %> >已卖出</button>
+              <button class="btn btn-warning btn-md return_btn" name = <%= e.id %> >重新开启</button>
+              <%end%>
+            <button class="btn btn-danger btn-md delete_btn" name = <%= e.id %> >删&nbsp &nbsp除</button>&nbsp
           </div>
         </div>
 
@@ -70,18 +78,33 @@ $(function(){
 
 
 $(function(){
-  $('.cancel_btn').click(function() {
-    $.ajax({
-              type: "POST",
-              url: "/products/remove",
-              data: {id : $(this).attr("name")},
-              dataType: "json",
-              success: function(data){
-                location=location;
-              }
-            });
-  }
-  );
+
+  $('.delete_btn').click(function() {
+    var pid = $(this).attr("name");
+    swal({
+      title: "确定删除商品",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "确定",
+      closeOnConfirm: false,
+      cancelButtonText: "取消"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+                  type: "POST",
+                  url: "/products/remove",
+                  data: {id : pid},
+                  dataType: "json",
+                  success: function(data){
+                    location=location;
+                    swal("成功", "已删除商品", "success");
+                  }
+                });
+      }
+    });
+  });
 
   $('.selled_btn').click(function() {
     $.ajax({
@@ -95,6 +118,20 @@ $(function(){
             });
   }
   );
+
+  $('.return_btn').click(function() {
+    $.ajax({
+              type: "POST",
+              url: "/products/cancel",
+              data: {id : $(this).attr("name")},
+              dataType: "json",
+              success: function(data){
+                location=location;
+              }
+            });
+  }
+  );
+
 });
 
 </script>
