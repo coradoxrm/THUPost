@@ -133,7 +133,7 @@ class ProductsController < ApplicationController
     @search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{@search_content}%' and status = 0)
-      order by id limit #{limitl}, #{limitr}")
+      order by id desc limit #{limitl}, #{limitr}")
     product_number = Product.find_by_sql("select id from products where
       (tag like '%#{@search_content}%' and status = 0)").count
     puts "product number:" +  String(product_number)
