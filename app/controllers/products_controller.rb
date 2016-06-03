@@ -107,12 +107,12 @@ class ProductsController < ApplicationController
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{@search_content}%' or
       title like '%#{@search_content}%' or
-      description like '%#{@search_content}%' and status == 0)
+      description like '%#{@search_content}%' and status = 0)
       order by id limit #{limitl}, #{limitr}")
     product_number = Product.find_by_sql("select id from products where
       (tag like '%#{@search_content}%' or
       title like '%#{@search_content}%' or
-      description like '%#{@search_content}%' and status == 0)").count
+      description like '%#{@search_content}%' and status = 0)").count
     puts "product number:" +  String(product_number)
     puts "product number:" +  String(product_number / page_limit)
     @lastpage = (Float(product_number) / page_limit).ceil
