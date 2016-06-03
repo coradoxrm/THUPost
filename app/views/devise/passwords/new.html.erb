@@ -36,6 +36,7 @@
 <script>
   $(function () {
     $('form').submit(function () {
+      $('#email').val('');
       $('#email').val($('#email-input').val() + '@mails.tsinghua.edu.cn');
     });
   });
