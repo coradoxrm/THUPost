@@ -50,7 +50,8 @@ Rails.application.configure do
       domain: 'soavm.soavm.a3.internal.chinacloudapp.cn',
       user_name: nil,
       password: nil,
-      authentication: 'plain'
+      authentication: 'plain',
+      enable_starttls_auto: false
   }
 
   config.time_zone = 'Beijing'
