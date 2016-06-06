@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:email, :nickname, :phone, :wechat, :address, :current_password, :avatar)
   end
 
-  def after_sign_up_path_for(resource)
+  def after_inactive_sign_up_path_for(resource)
     '/other/check' # Or :prefix_to_your_route
   end
 
