@@ -4,11 +4,11 @@ require 'digest/md5'
 module SendText
 
   def gen_signature(params)
-    str = ENV['ALI_TEXT_APP_SECRET']
+    str = 'd4ef01db66c111128f05fc68d3e5a4ea'
     params.sort.each do |k, v|
       str += "#{k}#{v}"
     end
-    str += ENV['ALI_TEXT_APP_SECRET']
+    str += 'd4ef01db66c111128f05fc68d3e5a4ea'
     (Digest::MD5.hexdigest str).upcase
   end
 
@@ -20,7 +20,7 @@ module SendText
 
     post_params = {
         :method => 'alibaba.aliqin.fc.sms.num.send',
-        :app_key => ENV['ALI_TEXT_APP_KEY'],
+        :app_key => '23358998',
         :timestamp => Time.now.strftime('%Y-%m-%d %H:%M:%S'),
         :v => '2.0',
         :format => 'json',
@@ -47,7 +47,7 @@ module SendText
 
     post_params = {
         :method => 'alibaba.aliqin.fc.sms.num.send',
-        :app_key => ENV['ALI_TEXT_APP_KEY'],
+        :app_key => '23358998',
         :timestamp => Time.now.strftime('%Y-%m-%d %H:%M:%S'),
         :v => '2.0',
         :format => 'json',
@@ -60,6 +60,8 @@ module SendText
     }
     post_params[:sign] = gen_signature post_params
 
-    http.post(uri, URI.encode_www_form(post_params))
+    print(post_params)
+    r = http.post(uri, URI.encode_www_form(post_params))
+    print(r.body)
   end
 end
