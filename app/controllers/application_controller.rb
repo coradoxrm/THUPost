@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  
+
 
   layout :layout_by_resource
 
@@ -20,12 +20,9 @@ class ApplicationController < ActionController::Base
       #print("-------------------> one\n")
       #print(action_name + "\n")
       #print(controller_name + "\n")
-
       (action_name == 'edit' && controller_name != 'passwords') ? 'application' : 'empty'
-
     else
-      print("-------------------> two")
-      'application'
+      (controller_name != 'other') ? 'application' : 'empty'
     end
   end
 end

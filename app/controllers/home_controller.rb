@@ -25,11 +25,6 @@ class HomeController < ApplicationController
         @notif_count += 1
       end
     end
-
-
-
-
-
   end
 
   def minor
