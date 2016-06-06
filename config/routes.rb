@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'home/minor'
+  get 'other/check', to: 'other#check' , as: 'check'
 
   get 'user_edit/show'
   patch 'user_edit/edit'
