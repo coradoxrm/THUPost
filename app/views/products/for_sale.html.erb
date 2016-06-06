@@ -31,7 +31,7 @@
           <%elsif e.status == 1%>
             <span class="label label-warning">正在联系</span>
           <%elsif e.status == 2%>
-            <span class="label label-danger">已卖出</span>
+            <span class="label label-success">已卖出</span>
           <%end%>
         </div>
 
@@ -39,7 +39,7 @@
           <div class="button-c" style="right:20px">
             <%if e.status == 1%>
               <button class="btn btn-success btn-md selled_btn" name = <%= e.id %> >已卖出</button>
-              <button class="btn btn-warning btn-md return_btn" name = <%= e.id %> >重新开启</button>
+              <button class="btn btn-primary btn-md return_btn" name = <%= e.id %> >重新出售</button>
               <%end%>
             <button class="btn btn-danger btn-md delete_btn" name = <%= e.id %> >删&nbsp &nbsp除</button>&nbsp
           </div>
