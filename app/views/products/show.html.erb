@@ -182,6 +182,7 @@ $(function(){
           dataType: "json",
           success: function (data) {
             swal("成功", "发送短信短信", "success");
+            location=location;
           }
         });
       }
@@ -210,6 +211,7 @@ $(function(){
             dataType: "json",
             success: function(data){
               swal("成功", "发送邮件通知", "success");
+              location=location;
             }
           });
         }
