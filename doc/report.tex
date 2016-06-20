@@ -44,8 +44,10 @@
 \usepackage{xcolor}
 \renewcommand{\r}{\color{red}}
 \usepackage{tabulary}
+\usepackage{hyperref}
+
 % start of document
-\title{\textbf{技术文档}}
+\title{\textbf{THUPOST 技术文档}}
 \author{
     \kai 钱迪晨 \quad 计35 \quad 2013011402 \\
     \kai 任淼 \quad 计35 \quad 2013011394 \\
@@ -85,36 +87,8 @@
 \input{frame}
 \input{service}
 \input{api}
+\input{send}
 
-% \begin{split}
-% S &= \frac{1}{(1-0.5) + \frac{0.5}{10}}\\
-% S &= \frac{1}{0.5 + 0.05} \\
-% S &= 1.818
-% \end{split}
-% \]
-% \begin{center}
-%     \includegraphics[height=10cm]{result/9_epoch_1.jpg}
-%     \fcaption{第1轮迭代训练的结果}\label{1}
-% \end{center}
-
-% \begin{enumerate}
-%     \item 随着实验的进行，图片的确变得更加的准确，而不仅仅是肉眼上的复原效果更加好了，但是训练的次数过多也会使得画质变得更差。
-%     \item 10次迭代的时候，答案是最优的。
-%     \item 绿色通道随着迭代次数上升最准确，但是红色和蓝色通道就有一点不正确。
-% \end{enumerate}
-
-
-% \begin{center}
-%     \tcaption{内存地址空间映射}\label{table:mem_addr}
-%     \begin{longtable}{ll}
-%         \toprule
-%         逻辑地址 & 映射到的物理地址或设备 \\
-%         \midrule
-%         0x0000 $\thicksim$ 0x7FFF & RAM2 0x0000 $\thicksim$ 0x7FFF \\
-%         0x8000 $\thicksim$ 0xBEFF & RAM1 0x0000 $\thicksim$ 0x3EFF \\
-%         \bottomrule
-%     \end{longtable}
-% \end{center}
 
 \end{document}
 % -----------------end------------------%
