@@ -30,12 +30,18 @@ class OrdersController < ApplicationController
   end
 
   def notify_text
+    if Time.now.to_i - current_user.last_next_time < 3600 * 2
+      @res = {:code => 1}
+      render :json => @res
+    end
     @order = Order.find(params[:order_id])
     send_notify_text @order
     @order.status = 1
     @order.product.status = 1
     @order.product.save
     @order.save
+    current_user.last_next_time = Time.now.to_i
+    current_user.save
     @res = {:code => 0}
     render :json => @res
   end
