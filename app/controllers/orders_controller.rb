@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     if Time.now.to_i - current_user.last_email_time < 3600 * 2
       @res = {:code => 1}
       render :json => @res
+      return
     end
     @order = Order.find(params[:order_id])
     UserMailer.notify_email(@order).deliver_later
@@ -39,6 +40,7 @@ class OrdersController < ApplicationController
     if Time.now.to_i - current_user.last_next_time < 3600 * 2
       @res = {:code => 1}
       render :json => @res
+      return
     end
     @order = Order.find(params[:order_id])
     send_notify_text @order
