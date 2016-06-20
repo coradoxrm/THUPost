@@ -23,8 +23,8 @@ class ProductsController < ApplicationController
 
   def create
     #skip_before_action :verify_authenticity_token
-    puts "debug ++++++++++++++++++++++++++ \n"
-    puts params
+    # puts "debug ++++++++++++++++++++++++++ \n"
+    # puts params
     #print(params[:pic])
 
     #print(params[:title])
@@ -58,12 +58,12 @@ class ProductsController < ApplicationController
     else
       p4 = p0
     end
-    puts "productdebug"
-    puts p0
-    puts p1
-    puts p2
-    puts p3
-    puts p4
+    # puts "productdebug"
+    # puts p0
+    # puts p1
+    # puts p2
+    # puts p3
+    # puts p4
 
     @product = current_user.products.build(
       title: params[:title],
@@ -76,34 +76,34 @@ class ProductsController < ApplicationController
       photo3: p3,
       photo4: p4
     )
-    puts @product
+    # puts @product
     @product.save
     redirect_to product_path(@product)
   end
 
   def for_sale
-    puts current_user.id
+    # puts current_user.id
     @products = Product.where(:user_id => current_user.id).order("updated_at DESC").all;
   end
 
   def default_value(l, d) #not work
     if params.has_key?(:l)
-      puts "has key +++++++++++++++++++++"
+      # puts "has key +++++++++++++++++++++"
       return params[l]
     else
-      puts "no key +++++++++++++++++++++"
+      # puts "no key +++++++++++++++++++++"
       return d
     end
   end
 
   def search
     page_limit = 30
-    puts params
+    # puts params
     @page = Integer(params.has_key?("page") ? params["page"] : 1)
     limitl = (@page-1)*page_limit
     limitr = page_limit
-    puts limitl
-    puts limitr
+    # puts limitl
+    # puts limitr
     @search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{@search_content}%' or
@@ -124,12 +124,12 @@ class ProductsController < ApplicationController
   def tag
 
     page_limit = 30
-    puts params
+    # puts params
     @page = Integer(params.has_key?("page") ? params["page"] : 1)
     limitl = (@page-1)*page_limit
     limitr = page_limit
-    puts limitl
-    puts limitr
+    # puts limitl
+    # puts limitr
     @search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{@search_content}%' and status = 0)
