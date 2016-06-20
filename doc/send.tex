@@ -1,3 +1,5 @@
+\section{功能实现}
+
 \subsection{发邮件}
 
 邮件用于如下功能：
@@ -12,9 +14,10 @@
 
 \subsection{发短信}
 
-短信用来完成卖家确认交易后，发送通知信息。我们采用了阿里大鱼（\url{http://www.alidayu.com}）提供的短信代发服务，调用\texttt{alibaba.aliqin.fc.sms.num.send}API完成发送，主要参数有：
+短信用来完成卖家确认交易后，发送通知信息。我们采用了阿里大鱼（\url{http://www.alidayu.com}）提供的短信代发服务，调用\texttt{alibaba.aliqin.fc.sms.num.send} API 完成发送，主要参数有：
 
 \begin{center}
+    \tcaption{短信接口关键参数}
     \begin{tabular}{ll}
         \toprule
             参数名 & 含义 \\
