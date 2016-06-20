@@ -130,7 +130,7 @@ class ProductsController < ApplicationController
     limitr = page_limit
     # puts limitl
     # puts limitr
-    @search_content = Mysql.escape_string(params["query"])
+    @search_content = params["query"]
     @products = Product.find_by_sql("select * from products where
       (tag like '%#{@search_content}%' and status = 0)
       order by id desc limit #{limitl}, #{limitr}")
