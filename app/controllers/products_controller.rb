@@ -104,7 +104,7 @@ class ProductsController < ApplicationController
     limitr = page_limit
     # puts limitl
     # puts limitr
-    @search_content = params["query"]
+    @search_content = "%" + params["query"] + "%"
     sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ? or title like ?
       or description like ? and status = 0) order by id limit ?, ?", @search_content, @search_content, @search_content, limitl, limitr])
     # puts sql
@@ -134,7 +134,7 @@ class ProductsController < ApplicationController
     limitr = page_limit
     # puts limitl
     # puts limitr
-    @search_content = params["query"]
+    @search_content = "%" + params["query"] + "%"
 
     sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ? and status = 0) order by id limit ?, ?", @search_content, limitl, limitr])
 
