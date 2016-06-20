@@ -121,6 +121,7 @@ class ProductsController < ApplicationController
     # puts "product number:" +  String(product_number)
     # puts "product number:" +  String(product_number / page_limit)
     @lastpage = (Float(@product_number) / page_limit).ceil
+    @search_content = @search_content[1..-2]
   end
 
 
