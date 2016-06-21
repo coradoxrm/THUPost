@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-content animated fadeInRight">
 
-  <h2>标签 <strong><%= @search_content %></strong> 的结果 <small>共<%=@product_number%>条</small></h2>
+  <h2>标签结果 <small>共<%=@product_number%>条</small></h2>
   <div class="row">
     <div class="col-lg-12">
 
@@ -46,6 +46,7 @@
     <%if(@page>1) %>
       <a href="search?query=<%=@search_content%>&page=<%=@page-1%>">上一页</a>
     <% end %>
+    <%if(@lastpage > 0) %>
     <%for i in [1,@page-5].max..(@page-1)%>
       <a href="products/search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
     <% end %>
@@ -56,8 +57,8 @@
     <%if(@page != @lastpage && @lastpage!=0) %>
     <a href="search?query=<%=@search_content%>&page=<%=@page+1%>">下一页</a>
     <%end %>
-    <%if(@lastpage < 1) %>
+    <%else%>
       <h2 style="text-align: center;">抱歉，没有结果</h2>
-      <%end%>
+    <%end%>
   </p>
 </div>
