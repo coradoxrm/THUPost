@@ -16,7 +16,7 @@
                 </div>
                 <div class="product-desc">
                   <span class="product-price">
-                    $<%= e.price %>
+                    ￥<%= e.price %>
                   </span>
                   <a href="<%= product_path(e) %>" class="product-name pname"> <%= e.title %></a>
 
@@ -44,22 +44,23 @@
   </div>
 
   <p style="font-size: large;text-align:center">
-		<%if(@page>1) %>
-			<a href="search?query=<%=@search_content%>&page=<%=@page-1%>">上一页</a>
-		<% end %>
-		<%for i in [1,@page-5].max..(@page-1)%>
-			<a href="products/search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
-		<% end %>
-		<strong><%=@page%></strong>
-		<%for i in (@page+1)..[@page+5,@lastpage].min%>
-			<a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
-		<% end %>
-		<%if(@page != @lastpage && @lastpage!=0) %>
-		<a href="search?query=<%=@search_content%>&page=<%=@page+1%>">下一页</a>
-		<%end %>
-    <%if(@lastpage < 1) %>
+    <%if(@page>1) %>
+      <a href="search?query=<%=@search_content%>&page=<%=@page-1%>">上一页</a>
+    <% end %>
+    <%if(@lastpage > 0) %>
+    <%for i in [1,@page-5].max..(@page-1)%>
+      <a href="products/search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
+    <% end %>
+    <strong><%=@page%></strong>
+    <%for i in (@page+1)..[@page+5,@lastpage].min%>
+      <a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
+    <% end %>
+    <%if(@page != @lastpage && @lastpage!=0) %>
+    <a href="search?query=<%=@search_content%>&page=<%=@page+1%>">下一页</a>
+    <%end %>
+    <%else%>
       <h2 style="text-align: center;">抱歉，没有结果</h2>
-      <%end%>
+    <%end%>
 	</p>
 
 </div>

@@ -31,11 +31,11 @@
 
               <div class="form-group">
                 <label>最低价格</label>
-                <input type="text" name="price" class="form-control" required="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                <input type="text" name="price" class="form-control" required="" placeholder="请不要超过8位数~谢谢" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8">
               </div>
                 <div class="form-group">
                   <label >描述</label>
-                  <textarea type="text" rows="3" name="description" class="form-control" required=""></textarea>
+                  <textarea type="text" rows="3" name="description" class="form-control" required="" maxlength="200" placeholder="200字以内"></textarea>
                   <input type="hidden" name="tag" id="form_tag"> </input>
                 </div>
 
@@ -44,6 +44,7 @@
               </div>
 
               <div class="col-sm-6">
+                <small>请上传至少一张图片，且每张图片大小不超过2M </small>
                 <div class="row">
 
                   <div class="col-xs-3">
@@ -149,17 +150,33 @@ $(function() {
     document.getElementById(g).style.display = 'none'
   }
 
+  function check(image) {
+    if(image.size > 1*1024*1024) {
+      swal({
+                title: "文件超过1M",
+                text: "请裁剪后上传~"
+            });
+      return false
+    }else {
+      return true
+    }
+  }
 
 
   $('#pictureInput0').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
+    if(check(image)) {
     var reader = new FileReader();
     reader.onload = function(file) {
       show('cancel_0','target_0','g0',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
+  }
+  else {
+    cancel("pictureInput0","cancel_0","target_0","g0")
+  }
   });
   $("#cancel_0").click(function(){
     cancel("pictureInput0","cancel_0","target_0","g0")
@@ -168,12 +185,18 @@ $(function() {
   $('#pictureInput1').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
+    if(check(image)) {
     var reader = new FileReader();
     reader.onload = function(file) {
       show('cancel_1','target_1','g1',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
+  }
+  else {
+    cancel("pictureInput1","cancel_1","target_1","g1")
+  }
+
   });
   $("#cancel_1").click(function(){
     cancel("pictureInput1","cancel_1","target_1","g1")
@@ -182,12 +205,16 @@ $(function() {
   $('#pictureInput2').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
+    if(check(image)) {
     var reader = new FileReader();
     reader.onload = function(file) {
       show('cancel_2','target_2','g2',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
+  }else {
+    cancel("pictureInput2","cancel_2","target_2","g2")
+  }
   });
   $("#cancel_2").click(function(){
     cancel("pictureInput2","cancel_2","target_2","g2")
@@ -196,12 +223,16 @@ $(function() {
   $('#pictureInput3').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
+    if(check(image)) {
     var reader = new FileReader();
     reader.onload = function(file) {
       show('cancel_3','target_3','g3',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
+  } else {
+    cancel("pictureInput3","cancel_3","target_3","g3")
+  }
   });
   $("#cancel_3").click(function(){
     cancel("pictureInput3","cancel_3","target_3","g3")
@@ -210,12 +241,17 @@ $(function() {
   $('#pictureInput4').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
+    if(check(image)) {
     var reader = new FileReader();
     reader.onload = function(file) {
       show('cancel_4','target_4','g4',file.target.result)
     }
     reader.readAsDataURL(image);
     console.log(files);
+  }
+  else {
+    cancel("pictureInput4","cancel_4","target_4","g4")
+  }
   });
   $("#cancel_4").click(function(){
     cancel("pictureInput4","cancel_4","target_4","g4")
