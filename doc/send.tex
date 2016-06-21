@@ -1,0 +1,31 @@
+\section{功能实现}
+
+\subsection{发邮件}
+
+邮件用于如下功能：
+
+\begin{itemize}
+    \item 注册账户激活，认证清华学生身份；
+    \item 重置密码；
+    \item 卖家确认交易后，发送通知邮件。
+\end{itemize}
+
+我们利用\texttt{postfix}来构建自己的简单邮件服务器，这个邮件服务器只用来发送邮件。在 ruby on rails 中结合 devise mailer 来用 STMP 完成代发功能。
+
+\subsection{发短信}
+
+短信用来完成卖家确认交易后，发送通知信息。我们采用了阿里大鱼（\url{http://www.alidayu.com}）提供的短信代发服务，调用\texttt{alibaba.aliqin.fc.sms.num.send} API 完成发送，主要参数有：
+
+\begin{center}
+    \tcaption{短信接口关键参数}
+    \begin{tabular}{ll}
+        \toprule
+            参数名 & 含义 \\
+        \midrule
+            \texttt{sms\_free\_sign\_name} & 短信签名 \\
+            \texttt{sms\_param} & 短信模块参数 \\
+            \texttt{rec\_num} & 手机号 \\
+            \texttt{sms\_template\_code} & 短信模板 ID \\
+        \bottomrule
+    \end{tabular}
+\end{center}

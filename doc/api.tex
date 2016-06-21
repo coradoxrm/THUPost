@@ -1,0 +1,53 @@
+\section{API列表}
+
+\begin{center}
+    \tcaption{order API列表}\label{table:order_api_list}
+    \begin{longtable}{lll}
+        \toprule
+        名称 & action & 描述\\
+        \midrule
+        order & create & 新建一个订单\\
+        order & index & 用户所有订单\\
+        order & notify\_email & email提醒 \\
+        order & notify\_text & 短信提醒 \\
+        order & remove & 删除订单 \\
+        \bottomrule
+    \end{longtable}
+\end{center}
+
+\begin{center}
+    \tcaption{product API列表}\label{table:product_api_list}
+    \begin{longtable}{lll}
+        \toprule
+        名称 & action & 描述\\
+        \midrule
+        product & show & 展示一个物品\\
+        product & create & 新建一个物品\\
+        product & for\_sale & 用户出售的物品 \\
+        product & search & 查询页面 \\
+        product & tag & 根据tag页面 \\
+        product & remove & 删除一个物品 \\
+        product & selled & 标记一个物品已经卖出 \\
+        product & cancel & 标记一个正在联系的物品取消联系 \\
+        \bottomrule
+    \end{longtable}
+\end{center}
+
+\begin{center}
+    \tcaption{user API列表}\label{table:user_api_list}
+    \begin{longtable}{lll}
+        \toprule
+        名称 & action & 描述\\
+        \midrule
+        users & sign\_in & 登录\\
+        users & sign\_out & 登出\\
+        users & sign\_up & 注册\\
+        users & password/new & 重置密码 \\
+        users & password/edit & 修改密码 \\
+        users & confirmation & 确认激活 \\
+        users & confirmation/new & 重发激活邮件 \\
+        user\_edit & show & 个人资料 \\
+        user\_edit & edit & 更新个人资料 \\
+        \bottomrule
+    \end{longtable}
+\end{center}
