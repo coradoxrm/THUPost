@@ -1,11 +1,12 @@
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href=""><i class="fa fa-bars"></i> </a>
 
 
-            <%= form_tag({:controller => "products", :action => "search"}, method: "get",class: "navbar-form-custom") do %>
-              <%= text_field_tag :query, params[:query], size: 30 , class: "form-control" , placeholder: "Search for something..."%>
+
+            <%= form_tag({:controller => "products", :action => "search"}, method: "get",class: "navbar-form-custom",style:"width:auto") do %>
+            <button class="minimalize-styl-2 btn btn-primary " type="submit" style="margin-right:0px"><i class="fa fa-search"></i> </button>
+              <%= text_field_tag :query, params[:query], size: 30 , placeholder: "试一试搜索吧~",style:"float: left;padding: 4px 12px;margin: 14px 5px 5px 2px;"%>
             <% end %>
 
 

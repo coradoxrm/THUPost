@@ -11,20 +11,18 @@
                     <% end %>
                     <% end %>
                   </span>
-                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                       <span class="clear">
                           <span class="block m-t-xs">
                             <% if current_user != nil %>
-                              <strong class="font-bold"><%= current_user.nickname %></strong>
+                              <strong class="font-bold" style="color:#a7b1c2"><%= current_user.nickname %></strong>
                             <% end %>
                           </span>
                           <span class="block m-t-xs">
                             <% if current_user != nil %>
-                              <small><%= current_user.email %></small>
+                              <small style="color:#a7b1c2"><%= current_user.email %></small>
                             <% end %>
                           </span>
                       </span>
-                  </a>
               </div>
 
           </li>
@@ -60,6 +58,12 @@
                 <%= link_to "/products/new" do %>
                 <i class="fa fa-money"></i> <span class="nav-label">我要卖</span>
                 <% end %>
+            </li>
+
+
+            <li style="position: fixed;margin-left: 20px;margin-top: 50px;">
+              <!-- <span class="nav-label" style="display:block;margin-left:10%;color: #a7b1c2;">关注我们，反馈意见</span> -->
+              <img src="/images/wechat.jpg" style="width: 70%"/>
             </li>
 
 
