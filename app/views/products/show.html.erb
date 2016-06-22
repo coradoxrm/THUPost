@@ -192,7 +192,7 @@ $(function(){
   $('.demo3').click(function () {
     var order = $(this).attr('name');
     swal({
-      title: "确定把你的联系方式发送给Ta？",
+      title: "即将通过邮件交换联系方式",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#40f258",
@@ -210,7 +210,7 @@ $(function(){
             data: {order_id : order},
             dataType: "json",
             success: function(data){
-              swal("成功", "发送邮件通知", "success");
+              swal("已成功交换联系方式", "请查收邮件并及时进行交易", "success");
               location=location;
             }
           });

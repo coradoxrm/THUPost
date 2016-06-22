@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
     end
     @order = Order.find(params[:order_id])
     UserMailer.notify_email(@order).deliver_later
+    UserMailer.receive_email(@order).deliver_later
     @order.status = 1
     @order.product.status = 1
     @order.product.save

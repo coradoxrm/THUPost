@@ -4,6 +4,12 @@ class UserMailer < ApplicationMailer
   def notify_email(order)
     @order = order
     @user = @order.user
-    mail(to: @user.email, subject: '卖家确认通知')
+    mail(to: @user.email, subject: '【THUPost】卖家联系方式')
   end
+
+  def receive_email(order)
+    @order = order
+    @user = @order.product.user
+    mail(to: @user.email, subject: '【THUPost】买家联系方式')
+
 end
