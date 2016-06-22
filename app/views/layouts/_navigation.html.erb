@@ -7,7 +7,7 @@
                   <span>
                     <%= link_to user_edit_show_path do %>
                     <% if current_user != nil %>
-                      <img alt="image" class="img-circle" src=<%= current_user.avatar.url(:small) %> height="70" width="70" />
+                      <img alt="image" class="img-circle" src="<%= current_user.avatar.url(:small) %>" height="70" width="70" />
                     <% end %>
                     <% end %>
                   </span>
@@ -63,6 +63,11 @@
                   <li class="<%= 'active' if current_page?('/products/tag?query=其他') %>">
                       <%= link_to "/products/tag?query=其他" do %>
                       <i class="fa fa-paw"></i> <span class="nav-label">其他</span>
+                      <% end %>
+                  </li>
+                  <li class="<%= 'active' if current_page?('/products/search?query=') %>">
+                      <%= link_to "/products/search?query=" do %>
+                      <i class="fa fa-database"></i> <span class="nav-label">全部</span>
                       <% end %>
                   </li>
 
