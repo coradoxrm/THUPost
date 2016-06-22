@@ -30,7 +30,7 @@
             <% end %>
         </td>
 
-        <td class="project-completion col-lg-2">
+        <td class="project-completion col-lg-1">
           <% if (e.status == 0) %>
           <span class="label label-info">等待中</span>
           <% elsif (e.status == 1) %>
@@ -38,6 +38,11 @@
           <% elsif (e.status == 2) %>
           <span class="label label-success">已收货</span>
           <% end %>
+        </td>
+        <td class="project-completion col-lg-1">
+          <%if current_user == e.user%>
+          <button type="button" class="close cancel_btn" oid = <%= e.id %> style="float:left;"><span aria-hidden="true">&times;</span></button>
+          <%end%>
         </td>
 
       </tr>

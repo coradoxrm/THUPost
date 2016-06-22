@@ -69,14 +69,14 @@
               <div class="hr-line-dashed"></div>
 
               <h4>商品描述</h4>
-              <div class="small text-muted">
+              <div class="text-muted">
                 <%= @product.description %>
                 <br/>
               </div>
 
               <div class="hr-line-dashed"></div>
 
-              <% if current_user != @product.user %>
+              <% if (current_user != @product.user) %>
               <div >
                 <% if @iscollection == 0 %>
                 <button class="btn btn-white btn-md coll_btn coll_new_btn" ><i class="fa fa-heart"></i> 加入收藏 </button>
@@ -87,7 +87,7 @@
 
               <div class="hr-line-dashed"></div>
 
-
+              <% if (!@already_buy) %>
               <%= form_for @order, html: {class: "form-horizontal"}, url: {action: "create", controller: 'orders'} do |f| %>
               <div class="form-group">
                 <div class="col-sm-12"><textarea rows="3" maxlength="20" placeholder="你对这个宝贝的想法(20字以内)" class="form-control" name="description"></textarea></div>
@@ -102,6 +102,7 @@
                   </div>
                 </div>
               </div>
+              <% end %>
               <% end %>
               <% end %>
 
@@ -148,6 +149,35 @@
 <script>
 
 $(function(){
+
+  $('.cancel_btn').click(function() {
+    var oid = $(this).attr("oid");
+
+    swal({
+      title: "确定删除订单",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "确定",
+      closeOnConfirm: false,
+      cancelButtonText: "取消"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+                  type: "POST",
+                  url: "/orders/remove",
+                  data: {id : oid},
+                  dataType: "json",
+                  success: function(data){
+                    location=location;
+                    swal("成功", "已删除订单", "success");
+                  }
+                });
+      }
+    });
+  });
+
   $('.slick_demo').slick(
     {
       //centerMode: true,

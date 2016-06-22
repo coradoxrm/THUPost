@@ -5,6 +5,15 @@ class ProductsController < ApplicationController
     @order = Order.new
     @product = Product.find params[:id]
     @orders = @product.orders.order(price: :desc)
+
+    @already_buy = false
+    for o in @orders
+      if o.user == current_user
+        @already_buy = true
+        break
+      end
+    end
+
     @iscollection = 0
     for i in current_user.collections
       # puts "nimas"
@@ -35,7 +44,7 @@ class ProductsController < ApplicationController
     else
       p0 = nil
     end
-    
+
     if params[:product][:photo1]
       p1 = params[:product][:photo1]
     else
@@ -108,7 +117,7 @@ class ProductsController < ApplicationController
     # puts limitr
     @search_content = "%" + params["query"] + "%"
     sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ? or title like ?
-      or description like ? and status = 0) order by id limit ?, ?", @search_content, @search_content, @search_content, limitl, limitr])
+      or description like ?) order by id limit ?, ?", @search_content, @search_content, @search_content, limitl, limitr])
     # puts sql
     # @products = Product.find_by_sql("select * from products where
     #   (tag like '%#{@search_content}%' or
@@ -118,7 +127,7 @@ class ProductsController < ApplicationController
     @products = Product.find_by_sql(sql)
 
     sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select id from products where (tag like ? or title like ?
-      or description like ? and status = 0)", @search_content, @search_content, @search_content])
+      or description like ?)", @search_content, @search_content, @search_content])
     @product_number = Product.find_by_sql(sql).count
     # puts "product number:" +  String(product_number)
     # puts "product number:" +  String(product_number / page_limit)
@@ -139,7 +148,7 @@ class ProductsController < ApplicationController
     # puts limitr
     @search_content = "%" + params["query"] + "%"
 
-    sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ? and status = 0) order by id limit ?, ?", @search_content, limitl, limitr])
+    sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ?) order by id limit ?, ?", @search_content, limitl, limitr])
 
     # @products = Product.find_by_sql("select * from products where
       # (tag like '%#{@search_content}%' and status = 0)
@@ -148,7 +157,7 @@ class ProductsController < ApplicationController
     @product_number = Product.find_by_sql(sql).count
     # @product_number = Product.find_by_sql("select id from products where
       # (tag like '%#{@search_content}%' and status = 0)").count
-    
+
     @lastpage = (Float(@product_number) / page_limit).ceil
 
   end
