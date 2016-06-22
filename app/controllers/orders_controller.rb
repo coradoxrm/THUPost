@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     @order.save
 
     # send notify email to seller
-    #UserMailer.notify_order_email(@order).deliver_later
+    UserMailer.notify_order_email(@order).deliver_later
 
     redirect_to product_path(@product)
   end

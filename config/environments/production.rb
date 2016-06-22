@@ -81,16 +81,17 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => 'utf-8'
-  config.action_mailer.default_url_options = {:host => 'azure.paulz.site:3000'}
+  config.action_mailer.default_url_options = {:host => 'thupost.cn'}
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
       address: 'localhost',
       port: 25,
-      domain: 'azure.paulz.site',
+      domain: 'thupost.cn',
       user_name: nil,
       password: nil,
       authentication: 'plain',
       enable_starttls_auto: false
   }
+  config.time_zone = 'Beijing'
 end

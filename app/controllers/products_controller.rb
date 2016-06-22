@@ -118,6 +118,7 @@ class ProductsController < ApplicationController
     @search_content = "%" + params["query"] + "%"
     sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ? or title like ?
       or description like ?) order by id limit ?, ?", @search_content, @search_content, @search_content, limitl, limitr])
+
     # puts sql
     # @products = Product.find_by_sql("select * from products where
     #   (tag like '%#{@search_content}%' or
@@ -149,6 +150,7 @@ class ProductsController < ApplicationController
     @search_content = "%" + params["query"] + "%"
 
     sql = ActiveRecord::Base.send(:sanitize_sql_array, ["select * from products where (tag like ?) order by id limit ?, ?", @search_content, limitl, limitr])
+
 
     # @products = Product.find_by_sql("select * from products where
       # (tag like '%#{@search_content}%' and status = 0)
