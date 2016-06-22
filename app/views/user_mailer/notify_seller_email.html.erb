@@ -1,0 +1,7 @@
+<p>尊敬的 <%= @seller.nickname %>：</p>
+
+<p>您出售的商品“<%= @order.product.title %>”正在交易中。</p>
+
+<p>请和买家“<%= @order.user.nickname %>”取得联系。买家的邮件是<a href="Mailto:<%= @order.user.email %>"><%= @order.user.email %></a>，手机号是<%= @order.user.phone %>。</p>
+
+<p>THUPOST小组</p>

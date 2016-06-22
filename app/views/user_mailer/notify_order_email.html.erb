@@ -1,0 +1,9 @@
+<p>尊敬的 <%= @seller.nickname %>：</p>
+
+<p>您出售的商品“<%= @order.product.title %>”有买家“<%= @order.user.nickname %>”希望购买，出价为<%= @order.price %>元。</p>
+
+<p>点击下方链接查看详情</p>
+
+<p><%= link_to '商品主页', 'http://thupost.cn/products/' + @order.id %></p>
+
+<p>THUPOST小组</p>
