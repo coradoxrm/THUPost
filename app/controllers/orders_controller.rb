@@ -11,6 +11,10 @@ class OrdersController < ApplicationController
         description: params[:description]
     )
     @order.save
+
+    # send notify email to seller
+    UserMailer.notify_order_email(@order).deliver_later
+
     redirect_to product_path(@product)
   end
 
@@ -26,6 +30,7 @@ class OrdersController < ApplicationController
     end
     @order = Order.find(params[:order_id])
     UserMailer.notify_email(@order).deliver_later
+    UserMailer.notify_seller_email(@order).deliver_later
     @order.status = 1
     @order.product.status = 1
     @order.product.save
