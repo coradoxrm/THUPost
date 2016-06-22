@@ -29,12 +29,13 @@ class ProductsController < ApplicationController
 
     #print(params[:title])
 
+    puts "create product"
     if params[:product][:photo0]
       p0 = params[:product][:photo0]
     else
       p0 = nil
     end
-
+    
     if params[:product][:photo1]
       p1 = params[:product][:photo1]
     else
@@ -59,11 +60,11 @@ class ProductsController < ApplicationController
       p4 = p0
     end
     # puts "productdebug"
-    # puts p0
-    # puts p1
-    # puts p2
-    # puts p3
-    # puts p4
+    puts p0
+    puts p1
+    puts p2
+    puts p3
+    puts p4
 
     @product = current_user.products.build(
       title: params[:title],
@@ -77,6 +78,7 @@ class ProductsController < ApplicationController
       photo4: p4
     )
     # puts @product
+    puts "start save product"
     @product.save
     redirect_to product_path(@product)
   end
