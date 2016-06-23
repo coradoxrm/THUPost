@@ -14,6 +14,8 @@ class OrdersController < ApplicationController
 
     # send notify email to seller
     UserMailer.notify_order_email(@order).deliver_later
+    #puts 'http://thupost.cn/products/' + @order.product.id.to_i.to_s
+    #puts @order.product.id.to_s
 
     redirect_to product_path(@product)
   end
