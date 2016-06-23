@@ -11,7 +11,7 @@ class UserMailer < ApplicationMailer
   def notify_seller_email(order)
     @order = order
     @seller = @order.product.user
-    mail(to: @seller.email, subject: '【THUPost】交易确认通知')
+    mail(to: @seller.email, subject: '【THUPost】买家联系方式')
   end
 
   def notify_order_email(order)
