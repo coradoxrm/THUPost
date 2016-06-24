@@ -211,7 +211,7 @@ $(function(){
           data: {order_id: order},
           dataType: "json",
           success: function (data) {
-          if(data['code'] == 0) {}
+          if(data['code'] == 0) {
             swal("已成功交换联系方式", "请查收短信并及时进行交易", "success");
           }else {
             swal("联系过于频繁", "为了不构成骚扰，每天只能确认3条交易", "warning");
