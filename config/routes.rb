@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'products/for_sale'
   get 'products/order'
+
   get 'products/search',to: 'products#search', as: 'search_product'
   get 'products/tag',to: 'products#tag', as: 'tag_product'
   get 'collections/show'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   post 'products/selled'
   post 'products/cancel'
   post 'products/:id/orders', to: 'orders#create', as: 'new_order'
+  post 'products/:id/edit', to: 'products#edit'
   post 'products/create'
 
   resources :products
