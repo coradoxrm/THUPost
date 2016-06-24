@@ -213,4 +213,12 @@ class ProductsController < ApplicationController
     @object = {"status":"success"}
     render :json => @object
   end
+
+  def edit
+    @product = Product.find(params[:id])
+    @product.price = params[:price]
+    @product.description = params[:description]
+    @product.save
+    redirect_to product_path(@product)
+  end
 end
