@@ -49,7 +49,7 @@
     <% end %>
     <%if(@lastpage > 0) %>
     <%for i in [1,@page-5].max..(@page-1)%>
-      <a href="products/search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
+      <a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
     <% end %>
     <strong><%=@page%></strong>
     <%for i in (@page+1)..[@page+5,@lastpage].min%>
