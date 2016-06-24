@@ -170,8 +170,8 @@ $(function(){
                   data: {id : oid},
                   dataType: "json",
                   success: function(data){
-                    location=location;
                     swal("成功", "已删除订单", "success");
+                    location=location;
                   }
                 });
       }
@@ -211,7 +211,11 @@ $(function(){
           data: {order_id: order},
           dataType: "json",
           success: function (data) {
-            swal("成功", "发送短信短信", "success");
+          if(data['code'] == 0) {}
+            swal("已成功交换联系方式", "请查收短信并及时进行交易", "success");
+          }else {
+            swal("联系过于频繁", "为了不构成骚扰，每天只能确认3条交易", "warning");
+          }
             location=location;
           }
         });
@@ -240,7 +244,11 @@ $(function(){
             data: {order_id : order},
             dataType: "json",
             success: function(data){
+              if(data.code == 0) {
               swal("已成功交换联系方式", "请查收邮件并及时进行交易", "success");
+            }else {
+              swal("联系过于频繁", "为了不构成骚扰，每天只能确认3条交易", "warning");
+            }
               location=location;
             }
           });

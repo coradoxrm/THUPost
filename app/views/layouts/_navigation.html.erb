@@ -26,6 +26,13 @@
               </div>
 
           </li>
+
+          <li class="<%= 'active' if current_page?('/products/new') %>">
+              <%= link_to "/products/new" do %>
+              <i class="fa fa-money"></i> <span class="nav-label">我要卖</span>
+              <% end %>
+          </li>
+
           <li class="<%= 'active' %>">
                 <a href=""><i class="fa fa-yelp"></i> <span class="nav-label">我要买</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
@@ -74,11 +81,7 @@
                 </ul>
             </li>
 
-            <li class="<%= 'active' if current_page?('/products/new') %>">
-                <%= link_to "/products/new" do %>
-                <i class="fa fa-money"></i> <span class="nav-label">我要卖</span>
-                <% end %>
-            </li>
+
 
 
             <li style="position: fixed;margin-left: 20px;margin-top: 50px;">
