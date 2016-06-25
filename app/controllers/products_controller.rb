@@ -26,7 +26,8 @@ class ProductsController < ApplicationController
     end
 
     puts request.original_url
-    @qr = RQRCode::QRCode.new(request.original_url).to_img.resize(200, 200).to_data_url
+    url =  'http://soavm.chinacloudapp.cn/products/' + @product.id.to_i.to_s
+    @qr = RQRCode::QRCode.new(url).to_img.resize(200, 200).to_data_url
     #qr = RQRCode::QRCode.new(request.original_url, :size => 4, :level => :h )
 
   end
