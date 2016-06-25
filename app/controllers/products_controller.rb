@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   # status 0 dicussion 1 close 2 selled 3
   before_action :authenticate_user!
+  require 'rqrcode_png'
   def show
     @order = Order.new
     @product = Product.find params[:id]
@@ -23,6 +24,11 @@ class ProductsController < ApplicationController
         @iscollection = 1
       end
     end
+
+    puts request.original_url
+    @qr = RQRCode::QRCode.new(request.original_url).to_img.resize(200, 200).to_data_url
+    #qr = RQRCode::QRCode.new(request.original_url, :size => 4, :level => :h )
+
   end
 
   def new
