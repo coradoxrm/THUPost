@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def notify_text
-    if Time.now.to_i - current_user.last_next_time < 3600 * 2
+    if Time.now.to_i - current_user.last_text_time < 3600 * 2
       @res = {:code => 1}
       render :json => @res
       return
