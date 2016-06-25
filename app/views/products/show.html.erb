@@ -1,3 +1,4 @@
+
 <div class="wrapper wrapper-content animated fadeInRight">
 
   <div class="row">
@@ -105,15 +106,17 @@
               <% end %>
               <% end %>
               <% else %>
-              <%if @product.user.id == 42%>
+              <%if current_user.id == 42%>
               <button type="button" class="btn btn-white btn-md" data-toggle="modal" data-target="#myModal6">
                     <i class="fa fa-wechat"></i> 分享到朋友圈
               </button>
 
+
               <%= render partial: 'qrcode', locals: {qr: @qr} %>
 
                 <div class="hr-line-dashed"></div>
-                <%end%>
+
+                <% end %>
 
               <%= form_for @product, html: {class: "form-horizontal",method: "post"}, url: {action: "edit", controller: 'products'} do |f| %>
               <div class="form-group">
