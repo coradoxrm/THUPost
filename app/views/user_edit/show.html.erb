@@ -53,8 +53,8 @@
               <div class="contact-box">
 
                 <div class="col-sm-4">
-                  <div class="text-center">
-                    <img id="show" alt="image" class="img-circle m-t-xs img-responsive" src="<%= @user.avatar.url(:small) %>">
+                  <div class="outer" style="height:100px;width:100px;overflow:hidden">
+                    <img id="show" alt="image" class="img-circle m-t-xs" height="95" width="95" src="<%= @user.avatar.url(:small) %>">
                   </div>
                 </div>
                 <div class="col-sm-8">
@@ -94,7 +94,8 @@ $(function() {
           var reader = new FileReader();
 
           reader.onload = function (e) {
-              $('#show').attr('src', e.target.result);
+              //$('#show').attr('src', e.target.result);
+              document.getElementById("show").src=e.target.result;
           }
 
           reader.readAsDataURL(input.files[0]);

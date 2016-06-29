@@ -63,6 +63,11 @@
                       <i class="fa fa-futbol-o"></i> <span class="nav-label">体育</span>
                       <% end %>
                   </li>
+                  <li class="<%= 'active' if current_page?('/products/tag?query=动漫') %>">
+                      <%= link_to "/products/tag?query=动漫" do %>
+                      <i class="fa fa-paw"></i> <span class="nav-label">动漫</span>
+                      <% end %>
+                  </li>
                   <li class="<%= 'active' if current_page?('/products/tag?query=其他') %>">
                       <%= link_to "/products/tag?query=其他" do %>
                       <i class="fa fa-paw"></i> <span class="nav-label">其他</span>
@@ -86,7 +91,7 @@
 
 
 
-            <li style="position: fixed;margin-left: 20px;margin-top: 50px;">
+            <li style="position: fixed;margin-left: 20px;margin-top: 5px;">
               <!-- <span class="nav-label" style="display:block;margin-left:10%;color: #a7b1c2;">关注我们，反馈意见</span> -->
               <img src="/images/wechat.jpg" style="width: 70%"/>
             </li>
