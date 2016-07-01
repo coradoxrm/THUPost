@@ -19,4 +19,5 @@
 //= require slick/slick.min.js
 //= require sweetalert/sweetalert.min.js
 //= require dropzone/dropzone.js
+//= require staps/jquery.steps.min.js
 //= require_tree .

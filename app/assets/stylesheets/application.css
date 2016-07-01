@@ -158,6 +158,12 @@
     filter: alpha(opacity=0);
 }
 
+.tabs-container .nav-tabs > li.active > a, .tabs-container .nav-tabs > li.active > a:hover, .tabs-container .nav-tabs > li.active > a:focus {
+    background-color: rgba(0,0,0,0.2) !important;
+    color: #fff !important;
+    border: transparent !important;
+}
+
 
 
 /*a:link {color:#E6E6FA;}

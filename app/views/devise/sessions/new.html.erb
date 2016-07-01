@@ -10,28 +10,39 @@
       <h3 class="login-text">Hope you enjoy every deal here</h3>
     </div>
 
-    <div class="col-md-5">
-      <div class="login-box">
 
-        <%= form_for(:user, :url => session_path(:user),html: {class: 'm-t' }) do |f| %>
-        <%= devise_error_messages! %>
-            <input id="email" name="user[email]" style="display: none;">
-            <div class="form-group" style="height: 34px; margin-bottom: 20px;">
-              <input id="email-input" class="form-control" placeholder="邮箱" required="required" style="width:110px;float: left;"
-                     oninvalid="this.setCustomValidity('请填写邮箱')" oninput="setCustomValidity('')" />
-              <span style="float: right;height: 34px;line-height: 34px;color: #fff;">@mails.tsinghua.edu.cn</span>
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" placeholder="密码" name="user[password]" required="required"
-                     oninvalid="this.setCustomValidity('请填写密码')" oninput="setCustomValidity('')" />
-            </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
-            <a class="btn btn-sm btn-white btn-block" href="<%= new_user_registration_path %>">现在注册</a>
-            <a href="<%= new_user_password_path %>">
-              <small style="color:#fff">忘记密码?</small>
-            </a>
-        <% end %>
-      </div>
+
+    <div class="col-md-5">
+
+        <div class="tabs-container">
+            <ul class="nav nav-tabs" style="border-bottom: 1px solid transparent;">
+                <li id="tab1" class="active"><a data-toggle="tab"> 学生版</a></li>
+                <li id="tab2" class=""><a data-toggle="tab"> 教工版</a></li>
+            </ul>
+            <div class="login-box">
+
+                  <%= form_for(:user, :url => session_path(:user),html: {class: 'm-t' }) do |f| %>
+                  <%= devise_error_messages! %>
+                      <input id="email" name="user[email]" style="display: none;">
+                      <div class="form-group" style="height: 34px; margin-bottom: 20px;">
+                        <input id="email-input" class="form-control" placeholder="邮箱" required="required" style="width:40%;float: left;"
+                               oninvalid="this.setCustomValidity('请填写邮箱')" oninput="setCustomValidity('')" />
+                        <span id="address" style="width:60%;float: right;height: 34px;line-height: 34px;color: #fff;">@mails.tsinghua.edu.cn</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="密码" name="user[password]" required="required"
+                               oninvalid="this.setCustomValidity('请填写密码')" oninput="setCustomValidity('')" />
+                      </div>
+                      <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
+                      <a class="btn btn-sm btn-white btn-block" href="<%= new_user_registration_path %>">现在注册</a>
+                      <a href="<%= new_user_password_path %>">
+                        <small style="color:#fff">忘记密码?</small>
+                      </a>
+                  <% end %>
+
+        </div>
+    </div>
+
     </div>
   </div>
   <br/>
@@ -53,8 +64,25 @@
 
 <script>
   $(function () {
+
+    var email_add = '@mails.tsinghua.edu.cn'
+
+    $("#tab1").click(function() {
+      //email_add =  '@qq.com'
+      email_add =  '@mails.tsinghua.edu.cn'
+      document.getElementById("address").innerHTML=email_add;
+      //console.log(email_add)
+    });
+
+    $("#tab2").click(function() {
+      //email_add =  '@163.com'
+      email_add =  '@mail.tsinghua.edu.cn'
+      document.getElementById("address").innerHTML=email_add;
+      //console.log(email_add)
+    });
+
     $('form').submit(function () {
-      $('#email').val($('#email-input').val() + '@mails.tsinghua.edu.cn');
+      $('#email').val($('#email-input').val() + email_add);
     });
   });
 

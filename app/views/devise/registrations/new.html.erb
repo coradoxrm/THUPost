@@ -5,6 +5,11 @@
 
 
 <div class="middle-box text-center loginscreen animated fadeInDown">
+  <div class="tabs-container">
+      <ul class="nav nav-tabs" style="border-bottom: 1px solid transparent;">
+          <li id="tab1" class="active"><a data-toggle="tab"> 学生版</a></li>
+          <li id="tab2" class=""><a data-toggle="tab"> 教工版</a></li>
+      </ul>
   <div class="login-box">
     <h3>注册 THUPost 账号</h3>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'm-t', :role => 'form'}) do |f| %>
@@ -13,7 +18,7 @@
         <div class="form-group" style="height: 34px; margin-bottom: 20px;">
           <%= f.text_field :nickname, id: 'email-input', class: 'form-control', placeholder: '清华邮箱', required: 'required',
                            style: 'width:110px;float: left;', oninvalid: "this.setCustomValidity('请填写邮箱')", oninput: "setCustomValidity('')" %>
-          <span style="float: right;height: 34px;line-height: 34px;color: #fff;">@mails.tsinghua.edu.cn</span>
+          <span id="address" style="float: right;height: 34px;line-height: 34px;color: #fff;">@mails.tsinghua.edu.cn</span>
         </div>
         <div class="form-group" style="display: none;">
           <%= f.text_field :email, id: 'email' %>
@@ -44,6 +49,7 @@
 
     <% end %>
   </div>
+  </div>
 </div>
 
 
@@ -54,9 +60,23 @@
       $('#email-input').val(match[1]);
     }
 
+    var email_add = '@mails.tsinghua.edu.cn'
+
+    $("#tab1").click(function() {
+      email_add =  '@mails.tsinghua.edu.cn'
+      document.getElementById("address").innerHTML=email_add;
+    });
+
+    $("#tab2").click(function() {
+      email_add =  '@mail.tsinghua.edu.cn'
+      document.getElementById("address").innerHTML=email_add;
+    });
+
+
     $('form').submit(function () {
       $('#email').val();
-      $('#email').val($('#email-input').val() + '@mails.tsinghua.edu.cn');
+      $('#email').val($('#email-input').val() + email_add);
+      console.log($('#email').val());
     });
   });
 </script>
