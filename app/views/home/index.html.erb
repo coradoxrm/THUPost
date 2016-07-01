@@ -47,17 +47,17 @@
             <li>
 
               <div class="alert alert-info">
-                  <a class="alert-link" href="/products/for_sale">您的宝贝有 <%= @order_count%> 条新的订单 </a>.
+                  <a class="alert-link" href="/products/for_sale" target="_blank">您的宝贝有 <%= @order_count%> 条新的订单 </a>.
               </div>
             </li>
             <li >
               <div class="alert alert-info">
-                    <a class="alert-link" href="/products/for_sale">您的宝贝被 <%= @likes_count%> 个人收藏</a>.
+                    <a class="alert-link" href="/products/for_sale" target="_blank">您的宝贝被 <%= @likes_count%> 个人收藏</a>.
               </div>
             </li>
             <li >
               <div class="alert alert-info">
-                    <a class="alert-link" href="/orders/index">您收到了 <%= @notif_count%> 份通知 </a>.
+                    <a class="alert-link" href="/orders" target="_blank">您收到了 <%= @notif_count%> 份通知 </a>.
               </div>
             </li>
 
@@ -80,13 +80,13 @@
             <div class="ibox">
               <div class="ibox-content product-box">
                 <div class="product-imitation">
-                  <a href="<%= product_path(e) %>"><img alt="image" src="<%= e.photo0.url(:thumb) %>" style = "width:100%"></a>
+                  <a href="<%= product_path(e) %>" target="_blank"><img alt="image" src="<%= e.photo0.url(:thumb) %>" style = "width:100%"></a>
                 </div>
                 <div class="product-desc">
                   <span class="product-price">
                     ￥<%= e.price %>
                   </span>
-                  <a href="<%= product_path(e) %>" class="product-name pname"> <%= e.title %></a>
+                  <a href="<%= product_path(e) %>" target="_blank" class="product-name pname"> <%= e.title %></a>
 
                   <div class="small m-t-xs ptext">
                     <%= e.description.length > 20 ? e.description[0,20]+"..." : e.description %>
@@ -111,7 +111,7 @@
       </div>
     </div>
   </div>
-  <a href="/products/search?query="><h2>more>></h2><a/>
+  <a href="/products/search?query=" target="_blank"><h2>more>></h2><a/>
 </div>
 
 

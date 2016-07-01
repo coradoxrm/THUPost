@@ -11,7 +11,7 @@
 
       <div class="col-md-1">
         <%if e.orders.count > 0%>
-          <span class="label label-danger" style="position: absolute;right: 0px;top: -6px;"><%= e.orders.count %></span>
+          <span class="label label-danger" style="position: absolute;top: -6px;"><%= e.orders.count %></span>
         <%end%>
           <a href="<%= product_path(e)%>"><img alt="image" src= <%= e.photo0.url(:thumb) %> height="70" width="70"></a>
       </div>

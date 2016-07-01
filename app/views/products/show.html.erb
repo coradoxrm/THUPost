@@ -88,7 +88,7 @@
 
               <div class="hr-line-dashed"></div>
 
-              <% if (!@already_buy) %>
+              <% if (!@already_buy && @product.status!=2) %>
               <%= form_for @order, html: {class: "form-horizontal"}, url: {action: "create", controller: 'orders'} do |f| %>
               <div class="form-group">
                 <div class="col-sm-12"><textarea rows="3" maxlength="20" placeholder="你对这个宝贝的想法(20字以内)" class="form-control" name="description"></textarea></div>
