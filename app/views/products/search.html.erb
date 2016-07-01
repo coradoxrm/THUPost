@@ -43,25 +43,40 @@
     </div>
   </div>
 
-  <p style="font-size: large;text-align:center">
-    <%if(@page>1) %>
-      <a href="search?query=<%=@search_content%>&page=<%=@page-1%>">上一页</a>
-    <% end %>
+  <div id="pagination" style="text-align:center">
+  <ul class="pagination pagination-content">
     <%if(@lastpage > 0) %>
-    <%for i in [1,@page-5].max..(@page-1)%>
-      <a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
+    <%if(@page>1) %>
+    <li><a href="search?query=<%=@search_content%>&page=<%=@page-1%>"><</a></li>
     <% end %>
-    <strong><%=@page%></strong>
-    <%for i in (@page+1)..[@page+5,@lastpage].min%>
-      <a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a>
+    <%if(@page>2) %>
+      <li><a href="search?query=<%=@search_content%>&page=1">1</a></li>
+      <li><a href="">..</a></li>
+    <%end%>
+
+    <%for i in [1,@page-1].max..(@page-1)%>
+      <li><a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a></li>
     <% end %>
-    <%if(@page != @lastpage && @lastpage!=0) %>
-    <a href="search?query=<%=@search_content%>&page=<%=@page+1%>">下一页</a>
-    <%end %>
+    <li><a href=""><strong><%=@page%></strong></a></li>
+    <%for i in (@page+1)..[@page+1,@lastpage].min%>
+      <li><a href="search?query=<%=@search_content%>&page=<%=i%>"><%=i%></a></li>
+    <% end %>
+
+    <%if(@page<@lastpage-1) %>
+      <li><a href="">..</a></li>
+      <li><a href="search?query=<%=@search_content%>&page=<%=@lastpage%>"><%=@lastpage%></a></li>
+    <%end%>
+
+      <%if(@page != @lastpage && @lastpage!=0) %>
+        <li><a href="search?query=<%=@search_content%>&page=<%=@page+1%>">></a></li>
+      <%end %>
     <%else%>
       <h2 style="text-align: center;">抱歉，没有结果</h2>
     <%end%>
-	</p>
+  </ul>
+</div>
+
+
 
 </div>
 </div>
