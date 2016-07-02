@@ -63,8 +63,35 @@ module SendText
     }
     post_params[:sign] = gen_signature post_params
 
-    print(post_params)
-    r = http.post(uri, URI.encode_www_form(post_params))
-    print(r.body)
+    http.post(uri, URI.encode_www_form(post_params))
+  end
+
+  def send_notify_seller_text(order)
+    uri = URI 'https://eco.taobao.com/router/rest'
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    @order = order
+    product = @order.product.title
+    phone_number = @order.product.user.phone
+    user_phone = @order.user.phone
+    user_email = @order.user.email
+
+    post_params = {
+        :method => 'alibaba.aliqin.fc.sms.num.send',
+        :app_key => '23358998',
+        :timestamp => Time.now.strftime('%Y-%m-%d %H:%M:%S'),
+        :v => '2.0',
+        :format => 'json',
+        :sign_method => 'md5',
+        :sms_type => 'normal',
+        :sms_free_sign_name => '变更验证',
+        :rec_num => phone_number,
+        :sms_template_code => 'SMS_11320260',
+        :sms_param => "{\"product\":\"#{product}\",\"u_phone\":\"#{user_phone}\",\"u_email\":\"#{user_email}\"}"
+    }
+    post_params[:sign] = gen_signature post_params
+
+    http.post(uri, URI.encode_www_form(post_params))
   end
 end

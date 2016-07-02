@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
     end
     @order = Order.find(params[:order_id])
     send_notify_text @order
+    send_notify_seller_text @order
     @order.status = 1
     @order.product.status = 1
     @order.product.save
