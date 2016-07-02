@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default :from => 'thupost@thupost.cn'
+  default :from => 'thupost@soavm.chinacloudapp.cn'
 
   def notify_email(order)
     @order = order

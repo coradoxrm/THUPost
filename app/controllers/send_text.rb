@@ -44,6 +44,9 @@ module SendText
     @order = order
     product = @order.product.title
     phone_number = @order.user.phone
+    @seller = @order.product.user
+    user_phone = @seller.phone
+    user_email = @seller.email
 
     post_params = {
         :method => 'alibaba.aliqin.fc.sms.num.send',
@@ -55,8 +58,8 @@ module SendText
         :sms_type => 'normal',
         :sms_free_sign_name => '变更验证',
         :rec_num => phone_number,
-        :sms_template_code => 'SMS_10150867',
-        :sms_param => "{\"product\":\"#{product}\"}"
+        :sms_template_code => 'SMS_10805288',
+        :sms_param => "{\"product\":\"#{product}\",\"user_phone\":\"#{user_phone}\",\"user_email\":\"#{user_email}\"}"
     }
     post_params[:sign] = gen_signature post_params
 
