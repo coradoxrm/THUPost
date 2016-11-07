@@ -6,11 +6,9 @@ class UserEditController < ApplicationController
     @user.wechat = params[:wechat]
     @user.phone = params[:phone]
     @user.address = params[:address]
+    @user.avatar = params[:avatar]
     # puts params
     # @user.update_attribute(@user.avatar, params[:user][:avatar])
-    if params[:user]
-      @user.avatar = params[:user][:avatar]
-    end
 
     # puts "fsdfds"
     # puts @user.avatar
