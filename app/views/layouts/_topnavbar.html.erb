@@ -14,10 +14,15 @@
         <div class= "pull-right">
         <ul class="nav navbar-top-links navbar-right">
             <li>
+                <%= link_to lottery_wheel_path do %>
+                    <i class="fa fa-gift"></i> 抽奖
+                <% end %>
+            </li>
+            <li>
                 <%= link_to  home_index_path  do %>
                     <i class="fa fa-home"></i> 首页
                 <% end %>
-            </li>
+            </li> 
             <li>
                 <%= link_to user_edit_show_path do %>
                     <i class="fa fa-user"></i> 个人资料

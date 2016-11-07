@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'lottery/wheel'
+
   get 'products/for_sale'
   get 'products/order'
 

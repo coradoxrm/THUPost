@@ -20,4 +20,7 @@
 //= require sweetalert/sweetalert.min.js
 //= require dropzone/dropzone.js
 //= require staps/jquery.steps.min.js
+//= require wheeltest/jquery.rotate.min.js
+//= require Croppie/croppie.min.js
+//= require colorbox/jquery.colorbox-min.js
 //= require_tree .

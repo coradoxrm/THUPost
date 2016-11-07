@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :nickname, :phone, :wechat, :address,:current_password,:avatar) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :nickname, :phone, :wechat, :address,:current_password,:avatar) }
   end
 
   def layout_by_resource
