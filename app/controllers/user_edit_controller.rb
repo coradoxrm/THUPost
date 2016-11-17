@@ -6,7 +6,9 @@ class UserEditController < ApplicationController
     @user.wechat = params[:wechat]
     @user.phone = params[:phone]
     @user.address = params[:address]
-    @user.avatar = params[:avatar]
+    if params[:user]
+      @user.avatar = params[:user][:avatar]
+    end
     # puts params
     # @user.update_attribute(@user.avatar, params[:user][:avatar])
 
@@ -29,7 +31,7 @@ class UserEditController < ApplicationController
     y1 = params[:y1]
     x2 = params[:x2]
     y2 = params[:y2]
-    avatar = params[:avatar]
+    avatar = params[:user][:avatar]
     #cut image by using imagemagick
 
     #todo
