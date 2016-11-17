@@ -23,4 +23,5 @@
 //= require wheeltest/jquery.rotate.min.js
 //= require Croppie/croppie.min.js
 //= require colorbox/jquery.colorbox-min.js
+//= require Jcrop/jquery.Jcrop.min.js
 //= require_tree .

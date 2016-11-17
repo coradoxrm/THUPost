@@ -24,6 +24,8 @@ class UserEditController < ApplicationController
     redirect_to user_edit_show_path
   end
 
+  
+
   def show
     # puts current_user.avatar
     # puts "debug"
