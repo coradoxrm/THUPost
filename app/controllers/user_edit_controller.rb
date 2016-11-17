@@ -24,7 +24,20 @@ class UserEditController < ApplicationController
     redirect_to user_edit_show_path
   end
 
-  
+  def avatar_upload
+    x1 = params[:x1]
+    y1 = params[:y1]
+    x2 = params[:x2]
+    y2 = params[:y2]
+    avatar = params[:avatar]
+    #cut image by using imagemagick
+
+    #todo
+
+    #save avatar
+    @user.avatar = avatar
+    @user.save
+  end
 
   def show
     # puts current_user.avatar
