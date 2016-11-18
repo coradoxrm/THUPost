@@ -8,17 +8,18 @@ class UserEditController < ApplicationController
     @user.address = params[:address]
     if params[:user]
       @user.avatar = params[:user][:avatar]
-    x1 = params[:x1]
-    y1 = params[:y1]
-    x2 = params[:x2]
-    y2 = params[:y2]
+    x1 = params[:x1].to_i
+    y1 = params[:y1].to_i
+    x2 = params[:x2].to_i
+    y2 = params[:y2].to_i
+    @user.set_crop(x2-x1,y2-y1,x1,y1)
         logger.info 'informational message'
         logger.info x1
         logger.info y1
-        logger.info x2
-        logger.info y2
-
-
+        logger.info x2-x1
+        logger.info y2-y1
+        logger.info @user
+        logger.info 'info done'
     end
     # puts params
     # @user.update_attribute(@user.avatar, params[:user][:avatar])
