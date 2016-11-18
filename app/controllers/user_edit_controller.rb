@@ -8,6 +8,17 @@ class UserEditController < ApplicationController
     @user.address = params[:address]
     if params[:user]
       @user.avatar = params[:user][:avatar]
+    x1 = params[:x1]
+    y1 = params[:y1]
+    x2 = params[:x2]
+    y2 = params[:y2]
+        logger.info 'informational message'
+        logger.info x1
+        logger.info y1
+        logger.info x2
+        logger.info y2
+
+
     end
     # puts params
     # @user.update_attribute(@user.avatar, params[:user][:avatar])
