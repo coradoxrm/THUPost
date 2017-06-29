@@ -1,5 +1,5 @@
 # 安装imagemagick 配置config/enviroment里面的路径
-
+# sqlite 
 ### 安装 Nginx
 
 ```

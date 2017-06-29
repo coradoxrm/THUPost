@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
     # send notify email to seller
     UserMailer.notify_order_email(@order).deliver_later
+    send_order_notify_text @order
     #puts 'http://thupost.cn/products/' + @order.product.id.to_i.to_s
     #puts @order.product.id.to_s
 
@@ -37,18 +38,18 @@ class OrdersController < ApplicationController
     @order.product.status = 1
     @order.product.save
     @order.save
-    current_user.last_email_time = Time.now.to_i
-    current_user.save
+    #current_user.last_email_time = Time.now.to_i
+    #current_user.save
     @res = {:code => 0}
     render :json => @res
   end
 
   def notify_text
-    if Time.now.to_i - current_user.last_text_time < 3600 * 2
-      @res = {:code => 1}
-      render :json => @res
-      return
-    end
+    # if Time.now.to_i - current_user.last_text_time < 3600 * 2
+    #   @res = {:code => 1}
+    #   render :json => @res
+    #   return
+    # end
     @order = Order.find(params[:order_id])
     send_notify_text @order
     send_notify_seller_text @order
@@ -56,8 +57,8 @@ class OrdersController < ApplicationController
     @order.product.status = 1
     @order.product.save
     @order.save
-    current_user.last_next_time = Time.now.to_i
-    current_user.save
+    #current_user.last_next_time = Time.now.to_i
+    #current_user.save
     @res = {:code => 0}
     render :json => @res
   end

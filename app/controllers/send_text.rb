@@ -26,7 +26,7 @@ module SendText
         :format => 'json',
         :sign_method => 'md5',
         :sms_type => 'normal',
-        :sms_free_sign_name => '变更验证',
+        :sms_free_sign_name => 'THUPOST',
         :rec_num => phone_number,
         :sms_template_code => 'SMS_7441101',
         :sms_param => '{"code":"123456", "product":"THUPOST"}'
@@ -46,8 +46,8 @@ module SendText
     phone_number = @order.user.phone
     @seller = @order.product.user
     user_phone = @seller.phone
-    user_email = @seller.email
-
+    #user_email = @seller.email
+    user_email = "****"
     post_params = {
         :method => 'alibaba.aliqin.fc.sms.num.send',
         :app_key => '23358998',
@@ -63,7 +63,9 @@ module SendText
     }
     post_params[:sign] = gen_signature post_params
 
-    http.post(uri, URI.encode_www_form(post_params))
+    res = http.post(uri, URI.encode_www_form(post_params))
+    # puts "++++++++++++++++++++++"
+    # puts res.body
   end
 
   def send_notify_seller_text(order)
@@ -75,7 +77,14 @@ module SendText
     product = @order.product.title
     phone_number = @order.product.user.phone
     user_phone = @order.user.phone
-    user_email = @order.user.email
+    #user_email = @order.user.email
+
+    user_email = "****"
+    # puts "--------------------------"
+    # puts product
+    # puts phone_number
+    # puts user_phone
+    # puts user_email
 
     post_params = {
         :method => 'alibaba.aliqin.fc.sms.num.send',
@@ -91,7 +100,40 @@ module SendText
         :sms_param => "{\"product\":\"#{product}\",\"u_phone\":\"#{user_phone}\",\"u_email\":\"#{user_email}\"}"
     }
     post_params[:sign] = gen_signature post_params
-
-    http.post(uri, URI.encode_www_form(post_params))
+    res = http.post(uri, URI.encode_www_form(post_params))
+    # puts "++++++++++++++++++++++"
+    # puts res.body
   end
+
+  def send_order_notify_text(order)
+    uri = URI 'https://eco.taobao.com/router/rest'
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    @order = order
+    name =  @order.user.nickname
+    product = @order.product.title
+    phone_number = @order.product.user.phone
+    price = @order.price
+
+    post_params = {
+        :method => 'alibaba.aliqin.fc.sms.num.send',
+        :app_key => '23358998',
+        :timestamp => Time.now.strftime('%Y-%m-%d %H:%M:%S'),
+        :v => '2.0',
+        :format => 'json',
+        :sign_method => 'md5',
+        :sms_type => 'normal',
+        :sms_free_sign_name => '变更验证',
+        :rec_num => phone_number,
+        :sms_template_code => 'SMS_10220959',
+        :sms_param => "{\"product\":\"#{product}\",\"name\":\"#{name}\",\"price\":\"#{price}\"}"
+    }
+    post_params[:sign] = gen_signature post_params
+
+    res = http.post(uri, URI.encode_www_form(post_params))
+    # puts "++++++++++++++++++++++"
+    # puts res.body
+  end
+
 end

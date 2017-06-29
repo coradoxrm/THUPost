@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522070524) do
+ActiveRecord::Schema.define(version: 20160620084658) do
 
   create_table "Collections", force: :cascade do |t|
     t.integer "user_id"
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 20160522070524) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "last_text_time",         default: 0
+    t.integer  "last_email_time",        default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
