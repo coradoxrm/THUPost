@@ -48,7 +48,7 @@
               </div>
 
               <div class="col-sm-6">
-                <small>请上传至少一张图片，且每张图片大小不超过1M </small>
+                <small>请上传至少一张图片，且每张图片大小不超过3M </small>
                 <div class="row">
 
                   <div class="col-xs-3">
@@ -155,9 +155,9 @@ $(function() {
   }
 
   function check(image) {
-    if(image.size > 1*1024*1024) {
+    if(image.size > 3*1024*1024) {
       swal({
-                title: "文件超过1M",
+                title: "文件超过3M",
                 text: "请裁剪后上传~"
             });
       return false
